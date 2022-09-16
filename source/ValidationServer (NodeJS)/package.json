@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-verification-server",
+  "version": "1.0.0",
+  "description": "A demo server for Google IAP verification.",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "googleapis": "^82.0.0"
+  }
+}
