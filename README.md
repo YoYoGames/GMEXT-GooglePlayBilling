@@ -5,6 +5,6 @@ This repository was created with the intent of presenting users with the lastest
 
 This is an Android extension only.
 
-ANDROID SOURCE: `source/GooglePlayBilling_gml/`
+ANDROID SOURCE: `source/GooglePlayBilling_gml/extensions/GooglePlayBillingExtension/AndroidSource/Java/`
 
 NODEJS VALIDATION SERVER (EXAMPLE): `source/ValidationServer (NodeJS)/`
