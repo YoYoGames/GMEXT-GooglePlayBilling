@@ -3,7 +3,7 @@
   "options": [],
   "exportToGame": true,
   "supportedTargets": 8,
-  "extensionVersion": "3.2.0",
+  "extensionVersion": "1.0.5",
   "packageId": "com.yoyogames.googleplayservicesiap",
   "productId": "",
   "author": "",
