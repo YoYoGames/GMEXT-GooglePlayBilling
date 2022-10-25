@@ -6,7 +6,7 @@
   "options": [],
   "exportToGame": true,
   "supportedTargets": 8,
-  "extensionVersion": "1.0.5",
+  "extensionVersion": "1.0.6",
   "packageId": "com.yoyogames.googleplayservicesiap",
   "productId": "",
   "author": "",
@@ -20,94 +20,94 @@
   "installdir": "",
   "files": [
     {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","filename":"GooglePlayBillingExtension.ext","origname":"extensions\\GooglePlayBillingExtension.ext","init":"GPBilling_Init","final":"","kind":4,"uncompress":false,"functions":[
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Init","externalName":"GPBilling_Init","kind":4,"help":"GPBilling_Init()","hidden":false,"returnType":2,"argCount":0,"args":[],},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_QueryProducts","externalName":"GPBilling_QueryProducts","kind":4,"help":"GPBilling_QueryProducts()","hidden":false,"returnType":2,"argCount":0,"args":[],},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Init","externalName":"GPBilling_Init","kind":4,"help":"GPBilling_Init()","hidden":false,"returnType":2,"argCount":0,"args":[],"documentation":"",},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_QueryProducts","externalName":"GPBilling_QueryProducts","kind":4,"help":"GPBilling_QueryProducts()","hidden":false,"returnType":2,"argCount":0,"args":[],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_AddProduct","externalName":"GPBilling_AddProduct","kind":4,"help":"GPBilling_AddProduct(product_id)","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_PurchaseProduct","externalName":"GPBilling_PurchaseProduct","kind":4,"help":"GPBilling_PurchaseProduct(product_id)","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetDescription","externalName":"GPBilling_Sku_GetDescription","kind":4,"help":"GPBilling_Sku_GetDescription(product_id)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetFreeTrialPeriod","externalName":"GPBilling_Sku_GetFreeTrialPeriod","kind":4,"help":"GPBilling_Sku_GetFreeTrialPeriod(product_id)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetIconUrl","externalName":"GPBilling_Sku_GetIconUrl","kind":4,"help":"GPBilling_Sku_GetIconUrl(product_id)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetIntroductoryPrice","externalName":"GPBilling_Sku_GetIntroductoryPrice","kind":4,"help":"GPBilling_Sku_GetIntroductoryPrice(product_id)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetIntroductoryPriceAmountMicros","externalName":"GPBilling_Sku_GetIntroductoryPriceAmountMicros","kind":4,"help":"GPBilling_Sku_GetIntroductoryPriceAmountMicros(product_id)","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetIntroductoryPriceCycles","externalName":"GPBilling_Sku_GetIntroductoryPriceCycles","kind":4,"help":"GPBilling_Sku_GetIntroductoryPriceCycles(product_id)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetIntroductoryPricePeriod","externalName":"GPBilling_Sku_GetIntroductoryPricePeriod","kind":4,"help":"GPBilling_Sku_GetIntroductoryPricePeriod(product_id)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetOriginalJson","externalName":"GPBilling_Sku_GetOriginalJson","kind":4,"help":"GPBilling_Sku_GetOriginalJson(product_id)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetOriginalPrice","externalName":"GPBilling_Sku_GetOriginalPrice","kind":4,"help":"GPBilling_Sku_GetOriginalPrice(product_id)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetOriginalPriceAmountMicros","externalName":"GPBilling_Sku_GetOriginalPriceAmountMicros","kind":4,"help":"GPBilling_Sku_GetOriginalPriceAmountMicros(product_id)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetPrice","externalName":"GPBilling_Sku_GetPrice","kind":4,"help":"GPBilling_Sku_GetPrice(product_id)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetPriceAmountMicros","externalName":"GPBilling_Sku_GetPriceAmountMicros","kind":4,"help":"GPBilling_Sku_GetPriceAmountMicros(product_id)","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetPriceCurrencyCode","externalName":"GPBilling_Sku_GetPriceCurrencyCode","kind":4,"help":"GPBilling_Sku_GetPriceCurrencyCode(product_id)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetSubscriptionPeriod","externalName":"GPBilling_Sku_GetSubscriptionPeriod","kind":4,"help":"GPBilling_Sku_GetSubscriptionPeriod(product_id)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetTitle","externalName":"GPBilling_Sku_GetTitle","kind":4,"help":"GPBilling_Sku_GetTitle(product_id)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Sku_GetType","externalName":"GPBilling_Sku_GetType","kind":4,"help":"GPBilling_Sku_GetType(product_id)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_IsStoreConnected","externalName":"GPBilling_IsStoreConnected","kind":4,"help":"GPBilling_IsStoreConnected()","hidden":false,"returnType":2,"argCount":0,"args":[],},
+          ],"documentation":"",},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_IsStoreConnected","externalName":"GPBilling_IsStoreConnected","kind":4,"help":"GPBilling_IsStoreConnected()","hidden":false,"returnType":2,"argCount":0,"args":[],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_ConsumeProduct","externalName":"GPBilling_ConsumeProduct","kind":4,"help":"GPBilling_ConsumeProduct(purchase_token)","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Purchase_GetState","externalName":"GPBilling_Purchase_GetState","kind":4,"help":"GPBilling_Purchase_GetState(purchase_token)","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Purchase_VerifySignature","externalName":"GPBilling_Purchase_VerifySignature","kind":4,"help":"GPBilling_Purchase_VerifySignature(purchase_token)","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Purchase_GetSignature","externalName":"GPBilling_Purchase_GetSignature","kind":4,"help":"GPBilling_Purchase_GetSignature(purchase_token)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_AcknowledgePurchase","externalName":"GPBilling_AcknowledgePurchase","kind":4,"help":"GPBilling_AcknowledgePurchase(purchase_token)","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_AddSubscription","externalName":"GPBilling_AddSubscription","kind":4,"help":"GPBilling_AddSubscription(product_id)","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
-          ],},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_QuerySubscriptions","externalName":"GPBilling_QuerySubscriptions","kind":4,"help":"GPBilling_QuerySubscriptions()","hidden":false,"returnType":2,"argCount":0,"args":[],},
+          ],"documentation":"",},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_QuerySubscriptions","externalName":"GPBilling_QuerySubscriptions","kind":4,"help":"GPBilling_QuerySubscriptions()","hidden":false,"returnType":2,"argCount":0,"args":[],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_PurchaseSubscription","externalName":"GPBilling_PurchaseSubscription","kind":4,"help":"GPBilling_PurchaseSubscription(product_id)","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_Purchase_GetOriginalJson","externalName":"GPBilling_Purchase_GetOriginalJson","kind":4,"help":"GPBilling_Purchase_GetOriginalJson(purchaseToken)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_ConnectToStore","externalName":"GPBilling_ConnectToStore","kind":4,"help":"GPBilling_ConnectToStore()","hidden":false,"returnType":2,"argCount":0,"args":[],},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_GetStatus","externalName":"GPBilling_GetStatus","kind":4,"help":"GPBilling_GetStatus()","hidden":false,"returnType":2,"argCount":0,"args":[],},
+          ],"documentation":"",},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_ConnectToStore","externalName":"GPBilling_ConnectToStore","kind":4,"help":"GPBilling_ConnectToStore()","hidden":false,"returnType":2,"argCount":0,"args":[],"documentation":"",},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_GetStatus","externalName":"GPBilling_GetStatus","kind":4,"help":"GPBilling_GetStatus()","hidden":false,"returnType":2,"argCount":0,"args":[],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"GPBilling_QueryPurchasesAsync","externalName":"GPBilling_QueryPurchasesAsync","kind":4,"help":"GPBilling_QueryPurchasesAsync(skuType)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
-          ],},
+          ],"documentation":"",},
       ],"constants":[
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"gpb_iap_receipt","value":"12001","hidden":false,},
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"gpb_purchase_status","value":"12002","hidden":false,},
@@ -128,7 +128,7 @@
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"gpb_error_no_skus","value":"2","hidden":false,},
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"gpb_error_selected_sku_list_empty","value":"3","hidden":false,},
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"gpb_query_purchase_async","value":"12010","hidden":false,},
-      ],"ProxyFiles":[],"copyToTargets":8,"order":[
+      ],"ProxyFiles":[],"copyToTargets":8,"usesRunnerInterface":false,"order":[
         {"name":"GPBilling_Init","path":"extensions/GooglePlayBillingExtension/GooglePlayBillingExtension.yy",},
         {"name":"GPBilling_ConnectToStore","path":"extensions/GooglePlayBillingExtension/GooglePlayBillingExtension.yy",},
         {"name":"GPBilling_IsStoreConnected","path":"extensions/GooglePlayBillingExtension/GooglePlayBillingExtension.yy",},
@@ -137,7 +137,6 @@
         {"name":"GPBilling_AddSubscription","path":"extensions/GooglePlayBillingExtension/GooglePlayBillingExtension.yy",},
         {"name":"GPBilling_QueryProducts","path":"extensions/GooglePlayBillingExtension/GooglePlayBillingExtension.yy",},
         {"name":"GPBilling_QuerySubscriptions","path":"extensions/GooglePlayBillingExtension/GooglePlayBillingExtension.yy",},
-        {"name":"GPBilling_QueryPurchases","path":"extensions/GooglePlayBillingExtension/GooglePlayBillingExtension.yy",},
         {"name":"GPBilling_PurchaseProduct","path":"extensions/GooglePlayBillingExtension/GooglePlayBillingExtension.yy",},
         {"name":"GPBilling_PurchaseSubscription","path":"extensions/GooglePlayBillingExtension/GooglePlayBillingExtension.yy",},
         {"name":"GPBilling_AcknowledgePurchase","path":"extensions/GooglePlayBillingExtension/GooglePlayBillingExtension.yy",},
