@@ -149,17 +149,17 @@ public class GooglePlayBilling
     }
 	
 
-    public String GPBilling_QueryPurchases(String _skuType)
-    {
-        int status = getStatus();
-        if (status > 0)
-        {
-            return "";
-        }
+    // public String GPBilling_QueryPurchases(String _skuType)
+    // {
+        // int status = getStatus();
+        // if (status > 0)
+        // {
+            // return "";
+        // }
         
-        String result = m_runnerBilling.queryPurchases(_skuType);
-        return result;
-    }
+        // String result = m_runnerBilling.queryPurchases(_skuType);
+        // return result;
+    // }
 
     public double GPBilling_PurchaseProduct(String _skuId)
     {

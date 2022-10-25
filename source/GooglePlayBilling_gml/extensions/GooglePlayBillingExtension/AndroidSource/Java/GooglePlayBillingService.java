@@ -36,7 +36,7 @@ import com.android.billingclient.api.BillingResult;
 import com.android.billingclient.api.ConsumeParams;
 import com.android.billingclient.api.ConsumeResponseListener;
 import com.android.billingclient.api.Purchase;
-import com.android.billingclient.api.Purchase.PurchasesResult;
+// import com.android.billingclient.api.Purchase.PurchasesResult;
 import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.android.billingclient.api.SkuDetails;
 import com.android.billingclient.api.SkuDetailsParams;
@@ -158,60 +158,60 @@ public class GooglePlayBillingService  //extends IRunnerBilling implements Runne
 		return (Object)this;
 	}
 
-	public String queryPurchases(String _skuType)
-	{
-		PurchasesResult result = m_billingClient.queryPurchases(_skuType);
+	// public String queryPurchases(String _skuType)
+	// {
+		// PurchasesResult result = m_billingClient.queryPurchases(_skuType);
 
-		if (result != null
-			&& result.getBillingResult().getResponseCode() == BillingClient.BillingResponseCode.OK) 
-		{
-			try 
-			{
-				//Log.d(TAG, "result: " + result.toString());
-				JSONObject o = new JSONObject();
-				JSONArray purchasesJsonArray = new JSONArray();
+		// if (result != null
+			// && result.getBillingResult().getResponseCode() == BillingClient.BillingResponseCode.OK) 
+		// {
+			// try 
+			// {
+				// //Log.d(TAG, "result: " + result.toString());
+				// JSONObject o = new JSONObject();
+				// JSONArray purchasesJsonArray = new JSONArray();
 				
-				List<Purchase> purchases = result.getPurchasesList();
-				Iterator<Purchase> it = purchases.iterator();
-				while (it.hasNext())
-				{
-					Purchase purchase = it.next();
-					JSONObject purchaseJson = new JSONObject(purchase.getOriginalJson());
-					//Log.d(TAG, "purchaseJson: " + purchaseJson.toString());
-					purchasesJsonArray.put(purchaseJson);
-				}
-				o.put("purchases", purchasesJsonArray);
-				o.put("success", true);
+				// List<Purchase> purchases = result.getPurchasesList();
+				// Iterator<Purchase> it = purchases.iterator();
+				// while (it.hasNext())
+				// {
+					// Purchase purchase = it.next();
+					// JSONObject purchaseJson = new JSONObject(purchase.getOriginalJson());
+					// //Log.d(TAG, "purchaseJson: " + purchaseJson.toString());
+					// purchasesJsonArray.put(purchaseJson);
+				// }
+				// o.put("purchases", purchasesJsonArray);
+				// o.put("success", true);
 				
-				String resultJson = o.toString();
-				return resultJson;
-			}
-			catch (JSONException e) 
-			{
-				Log.e(TAG, "Malformed JSON data from queryPurchases.");
-			}
-		}
+				// String resultJson = o.toString();
+				// return resultJson;
+			// }
+			// catch (JSONException e) 
+			// {
+				// Log.e(TAG, "Malformed JSON data from queryPurchases.");
+			// }
+		// }
 		
-		try 
-		{
-			JSONObject o = new JSONObject();
+		// try 
+		// {
+			// JSONObject o = new JSONObject();
 				
-			o.put("success", false);
-			if (result != null)
-			{
-				o.put("responseCode", result.getBillingResult().getResponseCode());
-			}
+			// o.put("success", false);
+			// if (result != null)
+			// {
+				// o.put("responseCode", result.getBillingResult().getResponseCode());
+			// }
 				
-			String resultJson = o.toString();
-			return resultJson;
-		}
-		catch (JSONException e)
-		{
-			Log.e(TAG, "Malformed JSON data from queryPurchases after failure.");
-		}
+			// String resultJson = o.toString();
+			// return resultJson;
+		// }
+		// catch (JSONException e)
+		// {
+			// Log.e(TAG, "Malformed JSON data from queryPurchases after failure.");
+		// }
 
-	return "";
-	}
+	// return "";
+	// }
 	
 	
 	public void queryPurchasesAsync(String _skuType)
