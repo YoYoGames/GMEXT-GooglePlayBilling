@@ -8,3 +8,10 @@ This is an Android extension only.
 ANDROID SOURCE: `source/GooglePlayBilling_gml/extensions/GooglePlayBillingExtension/AndroidSource/Java/`
 
 NODEJS VALIDATION SERVER (EXAMPLE): `source/ValidationServer (NodeJS)/`
+
+
+---
+
+## Important
+
+Do not download from the **main branch** this branch is a work in place branch and probably has features that might be broken or not working properly, please download from the releases panel (right side instead).
