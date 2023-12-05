@@ -1,0 +1,17 @@
+{
+  "FolderOrderSettings": [],
+  "ResourceOrderSettings": [
+    {"name":"Font_Yoyo_50","order":2,"path":"fonts/Font_Yoyo_50/Font_Yoyo_50.yy",},
+    {"name":"Obj_GooglePlayBilling_Durable","order":1,"path":"objects/Obj_GooglePlayBilling_Durable/Obj_GooglePlayBilling_Durable.yy",},
+    {"name":"Obj_GooglePlayBilling_Subscription","order":3,"path":"objects/Obj_GooglePlayBilling_Subscription/Obj_GooglePlayBilling_Subscription.yy",},
+    {"name":"Obj_GooglePlayBilling_IAP_Button","order":2,"path":"objects/Obj_GooglePlayBilling_IAP_Button/Obj_GooglePlayBilling_IAP_Button.yy",},
+    {"name":"Obj_Yoyo_text","order":1,"path":"objects/Obj_Yoyo_text/Obj_Yoyo_text.yy",},
+    {"name":"Obj_GooglePlayBilling_NoAds","order":5,"path":"objects/Obj_GooglePlayBilling_NoAds/Obj_GooglePlayBilling_NoAds.yy",},
+    {"name":"Obj_GooglePlayBilling","order":2,"path":"objects/Obj_GooglePlayBilling/Obj_GooglePlayBilling.yy",},
+    {"name":"Obj_GooglePlayBilling_PremiumMonth","order":6,"path":"objects/Obj_GooglePlayBilling_PremiumMonth/Obj_GooglePlayBilling_PremiumMonth.yy",},
+    {"name":"Spr_Yoyo_button","order":1,"path":"sprites/Spr_Yoyo_button/Spr_Yoyo_button.yy",},
+    {"name":"Obj_Yoyo_textbox","order":2,"path":"objects/Obj_Yoyo_textbox/Obj_Yoyo_textbox.yy",},
+    {"name":"Font_Yoyo_30","order":1,"path":"fonts/Font_Yoyo_30/Font_Yoyo_30.yy",},
+    {"name":"Spr_Yoyo_textbox","order":2,"path":"sprites/Spr_Yoyo_textbox/Spr_Yoyo_textbox.yy",},
+  ],
+}
