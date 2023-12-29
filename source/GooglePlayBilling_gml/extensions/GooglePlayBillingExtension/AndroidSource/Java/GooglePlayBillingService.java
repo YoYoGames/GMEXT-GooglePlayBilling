@@ -530,6 +530,11 @@ public class GooglePlayBillingService  //extends IRunnerBilling implements Runne
 
 	private int purchaseSku(String _productId, List<SkuDetails> _skuDetails)
 	{
+		if (_skuDetails == null) {
+			Log.e(TAG, "Sku Details: no product data was retreived.");
+			return 2;
+		}
+
 		SkuDetails sku = null;
 		for (SkuDetails _sku : _skuDetails)
 		{

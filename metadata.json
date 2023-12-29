@@ -1,0 +1,10 @@
+[
+    {
+        "projectFile": "source/GooglePlayBilling_gml/GooglePlayBilling.yyp",
+        "extensionFile": "source/GooglePlayBilling_gml/extensions/GooglePlayBillingExtension/GooglePlayBillingExtension.yy",
+        "packageid": "com.yoyogames.googleplayservicesiap",
+        "packagename": "Google Play Services IAP",
+        "format": "LTS22",
+        "version": "1.0.6"
+    }
+]

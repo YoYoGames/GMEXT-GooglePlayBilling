@@ -169,8 +169,12 @@ public class GooglePlayBilling
             return status;
         }
 
-        m_runnerBilling.purchaseCatalogItem(_skuId);        
-        return EXT_NO_ERROR;
+        double error = m_runnerBilling.purchaseCatalogItem(_skuId);
+        if (error == EXT_ERROR_NO_SKUS) {
+            Log.i("yoyo", "GPBilling_PurchaseProduct :: user is required to call GPBilling_QueryProducts before trying to purchase.");
+        }
+
+        return error;
     }
 
     public double GPBilling_PurchaseSubscription(String _skuId)
@@ -181,8 +185,12 @@ public class GooglePlayBilling
             return status;
         }
 
-        m_runnerBilling.purchaseSubscription(_skuId);        
-        return EXT_NO_ERROR;
+        double error = m_runnerBilling.purchaseSubscription(_skuId);
+        if (error == EXT_ERROR_NO_SKUS) {
+            Log.i("yoyo", "GPBilling_PurchaseSubscription :: user is required to call GPBilling_QueryProducts before trying to purchase.");
+        }
+
+        return error;
     }
 
     public double GPBilling_AcknowledgePurchase(String _purchaseId)
