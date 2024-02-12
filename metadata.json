@@ -1,10 +1,18 @@
-[
-    {
-        "projectFile": "source/GooglePlayBilling_gml/GooglePlayBilling.yyp",
-        "extensionFile": "source/GooglePlayBilling_gml/extensions/GooglePlayBillingExtension/GooglePlayBillingExtension.yy",
-        "packageid": "com.yoyogames.googleplayservicesiap",
-        "packagename": "Google Play Services IAP",
-        "format": "LTS22",
-        "version": "1.0.6"
-    }
-]
+{
+    "gitHubUrl": "https://github.com/YoYoGames/GMEXT-GooglePlayBilling",
+    "projectFile": "source/GooglePlayBilling_gml/GooglePlayBilling.yyp",
+    "projectVersion": "LTS22",
+    "releaseTemplate": "templates/release_body.md",
+    "extensionMetaData": [
+        {
+            "extensionFile": "source/GooglePlayBilling_gml/extensions/GooglePlayBillingExtension/GooglePlayBillingExtension.yy",
+            "packageid": "com.yoyogames.googleplayservicesiap",
+            "packagename": "Google Play Services IAP",
+            "packageVersion": "1.0.6",
+            "packageFormat": "LTS22",
+            "includeFolders": null,
+            "includeResources": null,
+            "excludeResources": null
+        }
+    ]
+}
