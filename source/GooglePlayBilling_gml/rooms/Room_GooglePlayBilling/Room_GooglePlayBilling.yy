@@ -24,7 +24,7 @@
   "name":"Room_GooglePlayBilling",
   "parent":{
     "name":"Rooms",
-    "path":"folders/GooglePlayBilling/Rooms.yy",
+    "path":"folders/GooglePlayBilling Demo/Rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

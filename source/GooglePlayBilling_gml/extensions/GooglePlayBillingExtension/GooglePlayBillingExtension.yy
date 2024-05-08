@@ -16,7 +16,7 @@
   "copyToTargets":8,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"1.0.6",
+  "extensionVersion":"1.1.0",
   "files":[
     {"$GMExtensionFile":"","%Name":"GooglePlayBillingExtension.ext","constants":[
         {"$GMExtensionConstant":"","%Name":"gpb_iap_receipt","hidden":false,"name":"gpb_iap_receipt","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"12001",},
@@ -62,7 +62,7 @@
         {"$GMExtensionFunction":"","%Name":"GPBilling_IsStoreConnected","argCount":0,"args":[],"documentation":"","externalName":"GPBilling_IsStoreConnected","help":"GPBilling_IsStoreConnected()","hidden":false,"kind":4,"name":"GPBilling_IsStoreConnected","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"GPBilling_ConsumeProduct","argCount":0,"args":[1,],"documentation":"","externalName":"GPBilling_ConsumeProduct","help":"GPBilling_ConsumeProduct(purchase_token)","hidden":false,"kind":4,"name":"GPBilling_ConsumeProduct","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"GPBilling_Purchase_GetState","argCount":0,"args":[1,],"documentation":"","externalName":"GPBilling_Purchase_GetState","help":"GPBilling_Purchase_GetState(purchase_token)","hidden":false,"kind":4,"name":"GPBilling_Purchase_GetState","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
-        {"$GMExtensionFunction":"","%Name":"GPBilling_Purchase_VerifySignature","argCount":0,"args":[1,1,],"documentation":"","externalName":"GPBilling_Purchase_VerifySignature","help":"GPBilling_Purchase_VerifySignature(purchase_token)","hidden":false,"kind":4,"name":"GPBilling_Purchase_VerifySignature","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
+        {"$GMExtensionFunction":"","%Name":"GPBilling_Purchase_VerifySignature","argCount":0,"args":[1,1,],"documentation":"","externalName":"GPBilling_Purchase_VerifySignature","help":"GPBilling_Purchase_VerifySignature(purchase_token, signature)","hidden":false,"kind":4,"name":"GPBilling_Purchase_VerifySignature","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"GPBilling_Purchase_GetSignature","argCount":0,"args":[1,],"documentation":"","externalName":"GPBilling_Purchase_GetSignature","help":"GPBilling_Purchase_GetSignature(purchase_token)","hidden":false,"kind":4,"name":"GPBilling_Purchase_GetSignature","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
         {"$GMExtensionFunction":"","%Name":"GPBilling_AcknowledgePurchase","argCount":0,"args":[1,],"documentation":"","externalName":"GPBilling_AcknowledgePurchase","help":"GPBilling_AcknowledgePurchase(purchase_token)","hidden":false,"kind":4,"name":"GPBilling_AcknowledgePurchase","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"GPBilling_AddSubscription","argCount":0,"args":[1,],"documentation":"","externalName":"GPBilling_AddSubscription","help":"GPBilling_AddSubscription(product_id)","hidden":false,"kind":4,"name":"GPBilling_AddSubscription","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},

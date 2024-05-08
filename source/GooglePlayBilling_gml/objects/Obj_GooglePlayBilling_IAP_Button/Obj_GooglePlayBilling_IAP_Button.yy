@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Parents",
-    "path":"folders/GooglePlayBilling/Objects/Parents.yy",
+    "path":"folders/GooglePlayBilling Demo/Objects/Parents.yy",
   },
   "parentObjectId":{
     "name":"obj_gm_button",

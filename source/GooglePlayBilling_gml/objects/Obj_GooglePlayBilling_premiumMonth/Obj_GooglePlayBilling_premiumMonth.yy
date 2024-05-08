@@ -12,7 +12,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
-    "path":"folders/GooglePlayBilling/Objects.yy",
+    "path":"folders/GooglePlayBilling Demo/Objects.yy",
   },
   "parentObjectId":{
     "name":"Obj_GooglePlayBilling_Subscription",
