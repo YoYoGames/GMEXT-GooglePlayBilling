@@ -1433,6 +1433,7 @@
  * 
  * @desc The following are guides for the Google Play Billing extension: 
  * @ref page.Quick_Start_Guide
+ * @ref page.Using_The_Google_Play_IAP_Extension
  * 
  * @section_end
  * 
