@@ -1125,7 +1125,9 @@
 
 /**
  * @func GPBilling_Purchase_GetState
- * @desc This function can be used to check the current state of a product purchase. You supply the unique purchase token (as a string), and the function will return one of the ${constant.gpb_purchase_state} constants to indicate the current state of the purchase.
+ * @desc **Google Play Billing Function:** [Purchase.getPurchaseState](https://developer.android.com/reference/com/android/billingclient/api/Purchase#getPurchaseState())
+ * 
+ * This function can be used to check the current state of a product purchase. You supply the unique purchase token (as a string), and the function will return one of the ${constant.gpb_purchase_state} constants to indicate the current state of the purchase.
  *
  * @param {string} purchase_token The purchase token for the purchase to check.
  * 
@@ -1144,7 +1146,9 @@
 
 /**
  * @func GPBilling_Purchase_GetSignature
- * @desc This function will return a string containing the signature of the purchase data that was signed with the private key of the developer. If the function fails, then an empty string `""` will be returned.
+ * @desc **Google Play Billing Function:** [Purchase.getSignature](https://developer.android.com/reference/com/android/billingclient/api/Purchase#getSignature())
+ * 
+ * This function will return a string containing the signature of the purchase data that was signed with the private key of the developer. If the function fails, then an empty string `""` will be returned.
  * 
  * @param {string} purchase_token The purchase token for the purchase to check.
  * 
@@ -1195,7 +1199,9 @@
 
 /**
  * @func GPBilling_Purchase_GetOriginalJson
- * @desc This function will return the original JSON string related to a purchase. You supply the unique purchase token (a string) and the function will return a JSON object string that can be decoded into a ${type.struct} using the ${function.json_parse} function. This struct will contain all the details about the given purchase. If the function fails, then an empty string `""` will be returned.
+ * @desc **Google Play Billing Function:** [Purchase.getOriginalJson(](https://developer.android.com/reference/com/android/billingclient/api/Purchase#getOriginalJson())
+ * 
+ * This function will return the original JSON string related to a purchase. You supply the unique purchase token (a string) and the function will return a JSON object string that can be decoded into a ${type.struct} using the ${function.json_parse} function. This struct will contain all the details about the given purchase. If the function fails, then an empty string `""` will be returned.
  *
  * @param {string} purchaseToken The purchase token for the purchase to check.
  * 
@@ -1219,7 +1225,9 @@
 
 /**
  * @func GPBilling_QueryPurchasesAsync
- * @desc This function replaces `GPBilling_QueryPurchases` and works in an asynchronous manner. It is used for querying the purchase state of the different products available for your game. This function should always be called before permitting any in-app purchases, preferably near the startup of the game itself. The function takes a ${constant.gpb_purchase_skutype} as the `"type"` argument.
+ * @desc **Google Play Billing Function:** [queryPurchasesAsync](https://developer.android.com/reference/com/android/billingclient/api/BillingClient#queryPurchasesAsync(com.android.billingclient.api.QueryPurchasesParams,com.android.billingclient.api.PurchasesResponseListener))
+ * 
+ * This function replaces `GPBilling_QueryPurchases` and works in an asynchronous manner. It is used for querying the purchase state of the different products available for your game. This function should always be called before permitting any in-app purchases, preferably near the startup of the game itself. The function takes a ${constant.gpb_purchase_skutype} as the `"type"` argument.
  * 
  * This function will generate an ${event.iap} where the ${var.async_load} DS map `"id"` key holds the constant `gpb_query_purchase_async`, a `"sku_type"` key that contains the argument provided during the function call, as well as the key `"response_json"`. This key contains a JSON object string, which – when decoded using ${function.json_parse} – will be a ${type.struct}. This struct will have the key `"success"` - which will be `true` if the query has been successfully processed, and `false` otherwise – as well as the key `"purchases"` (only if `"success"` is true).
  * 
@@ -1325,6 +1333,8 @@
  * @func_end
  */
 
+// Structs
+
 /**
  * @struct sku_details
  * @desc This struct contains details on a single SKU item.
@@ -1343,7 +1353,9 @@
 
 /**
  * @struct purchase
- * @desc This struct contains details on a single purchase.
+ * @desc **Google Play Billing Class:** [Purchase](https://developer.android.com/reference/com/android/billingclient/api/Purchase)
+ * 
+ * This struct contains details on a single purchase.
  * 
  * @member {string} orderId A unique order identifier for the transaction. This identifier corresponds to the Google Payments order ID.
  * @member {string} packageName The application package from which the purchase originated.
@@ -1356,11 +1368,71 @@
  * @struct_end
  */
 
+// Constants
+
 /**
- * @module functions
- * @title Functions
+ * @const gpb_event_type
+ * @desc This group of constants represents the possible event types.
+ * 
+ * @member gpb_iap_receipt The ${var.async_load} DS map contains data on a purchase request
+ * @member gpb_purchase_status The ${var.async_load} DS map contains data on a purchase status
+ * @member gpb_product_data_response The ${var.async_load} DS map contains a product data response
+ * @member gpb_store_connect The API has connected to the Google Play Store.
+ * @member gpb_store_connect_failed The API has failed to connect to the Google Play Store.
+ * @member gpb_product_consume_response The ${var.async_load} DS map contains a consume response
+ * @member gpb_acknowledge_purchase_response The ${var.async_load} DS map contains a purchase response
+ * @member gpb_subscription_data_response The ${var.async_load} DS map contains a subscriptions query response
+ * @member gpb_query_purchase_async The ${var.async_load} DS map contains an async purchase query response
+ * 
+ * @const_end
+ */
+
+/**
+ * @const gpb_error_type
+ * @desc This set of constants represents the possible error types.
+ * 
+ * @member gpb_error_unknown An unknown error occurred
+ * @member gpb_no_error The Billing API has been initialised correctly.
+ * @member gpb_error_not_initialised The Billing API has not been initialised before calling this function.
+ * @member gpb_error_no_skus There are no SKUs in the product list or subscription list.
+ * @member gpb_error_selected_sku_list_empty You have tried to purchase a subscription when there is no subscription in the list (although there may be products in the list)
+ * 
+ * @const_end
+ */
+
+/**
+ * @const gpb_purchase_state
+ * @desc **Google Play Billing Constant:** [Purchase.PurchaseState](https://developer.android.com/reference/com/android/billingclient/api/Purchase.PurchaseState)
+ * 
+ * This set of constants represents the possible states of a purchase.
+ * 
+ * @member gpb_purchase_state_pending The purchase is pending
+ * @member gpb_purchase_state_purchased The purchase is purchased
+ * @member gpb_purchase_state_unspecified The purchase state is unspecified
+ *
+ * @const_end
+ */
+
+/**
+ * @const gpb_purchase_skutype
+ * @desc **Google Play Billing Constant:** [BillingClient.ProductType](https://developer.android.com/reference/com/android/billingclient/api/BillingClient.ProductType)
+ * 
+ * This set of constants represents the possible SKU Types.
+ *
+ * @member gpb_purchase_skutype_inapp This constant indicates that the product is a consumable purchase.
+ * @member gpb_purchase_skutype_subs This constant indicates that the product is a subscription purchase.
+ *
+ * @const_end
+ */
+
+/**
+ * @module billingclient
+ * @title BillingClient
+ * 
+ * @desc > **Google Play Billing package:** [com.android.billingclient.api](https://developer.android.com/reference/com/android/billingclient/api/package-summary)
  * 
  * @section_func
+ * @desc These are the functions available in the Google Play Billing extension: 
  * @ref GPBilling_Init
  * @ref GPBilling_ConnectToStore
  * @ref GPBilling_IsStoreConnected
@@ -1397,8 +1469,17 @@
  * @section_end
  * 
  * @section_struct
+ * @desc These are the structs returned by the Google Play Billing extension: 
  * @ref sku_details
  * @ref purchase
+ * @section_end
+ * 
+ * @section_const
+ * @desc These are the constants used by the Google Play Billing extension: 
+ * @ref gpb_event_type
+ * @ref gpb_error_type
+ * @ref gpb_purchase_state
+ * @ref gpb_purchase_skutype
  * @section_end
  * 
  * @module_end
@@ -1437,10 +1518,9 @@
  * 
  * @section_end
  * 
- * @section Functions and Constants
+ * @section Modules
  * @desc These are the modules of the Google Play Billing extension:
- * @ref module.functions
- * @ref module.constants
+ * @ref module.billingclient
  * @section_end
  * 
  * @module_end

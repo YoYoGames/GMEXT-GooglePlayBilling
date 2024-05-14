@@ -1,10 +1,6 @@
 * ### [Google Play Billing](Home)
-* ### [Quick Start Guide](Quick_Start_Guide)
-  * ### [Initialization](Quick_Start_Guide#initialization)
-  * ### [Querying Purchases](Quick_Start_Guide#querying-purchases)
-  * ### [One-time Purchases](Quick_Start_Guide#one-time-purchases)
-  * ### [Consumables](Quick_Start_Guide#consumables)
-  * ### [Subscriptions](Quick_Start_Guide#subscriptions)
-  * ### [Verification](Quick_Start_Guide#verification)
-* ### [Functions](Functions)
-* ### [Constants](Constants)
+* ### Guides
+  * ### ${page.Using_The_Google_Play_IAP_Extension}
+  * ### ${page.Quick_Start_Guide}
+* ### Modules
+  * ### ${module.billingclient}
