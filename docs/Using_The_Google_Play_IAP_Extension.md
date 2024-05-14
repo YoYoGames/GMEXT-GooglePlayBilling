@@ -83,6 +83,6 @@ For more information on this, please see [here](https://developer.android.com/go
 
 ## Coding IAPs
 
-With that, everything is ready to start coding IAPs. See the [Quick Start Guide](Quick_Start_Guide.md) for detailed information.
+With that, everything is ready to start coding IAPs. See the [Quick Start Guide](Quick_Start_Guide) for detailed information.
 
 [[Note: The example project that comes with the extension will always contain the most up-to-date code.]]
