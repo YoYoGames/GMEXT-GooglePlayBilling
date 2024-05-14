@@ -4,8 +4,7 @@
 
 This section aims to deliver an easy and simple set of examples that should help you get
 started with your first project using the Google Play Billing extension. One thing to note before
-starting is that some function calls trigger async responses, which can be listened to using the
-ASYNC IN-APP PURCHASE event ${event.iap}.
+starting is that some function calls trigger async responses, which can be listened to using the ${event.iap}.
 
 ## Initialization
 
