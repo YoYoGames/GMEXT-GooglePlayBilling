@@ -50,6 +50,9 @@ switch(async_load[?"id"])
 				var sku = purchase[$ "productId"];
 				var token = purchase[$ "purchaseToken"];
 				
+				show_debug_message($"purchase: {purchase[$ "productId"]}")
+				show_debug_message($"quantity: {purchase[$ "quantity"]}")
+				
 				/* 
 				// ##################### SERVER VERIFICATION #######################
 				// This is a demo implementation of a dedicated server to verify your purchases
