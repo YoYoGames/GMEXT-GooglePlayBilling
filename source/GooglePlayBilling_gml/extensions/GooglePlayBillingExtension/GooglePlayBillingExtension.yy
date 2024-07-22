@@ -3,7 +3,7 @@
   "%Name":"GooglePlayBillingExtension",
   "androidactivityinject":"",
   "androidclassname":"GooglePlayBilling",
-  "androidcodeinjection":"<YYAndroidGradleDependencies>\r\nimplementation 'com.android.billingclient:billing:6.1.0'\r\n</YYAndroidGradleDependencies>\r\n\r\n",
+  "androidcodeinjection":"<YYAndroidGradleDependencies>\r\nimplementation 'com.android.billingclient:billing:7.0.0'\r\n</YYAndroidGradleDependencies>\r\n\r\n",
   "androidinject":"",
   "androidmanifestinject":"",
   "androidPermissions":[
@@ -16,7 +16,7 @@
   "copyToTargets":8,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"1.1.0",
+  "extensionVersion":"1.2.0",
   "files":[
     {"$GMExtensionFile":"","%Name":"GooglePlayBillingExtension.ext","constants":[
         {"$GMExtensionConstant":"","%Name":"gpb_iap_receipt","hidden":false,"name":"gpb_iap_receipt","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"12001",},
@@ -108,7 +108,7 @@
         {"name":"GPBilling_QueryPurchasesAsync","path":"extensions/GooglePlayBillingExtension/GooglePlayBillingExtension.yy",},
       ],"origname":"extensions\\GooglePlayBillingExtension.ext","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
   ],
-  "gradleinject":"\r\nimplementation 'com.android.billingclient:billing:6.1.0'\r\n",
+  "gradleinject":"\r\nimplementation 'com.android.billingclient:billing:7.0.0'\r\n",
   "hasConvertedCodeInjection":true,
   "helpfile":"",
   "HTML5CodeInjection":"",

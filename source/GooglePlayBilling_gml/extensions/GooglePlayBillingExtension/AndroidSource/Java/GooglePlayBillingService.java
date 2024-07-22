@@ -660,8 +660,8 @@ public class GooglePlayBillingService  //extends IRunnerBilling implements Runne
 	public void updatePurchase(SkuDetails skuDetails,String oldPurchaseToken) 
 	{
 		   SubscriptionUpdateParams updateParams = BillingFlowParams.SubscriptionUpdateParams.newBuilder()
-				.setOldSkuPurchaseToken(oldPurchaseToken)
-				.setReplaceSkusProrationMode(BillingFlowParams.ProrationMode.IMMEDIATE_AND_CHARGE_PRORATED_PRICE)
+				.setOldPurchaseToken(oldPurchaseToken)
+				.setSubscriptionReplacementMode(SubscriptionUpdateParams.ReplacementMode.CHARGE_PRORATED_PRICE)
 				.build();
 		 
 		   BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
