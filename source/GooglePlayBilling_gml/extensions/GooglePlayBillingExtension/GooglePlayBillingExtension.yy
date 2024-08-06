@@ -3,7 +3,7 @@
   "%Name":"GooglePlayBillingExtension",
   "androidactivityinject":"",
   "androidclassname":"GooglePlayBilling",
-  "androidcodeinjection":"<YYAndroidGradleDependencies>\r\nimplementation 'com.android.billingclient:billing:6.1.0'\r\n</YYAndroidGradleDependencies>\r\n\r\n",
+  "androidcodeinjection":"<YYAndroidGradleDependencies>\r\nimplementation 'com.android.billingclient:billing:6.2.1'\r\n</YYAndroidGradleDependencies>\r\n\r\n",
   "androidinject":"",
   "androidmanifestinject":"",
   "androidPermissions":[
@@ -108,7 +108,7 @@
         {"name":"GPBilling_QueryPurchasesAsync","path":"extensions/GooglePlayBillingExtension/GooglePlayBillingExtension.yy",},
       ],"origname":"extensions\\GooglePlayBillingExtension.ext","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
   ],
-  "gradleinject":"\r\nimplementation 'com.android.billingclient:billing:6.1.0'\r\n",
+  "gradleinject":"\r\nimplementation 'com.android.billingclient:billing:6.2.1'\r\n",
   "hasConvertedCodeInjection":true,
   "helpfile":"",
   "HTML5CodeInjection":"",

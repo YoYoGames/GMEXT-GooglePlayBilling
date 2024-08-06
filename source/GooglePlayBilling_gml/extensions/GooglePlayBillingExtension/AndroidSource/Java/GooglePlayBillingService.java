@@ -76,7 +76,8 @@ public class GooglePlayBillingService  //extends IRunnerBilling implements Runne
 					JSONArray purchasesJsonArray = new JSONArray();
 
 					purchasesJson.put("success", true);
-
+					
+					if(purchases != null)
 					for (Purchase purchase : purchases)
 					{
 						// For now just return the json
