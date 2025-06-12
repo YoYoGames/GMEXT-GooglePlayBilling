@@ -1,5 +1,5 @@
 {
-  "$GMProject":"",
+  "$GMProject":"v1",
   "%Name":"GooglePlayBilling",
   "AudioGroups":[
     {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
@@ -21,6 +21,7 @@
     {"$GMFolder":"","%Name":"GooglePlayBilling","folderPath":"folders/GooglePlayBilling.yy","name":"GooglePlayBilling","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Extensions","folderPath":"folders/GooglePlayBilling/Extensions.yy","name":"Extensions","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
+  "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"GMEXT-GooglePlayBilling.html","CopyToMask":0,"filePath":"datafiles","name":"GMEXT-GooglePlayBilling.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"nodejs-verification-server.zip","CopyToMask":-1,"filePath":"datafiles","name":"nodejs-verification-server.zip","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
@@ -28,7 +29,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.800.0.605",
+    "IDEVersion":"2024.13.1.193",
   },
   "name":"GooglePlayBilling",
   "resources":[

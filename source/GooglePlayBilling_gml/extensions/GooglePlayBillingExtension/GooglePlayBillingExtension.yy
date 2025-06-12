@@ -3,7 +3,7 @@
   "%Name":"GooglePlayBillingExtension",
   "androidactivityinject":"",
   "androidclassname":"GooglePlayBilling",
-  "androidcodeinjection":"<YYAndroidGradleDependencies>\r\nimplementation 'com.android.billingclient:billing:7.0.0'\r\n</YYAndroidGradleDependencies>\r\n\r\n",
+  "androidcodeinjection":"<YYAndroidGradleDependencies>\r\nimplementation 'com.android.billingclient:billing:7.1.1'\r\n</YYAndroidGradleDependencies>\r\n\r\n",
   "androidinject":"",
   "androidmanifestinject":"",
   "androidPermissions":[
