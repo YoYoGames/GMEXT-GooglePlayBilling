@@ -16,7 +16,7 @@
   "copyToTargets":8,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"1.2.0",
+  "extensionVersion":"1.3.0",
   "files":[
     {"$GMExtensionFile":"","%Name":"GooglePlayBillingExtension.ext","constants":[
         {"$GMExtensionConstant":"","%Name":"gpb_iap_receipt","hidden":false,"name":"gpb_iap_receipt","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"12001",},
