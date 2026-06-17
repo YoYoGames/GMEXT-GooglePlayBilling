@@ -155,10 +155,9 @@
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Init()</code></pre>
+<p><code>gml
+GPBilling_Init()</code></p>
 </blockquote>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -166,8 +165,8 @@
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<pre class="highlight"><code class="language-gml">GPBilling_Init();</code></pre>
-<p><br></p>
+<p><code>gml
+GPBilling_Init();</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -181,10 +180,9 @@
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_ConnectToStore()</code></pre>
+<p><code>gml
+GPBilling_ConnectToStore()</code></p>
 </blockquote>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -215,51 +213,52 @@
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>In this extended example, we first send an API request to connect to the store in some event. This would normally be done in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Object_Events.htm">Create Event</a> of a dedicated controller object that is one of the first things created in your game:</p>
-<pre class="highlight"><code class="language-gml">/// Create Event
+<p><code>gml
+/// Create Event
 var _init = GPBilling_ConnectToStore();
 if (_init == gpb_error_unknown)
 {
     show_debug_message("ERROR - Billing API Has Not Connected!");
     alarm[0] = game_get_speed(gamespeed_fps) * 10;
-}</code></pre>
+}</code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If the connection request has failed, then we can – for example - call an <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Instances/Instance_Variables/alarm.htm">alarm</a>, where we can call this same code again to test for store connection periodically.</p>
 </div>
 <p>Assuming the API has correctly requested a store connection, it will trigger an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a> where you can check to see if the API has successfully connected to the Google Play Store or not:</p>
-<pre class="highlight"><code class="language-gml">if(os_type != os_android) exit;
-
-var _event_id = async_load[? "id"];
+<p>```gml
+if(os_type != os_android) exit;</p>
+<p>var _event_id = async_load[? "id"];
 switch (_event_id)
 {
-    // ...
+    // ...</p>
+<pre><code>case gpb_store_connect:
+    // At this point we have just finished connecting to the store so we need to:
 
-    case gpb_store_connect:
-        // At this point we have just finished connecting to the store so we need to:
+    // 1) Add the products to the local IAP
+    GPBilling_AddProduct(IAP_100gems);
+    GPBilling_AddProduct(IAP_noads);
+    GPBilling_AddSubscription(IAP_premium);
 
-        // 1) Add the products to the local IAP
-        GPBilling_AddProduct(IAP_100gems);
-        GPBilling_AddProduct(IAP_noads);
-        GPBilling_AddSubscription(IAP_premium);
+    // 2) Query purchase data (async)
+    GPBilling_QueryPurchasesAsync(gpb_purchase_skutype_inapp);
 
-        // 2) Query purchase data (async)
-        GPBilling_QueryPurchasesAsync(gpb_purchase_skutype_inapp);
+    // 3) Query products and subscriptions
+    // (required to use 'GPBilling_Sku_GetOriginalJson')
+    GPBilling_QueryProducts();
+    GPBilling_QuerySubscriptions();
+    break;
 
-        // 3) Query products and subscriptions
-        // (required to use 'GPBilling_Sku_GetOriginalJson')
-        GPBilling_QueryProducts();
-        GPBilling_QuerySubscriptions();
-        break;
+case gpb_store_connect_failed:
+    // Store has failed to connect, so try again periodically
+    alarm[0] = game_get_speed(gamespeed_fps) * 10;
+    break;
 
-    case gpb_store_connect_failed:
-        // Store has failed to connect, so try again periodically
-        alarm[0] = game_get_speed(gamespeed_fps) * 10;
-        break;
-
-    // ...
-}</code></pre>
+// ...
+</code></pre>
+<p>}
+```</p>
 <p>In the above example, if the store connection fails, you'll see we set an alarm, setting it to count down 10 seconds. In this event we can then try to initialise the store once more using the same code that we have in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Object_Events.htm">Create Event</a>, shown above.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -274,10 +273,9 @@ In general, you should always call this function and check connectivity before d
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_IsStoreConnected()</code></pre>
+<p><code>gml
+GPBilling_IsStoreConnected()</code></p>
 </blockquote>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -285,11 +283,11 @@ In general, you should always call this function and check connectivity before d
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<pre class="highlight"><code class="language-gml">/// Left Mouse Released event
-if (!GPBilling_IsStoreConnected()) exit;
-
-GPBilling_PurchaseSubscription(product_id);</code></pre>
-<p><br></p>
+<p>```gml
+/// Left Mouse Released event
+if (!GPBilling_IsStoreConnected()) exit;</p>
+<p>GPBilling_PurchaseSubscription(product_id);
+```</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -300,10 +298,9 @@ GPBilling_PurchaseSubscription(product_id);</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_GetStatus()</code></pre>
+<p><code>gml
+GPBilling_GetStatus()</code></p>
 </blockquote>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -311,8 +308,8 @@ GPBilling_PurchaseSubscription(product_id);</code></pre>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<pre class="highlight"><code class="language-gml">GPBilling_GetStatus();</code></pre>
-<p><br></p>
+<p><code>gml
+GPBilling_GetStatus();</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -327,7 +324,8 @@ For subscription products, you should be using the function <a href="billingclie
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_AddProduct(product_id)</code></pre>
+<p><code>gml
+GPBilling_AddProduct(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -346,8 +344,6 @@ For subscription products, you should be using the function <a href="billingclie
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="billingclient.html#gpb_error_type">gpb_error_type</a></p>
@@ -355,23 +351,24 @@ For subscription products, you should be using the function <a href="billingclie
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code is being called from the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a> when it has been triggered by the function <a href="billingclient.html#gpbilling_connecttostore">GPBilling_ConnectToStore</a>:</p>
-<pre class="highlight"><code class="language-gml">var _eventId = async_load[? "id"];
+<p>```gml
+var _eventId = async_load[? "id"];
 switch (_eventId)
 {
-    // ...
+    // ...</p>
+<pre><code>case gpb_store_connect:
+    GPBilling_AddProduct(IAP_100gems);
+    GPBilling_AddProduct(IAP_noads);
+    GPBilling_AddSubscription(IAP_premium);
 
-    case gpb_store_connect:
-        GPBilling_AddProduct(IAP_100gems);
-        GPBilling_AddProduct(IAP_noads);
-        GPBilling_AddSubscription(IAP_premium);
+    GPBilling_QueryProducts();
+    GPBilling_QuerySubscriptions();
+    break;
 
-        GPBilling_QueryProducts();
-        GPBilling_QuerySubscriptions();
-        break;
-
-    // ...
-}</code></pre>
-<p><br></p>
+// ...
+</code></pre>
+<p>}
+```</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -383,7 +380,8 @@ switch (_eventId)
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_AddSubscription(product_id)</code></pre>
+<p><code>gml
+GPBilling_AddSubscription(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -402,8 +400,6 @@ switch (_eventId)
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
@@ -411,23 +407,24 @@ switch (_eventId)
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code is being called from the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a> when it has been triggered by the function <a href="billingclient.html#gpbilling_connecttostore">GPBilling_ConnectToStore</a>.</p>
-<pre class="highlight"><code class="language-gml">var _eventId = async_load[? "id"];
+<p>```gml
+var _eventId = async_load[? "id"];
 switch (_eventId)
 {
-    // ...
+    // ...</p>
+<pre><code>case gpb_store_connect:
+    GPBilling_AddProduct(IAP_100gems);
+    GPBilling_AddProduct(IAP_noads);
+    GPBilling_AddSubscription(IAP_premium);
 
-    case gpb_store_connect:
-        GPBilling_AddProduct(IAP_100gems);
-        GPBilling_AddProduct(IAP_noads);
-        GPBilling_AddSubscription(IAP_premium);
+    GPBilling_QueryProducts();
+    GPBilling_QuerySubscriptions();
+    break;
 
-        GPBilling_QueryProducts();
-        GPBilling_QuerySubscriptions();
-        break;
-
-    // ...
-}</code></pre>
-<p><br></p>
+// ...
+</code></pre>
+<p>}
+```</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -443,10 +440,9 @@ switch (_eventId)
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_QueryProducts()</code></pre>
+<p><code>gml
+GPBilling_QueryProducts()</code></p>
 </blockquote>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -481,24 +477,27 @@ switch (_eventId)
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code is being called from the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a> when it has been triggered by the function <a href="billingclient.html#gpbilling_connecttostore">GPBilling_ConnectToStore</a>.</p>
-<pre class="highlight"><code class="language-gml">var _event_id = async_load[? "id"];
+<p>```gml
+var _event_id = async_load[? "id"];
 switch (_event_id)
 {
-    // ...
+    // ...</p>
+<pre><code>case gpb_store_connect:
+    GPBilling_AddProduct(IAP_100gems);
+    GPBilling_AddProduct(IAP_noads);
+    GPBilling_AddSubscription(IAP_premium);
 
-    case gpb_store_connect:
-        GPBilling_AddProduct(IAP_100gems);
-        GPBilling_AddProduct(IAP_noads);
-        GPBilling_AddSubscription(IAP_premium);
+    GPBilling_QueryProducts();
+    GPBilling_QuerySubscriptions();
+    break;
 
-        GPBilling_QueryProducts();
-        GPBilling_QuerySubscriptions();
-        break;
-
-    // ...
-}</code></pre>
+// ...
+</code></pre>
+<p>}
+```</p>
 <p>The query products function will then trigger another call to the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>, which can be parsed by adding another case to the switch statement, this time checking the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Variables/Builtin_Global_Variables/async_load.htm">async_load</a> key <code>"id"</code> for the constant <code>gpb_product_data_response</code>. Something like this:</p>
-<pre class="highlight"><code class="language-gml">case gpb_product_data_response:
+<p><code>gml
+case gpb_product_data_response:
     var _json = async_load[? "response_json"];
     var _response_data = json_parse(_json);
     if (_response_data.success)
@@ -513,12 +512,11 @@ switch (_event_id)
         }
         GPBilling_QuerySubscriptions();
     }
-    break;</code></pre>
+    break;</code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>After parsing the returned product data, we then call the equivalent query function for subscriptions, and then when that triggers another asynchronous callback we'd call the function <a href="billingclient.html#gpbilling_querypurchasesasync">GPBilling_QueryPurchasesAsync</a> to check for any purchases that haven't been consumed.</p>
 </div>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -535,10 +533,9 @@ switch (_event_id)
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_QuerySubscriptions()</code></pre>
+<p><code>gml
+GPBilling_QuerySubscriptions()</code></p>
 </blockquote>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -573,7 +570,8 @@ switch (_event_id)
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code is being called from the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a> when it has been triggered by the function <a href="billingclient.html#gpbilling_connecttostore">GPBilling_ConnectToStore</a>.</p>
-<pre class="highlight"><code class="language-gml">var _event_id = async_load[? "id"];
+<p><code>gml
+var _event_id = async_load[? "id"];
 switch (_event_id)
     {
     case gpb_store_connect:
@@ -581,9 +579,10 @@ switch (_event_id)
         GPBilling_AddSubscription(global.IAP_PurchaseID[1]);
         GPBilling_QuerySubscriptions();
         break;
-    }</code></pre>
+    }</code></p>
 <p>The query subscriptions function will then trigger another call to the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>, which can be parsed by adding another case to the switch statement, this time checking the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Variables/Builtin_Global_Variables/async_load.htm">async_load</a> key <code>"id"</code> for the constant <code>gpb_subscription_data_response</code>, something like this:</p>
-<pre class="highlight"><code class="language-gml">case gpb_subscription_data_response:
+<p><code>gml
+case gpb_subscription_data_response:
     var _json = async_load[? "response_json"];
     var _response_data = json_parse(_json);
     if (_response_data.success)
@@ -598,12 +597,11 @@ switch (_event_id)
         }
         GPBilling_QueryPurchasesAsync(gpb_purchase_skutype_inapp);
     }
-    break;</code></pre>
+    break;</code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>After parsing the returned subscription data, we then call the function <a href="billingclient.html#gpbilling_querypurchasesasync">GPBilling_QueryPurchasesAsync</a> to check for any purchases that haven't been consumed. If you haven't already queried consumable products, then you should probably do that first, then in the corresponding <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a> callback, you'd check the purchase status.</p>
 </div>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -617,7 +615,8 @@ switch (_event_id)
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_PurchaseProduct(product_id)</code></pre>
+<p><code>gml
+GPBilling_PurchaseProduct(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -635,8 +634,6 @@ switch (_event_id)
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -671,16 +668,18 @@ switch (_event_id)
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be used in (for example, but not limited to) a mouse pressed event to purchase a product:</p>
-<pre class="highlight"><code class="language-gml">/// Mouse Left Pressed Event
-if (!GPBilling_IsStoreConnected()) exit;
-
-GPBilling_PurchaseProduct(product_id);</code></pre>
+<p>```gml
+/// Mouse Left Pressed Event
+if (!GPBilling_IsStoreConnected()) exit;</p>
+<p>GPBilling_PurchaseProduct(product_id);
+```</p>
 <p>You would then have something like the following code in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a> to deal with the purchase callback.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The following code shows a simple purchase verification scheme, however you should ideally verify the purchase with an HTTP call to your server, supplying the returned token string, and then consume the purchase when you receive verification in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/HTTP.htm">Http Async Event</a>.</p>
 </div>
-<pre class="highlight"><code class="language-gml">var _event_id = async_load[? "id"];
+<p>```gml
+var _event_id = async_load[? "id"];
 switch (_event_id)
 {
     case gpb_iap_receipt:
@@ -703,15 +702,15 @@ switch (_event_id)
                 }
             }
         }
-        break;
-
-    // ...
-}</code></pre>
+        break;</p>
+<pre><code>// ...
+</code></pre>
+<p>}
+```</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We store the purchase tokens and product IDs of those products we consume or acknowledge in global arrays. This is done so that we can track the purchases correctly when the consumed or acknowledged response comes back (see the functions <a href="billingclient.html#gpbilling_acknowledgepurchase">GPBilling_AcknowledgePurchase</a> and <a href="billingclient.html#gpbilling_consumeproduct">GPBilling_ConsumeProduct</a> for more details).</p>
 </div>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -737,7 +736,8 @@ switch (_event_id)
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_PurchaseSubscription(product_id)</code></pre>
+<p><code>gml
+GPBilling_PurchaseSubscription(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -755,8 +755,6 @@ switch (_event_id)
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -791,16 +789,18 @@ switch (_event_id)
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be used in (for example, but not limited to) a mouse pressed event to purchase a product:</p>
-<pre class="highlight"><code class="language-gml">/// Mouse Left Pressed Event
-if (!GPBilling_IsStoreConnected()) exit;
-
-GPBilling_PurchaseSubscription(product_id);</code></pre>
+<p>```gml
+/// Mouse Left Pressed Event
+if (!GPBilling_IsStoreConnected()) exit;</p>
+<p>GPBilling_PurchaseSubscription(product_id);
+```</p>
 <p>You would then have something like the following code in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a> to deal with the purchase callback.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The following code shows a simple purchase verification scheme, however you should ideally verify the purchase with an HTTP call to your server, supplying the returned token string, and then consume the purchase only when you receive verification in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/HTTP.htm">Http Async Event</a>.</p>
 </div>
-<pre class="highlight"><code class="language-gml">var _event_id = async_load[? "id"];
+<p>```gml
+var _event_id = async_load[? "id"];
 switch (_event_id)
 {
     case gpb_iap_receipt:
@@ -815,25 +815,25 @@ switch (_event_id)
                 var _ptoken = _purchase.purchaseToken;
                 var _sig = GPBilling_Purchase_GetSignature(_ptoken);
                 array_push(global.CurrentTokens, _ptoken);
-                array_push(global.CurrentProduct, _purchase.productId);
-
-                // SERVER VERIFICATION CODE HERE
-                // Here you would send the token and signature to
-                // your servers for verification with the Google
-                // Play API and then return the result, which would
-                // then be received in an Asynchronous HTTP event.
-                // Once received, the subscription can then
-                // be acknowledged, and content, bonuses, etc.
-                // can be unlocked in your game.
-            }
+                array_push(global.CurrentProduct, _purchase.productId);</p>
+<pre><code>            // SERVER VERIFICATION CODE HERE
+            // Here you would send the token and signature to
+            // your servers for verification with the Google
+            // Play API and then return the result, which would
+            // then be received in an Asynchronous HTTP event.
+            // Once received, the subscription can then
+            // be acknowledged, and content, bonuses, etc.
+            // can be unlocked in your game.
         }
-        break;
-}</code></pre>
+    }
+    break;
+</code></pre>
+<p>}
+```</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We store the purchase tokens and product IDs of those products we consume or acknowledge in global arrays. This is done so that we can track the purchases correctly when the consumed or acknowledged response comes back (see the functions <a href="billingclient.html#gpbilling_acknowledgepurchase">GPBilling_AcknowledgePurchase</a> and <a href="billingclient.html#gpbilling_consumeproduct">GPBilling_ConsumeProduct</a> for more details).</p>
 </div>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -847,7 +847,8 @@ switch (_event_id)
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_AcknowledgePurchase(purchase_token)</code></pre>
+<p><code>gml
+GPBilling_AcknowledgePurchase(purchase_token)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -865,8 +866,6 @@ switch (_event_id)
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -901,7 +900,8 @@ switch (_event_id)
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>This example shows how you'd deal with the callback in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a> for an acknowledged product (for an example of when the <a href="billingclient.html#gpbilling_acknowledgepurchase">GPBilling_AcknowledgePurchase</a> function should be called, see the Example for the function <a href="billingclient.html#gpbilling_purchasesubscription">GPBilling_PurchaseSubscription</a>):</p>
-<pre class="highlight"><code class="language-gml">var _event_id = async_load[? "id"];
+<p><code>gml
+var _event_id = async_load[? "id"];
 switch (_event_id)
 {
     case gpb_acknowledge_purchase_response:
@@ -932,8 +932,7 @@ switch (_event_id)
             // and react appropriately
         }
         break;
-}</code></pre>
-<p><br></p>
+}</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -959,7 +958,8 @@ switch (_event_id)
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_ConsumeProduct(purchase_token)</code></pre>
+<p><code>gml
+GPBilling_ConsumeProduct(purchase_token)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -977,8 +977,6 @@ switch (_event_id)
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -1013,45 +1011,46 @@ switch (_event_id)
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>This example shows how you'd deal with the callback in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a> for a consumed product (for an example of when the <a href="billingclient.html#gpbilling_consumeproduct">GPBilling_ConsumeProduct</a> function should be called, see the Example for the function <a href="billingclient.html#gpbilling_purchaseproduct">GPBilling_PurchaseProduct</a>):</p>
-<pre class="highlight"><code class="language-gml">var _eventId = async_load[? "id"];
+<p>```gml
+var _eventId = async_load[? "id"];
 switch (_eventId)
 {
-    // ...
-
-    case gpb_product_consume_response:
-        var _response_data = json_parse(async_load[? "response_json"]);
-        var _num = -1;
-        if (struct_exists(_response_data, "purchaseToken"))
+    // ...</p>
+<pre><code>case gpb_product_consume_response:
+    var _response_data = json_parse(async_load[? "response_json"]);
+    var _num = -1;
+    if (struct_exists(_response_data, "purchaseToken"))
+    {
+        for (var i = 0; i &lt; array_length(global.CurrentTokens); ++i)
         {
-            for (var i = 0; i &lt; array_length(global.CurrentTokens); ++i)
+            if (_response_data.purchaseToken == global.CurrentTokens[i])
             {
-                if (_response_data.purchaseToken == global.CurrentTokens[i])
+                if (global.CurrentProducts[i] == "yoyo_500gold")
                 {
-                    if (global.CurrentProducts[i] == "yoyo_500gold")
-                    {
-                        global.Gold += 500;
-                        _num = i;
-                        break;
-                    }
-                    // Check any other products here...
+                    global.Gold += 500;
+                    _num = i;
+                    break;
                 }
-            }
-            if (_num &gt; -1)
-            {
-                array_delete(global.CurrentProducts, _num, 1);
-                array_delete(global.CurrentTokens, _num, 1);
+                // Check any other products here...
             }
         }
-        else
+        if (_num &gt; -1)
         {
-            // Parse the error response codes here
-            // and react appropriately
+            array_delete(global.CurrentProducts, _num, 1);
+            array_delete(global.CurrentTokens, _num, 1);
         }
-        break;
+    }
+    else
+    {
+        // Parse the error response codes here
+        // and react appropriately
+    }
+    break;
 
-    // ...
-}</code></pre>
-<p><br></p>
+// ...
+</code></pre>
+<p>}
+```</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1065,7 +1064,8 @@ switch (_eventId)
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetDescription(product_id)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetDescription(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1084,23 +1084,22 @@ switch (_eventId)
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
 </blockquote>
+<p>(the SKU description)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be called in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Draw_Events.htm">Draw Event</a> of an object used to display the information for a given IAP product:</p>
-<pre class="highlight"><code class="language-gml">var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
+<p><code>gml
+var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
 var _desc = GPBilling_Sku_GetDescription(global.IAP_PurchaseID[0]);
 var _price = GPBilling_Sku_GetPrice(global.IAP_PurchaseID[0]);
 draw_set_halign(fa_center);
 draw_text(x, y + 32, _name);
 draw_text(x, y + 48, _desc);
-draw_text(x, y + 64, _price);</code></pre>
-<p><br></p>
+draw_text(x, y + 64, _price);</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1118,7 +1117,8 @@ draw_text(x, y + 64, _price);</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetFreeTrialPeriod(product_id)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetFreeTrialPeriod(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1137,8 +1137,6 @@ draw_text(x, y + 64, _price);</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
@@ -1146,15 +1144,15 @@ draw_text(x, y + 64, _price);</code></pre>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be called in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Draw_Events.htm">Draw Event</a> of an object used to display the information for a given IAP product:</p>
-<pre class="highlight"><code class="language-gml">var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
+<p><code>gml
+var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
 var _desc = GPBilling_Sku_GetDescription(global.IAP_PurchaseID[0]);
 var _period = GPBilling_Sku_GetFreeTrialPeriod(global.IAP_PurchaseID[0]);
 var _days = string_digits(_period);
 draw_set_halign(fa_center);
 draw_text(x, y + 32, _name);
 draw_text(x, y + 48, _desc);
-draw_text(x, y + 64, "Trial Period: " + _days + " days");</code></pre>
-<p><br></p>
+draw_text(x, y + 64, "Trial Period: " + _days + " days");</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1168,7 +1166,8 @@ draw_text(x, y + 64, "Trial Period: " + _days + " days");</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetIconUrl(product_id)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetIconUrl(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1187,8 +1186,6 @@ draw_text(x, y + 64, "Trial Period: " + _days + " days");</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
@@ -1196,17 +1193,18 @@ draw_text(x, y + 64, "Trial Period: " + _days + " days");</code></pre>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>In this example, we first call the function to get the URL of the icon for a product (probably in an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>, after querying the product details):</p>
-<pre class="highlight"><code class="language-gml">var _url = GPBilling_Sku_GetIconUrl(global.IAP_PurchaseID[0]);
-iap_sprite = sprite_add(_url, 0, false, false, 0, 0);</code></pre>
+<p><code>gml
+var _url = GPBilling_Sku_GetIconUrl(global.IAP_PurchaseID[0]);
+iap_sprite = sprite_add(_url, 0, false, false, 0, 0);</code></p>
 <p>This will trigger an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Image_Loaded.htm">Image Loaded Event</a> where you can then store the returned image for drawing:</p>
-<pre class="highlight"><code class="language-gml">if (ds_map_find_value(async_load, "id") == iap_sprite)
+<p><code>gml
+if (ds_map_find_value(async_load, "id") == iap_sprite)
 {
     if (ds_map_find_value(async_load, "status") &gt;= 0)
     {
         sprite_index = iap_sprite;
     }
-}</code></pre>
-<p><br></p>
+}</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1224,7 +1222,8 @@ iap_sprite = sprite_add(_url, 0, false, false, 0, 0);</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetIntroductoryPrice(sku)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetIntroductoryPrice(sku)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1243,8 +1242,6 @@ iap_sprite = sprite_add(_url, 0, false, false, 0, 0);</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
@@ -1252,14 +1249,14 @@ iap_sprite = sprite_add(_url, 0, false, false, 0, 0);</code></pre>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be called in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Draw_Events.htm">Draw Event</a> of an object used to display the information for a given IAP product:</p>
-<pre class="highlight"><code class="language-gml">var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
+<p><code>gml
+var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
 var _desc = GPBilling_Sku_GetDescription(global.IAP_PurchaseID[0]);
 var _price = GPBilling_Sku_GetIntroductoryPrice(global.IAP_PurchaseID[0]);
 draw_set_halign(fa_center);
 draw_text(x, y + 32, _name);
 draw_text(x, y + 48, _desc);
-draw_text(x, y + 64, _price);</code></pre>
-<p><br></p>
+draw_text(x, y + 64, _price);</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1277,7 +1274,8 @@ draw_text(x, y + 64, _price);</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetIntroductoryPriceAmountMicros(product_id)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetIntroductoryPriceAmountMicros(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1296,8 +1294,6 @@ draw_text(x, y + 64, _price);</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
@@ -1305,7 +1301,8 @@ draw_text(x, y + 64, _price);</code></pre>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be called in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Draw_Events.htm">Draw Event</a> of an object used to display the information for a given IAP product:</p>
-<pre class="highlight"><code class="language-gml">var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
+<p><code>gml
+var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
 var _desc = GPBilling_Sku_GetDescription(global.IAP_PurchaseID[0]);
 var _m = GPBilling_Sku_GetIntroductoryPriceAmountMicros(global.IAP_PurchaseID[0]);
 var _c = GPBilling_Sku_GetPriceCurrencyCode(global.IAP_PurchaseID[0]);
@@ -1320,8 +1317,7 @@ switch (_c)
 draw_set_halign(fa_center);
 draw_text(x, y + 32, _name);
 draw_text(x, y + 48, _desc);
-draw_text(x, y + 64, _symbol + _val);</code></pre>
-<p><br></p>
+draw_text(x, y + 64, _symbol + _val);</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1339,7 +1335,8 @@ draw_text(x, y + 64, _symbol + _val);</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetIntroductoryPriceCycles(product_id)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetIntroductoryPriceCycles(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1358,8 +1355,6 @@ draw_text(x, y + 64, _symbol + _val);</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
@@ -1367,7 +1362,8 @@ draw_text(x, y + 64, _symbol + _val);</code></pre>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be called in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Draw_Events.htm">Draw Event</a> of an object used to display the information for a given IAP product:</p>
-<pre class="highlight"><code class="language-gml">var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
+<p><code>gml
+var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
 var _desc = GPBilling_Sku_GetDescription(global.IAP_PurchaseID[0]);
 var _price = GPBilling_Sku_GetIntroductoryPrice(global.IAP_PurchaseID[0]);
 var _cycles = GPBilling_Sku_GetIntroductoryPriceCycles(global.IAP_PurchaseID[0]);
@@ -1375,8 +1371,7 @@ draw_set_halign(fa_center);
 draw_text(x, y + 32, _name);
 draw_text(x, y + 48, _desc);
 draw_text(x, y + 64, _price);
-draw_text(x, y + 80, "for " + _cycles + " months");</code></pre>
-<p><br></p>
+draw_text(x, y + 80, "for " + _cycles + " months");</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1394,7 +1389,8 @@ draw_text(x, y + 80, "for " + _cycles + " months");</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetIntroductoryPricePeriod(product_id)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetIntroductoryPricePeriod(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1413,8 +1409,6 @@ draw_text(x, y + 80, "for " + _cycles + " months");</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
@@ -1422,15 +1416,15 @@ draw_text(x, y + 80, "for " + _cycles + " months");</code></pre>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be called in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Draw_Events.htm">Draw Event</a> of an object used to display the information for a given IAP product:</p>
-<pre class="highlight"><code class="language-gml">var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
+<p><code>gml
+var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
 var _desc = GPBilling_Sku_GetDescription(global.IAP_PurchaseID[0]);
 var _period = GPBilling_Sku_GetIntroductoryPricePeriod(global.IAP_PurchaseID[0]);
 var _days = string_digits(_period);
 draw_set_halign(fa_center);
 draw_text(x, y + 32, _name);
 draw_text(x, y + 48, _desc);
-draw_text(x, y + 64, "Offer Lasts For " + _days + " days!");</code></pre>
-<p><br></p>
+draw_text(x, y + 64, "Offer Lasts For " + _days + " days!");</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1444,7 +1438,8 @@ draw_text(x, y + 64, "Offer Lasts For " + _days + " days!");</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetOriginalJson(product_id)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetOriginalJson(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1463,8 +1458,6 @@ draw_text(x, y + 64, "Offer Lasts For " + _days + " days!");</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
@@ -1472,12 +1465,12 @@ draw_text(x, y + 64, "Offer Lasts For " + _days + " days!");</code></pre>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code can be called after querying a product to retrieve all the information about it without calling the individual SKU functions:</p>
-<pre class="highlight"><code class="language-gml">var _json = GPBilling_Sku_GetOriginalJson(global.IAP_PurchaseID[0]);
+<p><code>gml
+var _json = GPBilling_Sku_GetOriginalJson(global.IAP_PurchaseID[0]);
 var _data = json_parse(_json);
 global.IAP_PurchaseData[0, 0] = _data.price;
 global.IAP_PurchaseData[0, 1] = _data.title;
-global.IAP_PurchaseData[0, 2] = _data.description;</code></pre>
-<p><br></p>
+global.IAP_PurchaseData[0, 2] = _data.description;</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1491,7 +1484,8 @@ global.IAP_PurchaseData[0, 2] = _data.description;</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetOriginalPrice(product_id)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetOriginalPrice(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1510,8 +1504,6 @@ global.IAP_PurchaseData[0, 2] = _data.description;</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
@@ -1519,14 +1511,14 @@ global.IAP_PurchaseData[0, 2] = _data.description;</code></pre>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be called in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Draw_Events.htm">Draw Event</a> of an object used to display the information for a given IAP product:</p>
-<pre class="highlight"><code class="language-gml">var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
+<p><code>gml
+var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
 var _desc = GPBilling_Sku_GetDescription(global.IAP_PurchaseID[0]);
 var _price = GPBilling_Sku_GetOriginalPrice(global.IAP_PurchaseID[0]);
 draw_set_halign(fa_center);
 draw_text(x, y + 32, _name);
 draw_text(x, y + 48, _desc);
-draw_text(x, y + 64, _price);</code></pre>
-<p><br></p>
+draw_text(x, y + 64, _price);</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1540,7 +1532,8 @@ draw_text(x, y + 64, _price);</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetOriginalPriceAmountMicros(product_id)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetOriginalPriceAmountMicros(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1559,8 +1552,6 @@ draw_text(x, y + 64, _price);</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
@@ -1568,7 +1559,8 @@ draw_text(x, y + 64, _price);</code></pre>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be called in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Draw_Events.htm">Draw Event</a> of an object used to display the information for a given IAP product:</p>
-<pre class="highlight"><code class="language-gml">var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
+<p><code>gml
+var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
 var _desc = GPBilling_Sku_GetDescription(global.IAP_PurchaseID[0]);
 var _m = GPBilling_Sku_GetOriginalPriceAmountMicros(global.IAP_PurchaseID[0]);
 var _c = GPBilling_Sku_GetPriceCurrencyCode(global.IAP_PurchaseID[0]);
@@ -1583,8 +1575,7 @@ switch (_c)
 draw_set_halign(fa_center);
 draw_text(x, y + 32, _name);
 draw_text(x, y + 48, _desc);
-draw_text(x, y + 64, _symbol + _val);</code></pre>
-<p><br></p>
+draw_text(x, y + 64, _symbol + _val);</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1598,7 +1589,8 @@ draw_text(x, y + 64, _symbol + _val);</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetPrice(product_id)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetPrice(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1617,8 +1609,6 @@ draw_text(x, y + 64, _symbol + _val);</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
@@ -1626,14 +1616,14 @@ draw_text(x, y + 64, _symbol + _val);</code></pre>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be called in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Draw_Events.htm">Draw Event</a> of an object used to display the information for a given IAP product:</p>
-<pre class="highlight"><code class="language-gml">var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
+<p><code>gml
+var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
 var _desc = GPBilling_Sku_GetDescription(global.IAP_PurchaseID[0]);
 var _price = GPBilling_Sku_GetPrice(global.IAP_PurchaseID[0]);
 draw_set_halign(fa_center);
 draw_text(x, y + 32, _name);
 draw_text(x, y + 48, _desc);
-draw_text(x, y + 64, _price);</code></pre>
-<p><br></p>
+draw_text(x, y + 64, _price);</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1647,7 +1637,8 @@ draw_text(x, y + 64, _price);</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetPriceAmountMicros(product_id)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetPriceAmountMicros(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1666,8 +1657,6 @@ draw_text(x, y + 64, _price);</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
@@ -1675,7 +1664,8 @@ draw_text(x, y + 64, _price);</code></pre>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be called in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Draw_Events.htm">Draw Event</a> of an object used to display the information for a given IAP product:</p>
-<pre class="highlight"><code class="language-gml">var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
+<p><code>gml
+var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
 var _desc = GPBilling_Sku_GetDescription(global.IAP_PurchaseID[0]);
 var _m = GPBilling_Sku_GetPriceAmountMicros(global.IAP_PurchaseID[0]);
 var _c = GPBilling_Sku_GetPriceCurrencyCode(global.IAP_PurchaseID[0]);
@@ -1690,8 +1680,7 @@ switch (_c)
 draw_set_halign(fa_center);
 draw_text(x, y + 32, _name);
 draw_text(x, y + 48, _desc);
-draw_text(x, y + 64, _symbol + _val);</code></pre>
-<p><br></p>
+draw_text(x, y + 64, _symbol + _val);</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1705,7 +1694,8 @@ draw_text(x, y + 64, _symbol + _val);</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetPriceCurrencyCode(product_id)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetPriceCurrencyCode(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1724,8 +1714,6 @@ draw_text(x, y + 64, _symbol + _val);</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
@@ -1733,7 +1721,8 @@ draw_text(x, y + 64, _symbol + _val);</code></pre>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be called in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Draw_Events.htm">Draw Event</a> of an object used to display the information for a given IAP product:</p>
-<pre class="highlight"><code class="language-gml">var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
+<p><code>gml
+var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
 var _desc = GPBilling_Sku_GetDescription(global.IAP_PurchaseID[0]);
 var _m = GPBilling_Sku_GetPriceAmountMicros(global.IAP_PurchaseID[0]);
 var _c = GPBilling_Sku_GetPriceCurrencyCode(global.IAP_PurchaseID[0]);
@@ -1748,8 +1737,7 @@ switch (_c)
 draw_set_halign(fa_center);
 draw_text(x, y + 32, _name);
 draw_text(x, y + 48, _desc);
-draw_text(x, y + 64, _symbol + _val);</code></pre>
-<p><br></p>
+draw_text(x, y + 64, _symbol + _val);</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1767,7 +1755,8 @@ draw_text(x, y + 64, _symbol + _val);</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetSubscriptionPeriod(product_id)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetSubscriptionPeriod(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1786,8 +1775,6 @@ draw_text(x, y + 64, _symbol + _val);</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
@@ -1795,15 +1782,15 @@ draw_text(x, y + 64, _symbol + _val);</code></pre>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be called in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Draw_Events.htm">Draw Event</a> of an object used to display the information for a given IAP product:</p>
-<pre class="highlight"><code class="language-gml">var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
+<p><code>gml
+var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
 var _desc = GPBilling_Sku_GetDescription(global.IAP_PurchaseID[0]);
 var _period = GPBilling_Sku_GetSubscriptionPeriod(global.IAP_PurchaseID[0]);
 var _days = string_digits(_period);
 draw_set_halign(fa_center);
 draw_text(x, y + 32, _name);
 draw_text(x, y + 48, _desc);
-draw_text(x, y + 64, "Renewal Period: " + _days + " days");</code></pre>
-<p><br></p>
+draw_text(x, y + 64, "Renewal Period: " + _days + " days");</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1817,7 +1804,8 @@ draw_text(x, y + 64, "Renewal Period: " + _days + " days");</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetTitle(product_id)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetTitle(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1836,8 +1824,6 @@ draw_text(x, y + 64, "Renewal Period: " + _days + " days");</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
@@ -1845,14 +1831,14 @@ draw_text(x, y + 64, "Renewal Period: " + _days + " days");</code></pre>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be called in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Draw_Events.htm">Draw Event</a> of an object used to display the information for a given IAP product:</p>
-<pre class="highlight"><code class="language-gml">var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
+<p><code>gml
+var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
 var _desc = GPBilling_Sku_GetDescription(global.IAP_PurchaseID[0]);
 var _price = GPBilling_Sku_GetPrice(global.IAP_PurchaseID[0]);
 draw_set_halign(fa_center);
 draw_text(x, y + 32, _name);
 draw_text(x, y + 48, _desc);
-draw_text(x, y + 64, _price);</code></pre>
-<p><br></p>
+draw_text(x, y + 64, _price);</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1866,7 +1852,8 @@ draw_text(x, y + 64, _price);</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Sku_GetType(product_id)</code></pre>
+<p><code>gml
+GPBilling_Sku_GetType(product_id)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1885,8 +1872,6 @@ draw_text(x, y + 64, _price);</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="billingclient.html#gpb_purchase_skutype">gpb_purchase_skutype</a></p>
@@ -1894,7 +1879,8 @@ draw_text(x, y + 64, _price);</code></pre>
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>The following code would be called in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Draw_Events.htm">Draw Event</a> of an object used to display the information for a given IAP product:</p>
-<pre class="highlight"><code class="language-gml">var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
+<p><code>gml
+var _name = GPBilling_Sku_GetTitle(global.IAP_PurchaseID[0]);
 var _desc = GPBilling_Sku_GetDescription(global.IAP_PurchaseID[0]);
 var _price = GPBilling_Sku_GetPrice(global.IAP_PurchaseID[0]);
 draw_set_halign(fa_center);
@@ -1904,8 +1890,7 @@ draw_text(x, y + 64, _price);
 if (GPBilling_Sku_GetType(global.IAP_PurchaseID[0]) == gpb_purchase_skutype_subs)
 {
     draw_text(x, y + 80, "Subscription!");
-}</code></pre>
-<p><br></p>
+}</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1916,7 +1901,8 @@ if (GPBilling_Sku_GetType(global.IAP_PurchaseID[0]) == gpb_purchase_skutype_subs
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Purchase_GetState(purchase_token)</code></pre>
+<p><code>gml
+GPBilling_Purchase_GetState(purchase_token)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1935,19 +1921,17 @@ if (GPBilling_Sku_GetType(global.IAP_PurchaseID[0]) == gpb_purchase_skutype_subs
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="billingclient.html#gpb_purchase_state">gpb_purchase_state</a></p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<pre class="highlight"><code class="language-gml">if (GPBilling_Purchase_GetState(global.CurrentToken) == gpb_purchase_state_purchased)
+<p><code>gml
+if (GPBilling_Purchase_GetState(global.CurrentToken) == gpb_purchase_state_purchased)
 {
     sprite_index = spr_IconConsume;
-}</code></pre>
-<p><br></p>
+}</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1958,7 +1942,8 @@ if (GPBilling_Sku_GetType(global.IAP_PurchaseID[0]) == gpb_purchase_skutype_subs
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Purchase_GetSignature(purchase_token)</code></pre>
+<p><code>gml
+GPBilling_Purchase_GetSignature(purchase_token)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -1977,15 +1962,14 @@ if (GPBilling_Sku_GetType(global.IAP_PurchaseID[0]) == gpb_purchase_skutype_subs
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<pre class="highlight"><code class="language-gml">for (var i = 0; i &lt; array_length(global.CurrentTokens); ++i)
+<p><code>gml
+for (var i = 0; i &lt; array_length(global.CurrentTokens); ++i)
 {
     var _sig = GPBilling_Purchase_GetSignature(global.CurrentTokens[i]);
     var _json = GPBilling_Purchase_GetOriginalJson(global.CurrentTokens[i]);
@@ -1993,8 +1977,7 @@ if (GPBilling_Sku_GetType(global.IAP_PurchaseID[0]) == gpb_purchase_skutype_subs
     {
         GPBilling_ConsumeProduct(global.CurrentTokens[i]);
     }
-}</code></pre>
-<p><br></p>
+}</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -2008,7 +1991,8 @@ if (GPBilling_Sku_GetType(global.IAP_PurchaseID[0]) == gpb_purchase_skutype_subs
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Purchase_VerifySignature(original_json, signature)</code></pre>
+<p><code>gml
+GPBilling_Purchase_VerifySignature(original_json, signature)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -2032,15 +2016,14 @@ if (GPBilling_Sku_GetType(global.IAP_PurchaseID[0]) == gpb_purchase_skutype_subs
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<pre class="highlight"><code class="language-gml">for (var i = 0; i &lt; array_length(global.CurrentTokens); ++i)
+<p><code>gml
+for (var i = 0; i &lt; array_length(global.CurrentTokens); ++i)
 {
     var _sig = GPBilling_Purchase_GetSignature(global.CurrentTokens[i]);
     var _json = GPBilling_Purchase_GetOriginalJson(global.CurrentTokens[i]);
@@ -2048,8 +2031,7 @@ if (GPBilling_Sku_GetType(global.IAP_PurchaseID[0]) == gpb_purchase_skutype_subs
     {
         GPBilling_ConsumeProduct(global.CurrentTokens[i]);
     }
-}</code></pre>
-<p><br></p>
+}</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -2060,7 +2042,8 @@ if (GPBilling_Sku_GetType(global.IAP_PurchaseID[0]) == gpb_purchase_skutype_subs
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_Purchase_GetOriginalJson(purchaseToken)</code></pre>
+<p><code>gml
+GPBilling_Purchase_GetOriginalJson(purchaseToken)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -2079,15 +2062,14 @@ if (GPBilling_Sku_GetType(global.IAP_PurchaseID[0]) == gpb_purchase_skutype_subs
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<pre class="highlight"><code class="language-gml">for (var i = 0; i &lt; array_length(global.CurrentTokens); ++i)
+<p><code>gml
+for (var i = 0; i &lt; array_length(global.CurrentTokens); ++i)
 {
     var _sig = GPBilling_Purchase_GetSignature(global.CurrentTokens[i]);
     var _json = GPBilling_Purchase_GetOriginalJson(global.CurrentTokens[i]);
@@ -2095,8 +2077,7 @@ if (GPBilling_Sku_GetType(global.IAP_PurchaseID[0]) == gpb_purchase_skutype_subs
     {
         GPBilling_ConsumeProduct(global.CurrentTokens[i]);
     }
-}</code></pre>
-<p><br></p>
+}</code></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -2120,7 +2101,8 @@ if (GPBilling_Sku_GetType(global.IAP_PurchaseID[0]) == gpb_purchase_skutype_subs
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">GPBilling_QueryPurchasesAsync(skuType)</code></pre>
+<p><code>gml
+GPBilling_QueryPurchasesAsync(skuType)</code></p>
 </blockquote>
 <table>
 <thead>
@@ -2138,8 +2120,6 @@ if (GPBilling_Sku_GetType(global.IAP_PurchaseID[0]) == gpb_purchase_skutype_subs
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -2179,14 +2159,16 @@ if (GPBilling_Sku_GetType(global.IAP_PurchaseID[0]) == gpb_purchase_skutype_subs
 <p><br></p>
 <p><strong>Example:</strong></p>
 <p>For this example, we would first want to connect to the store, then add products and then query the product status, before checking the purchase state of each product. So, for example, we'd have a <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Object_Events.htm">Create Event</a> like this:</p>
-<pre class="highlight"><code class="language-gml">var _init = GPBilling_ConnectToStore();
+<p><code>gml
+var _init = GPBilling_ConnectToStore();
 if (_init == gpb_error_unknown)
 {
     show_debug_message("ERROR - Billing API Has Not Connected!");
     alarm[0] = game_get_speed(gamespeed_fps) * 10;
-}</code></pre>
+}</code></p>
 <p>Assuming the API has correctly requested a store connection, it will trigger an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a> where you can check to see if the API has successfully connected to the Google Play Store or not, and then add each of the products that you want to be available to the user, and then query the product details:</p>
-<pre class="highlight"><code class="language-gml">var _event_id = async_load[? "id"];
+<p><code>gml
+var _event_id = async_load[? "id"];
 switch (_event_id)
 {
     case gpb_store_connect:
@@ -2194,9 +2176,10 @@ switch (_event_id)
         GooglePlayBilling_AddProduct(global.IAP_PurchaseID[1]);
         GPBilling_QueryProducts();
         break;
-}</code></pre>
+}</code></p>
 <p>The query products function will then trigger another <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>, and we can add another case to our switch statement where we can check the state of any purchases from those that we've added, and consume or acknowledge any purchased product as required:</p>
-<pre class="highlight"><code class="language-gml">case gpb_product_data_response:
+<p><code>gml
+case gpb_product_data_response:
     var _response_data = json_parse(async_load[? "response_json"]);
     if (_response_data.success)
     {
@@ -2237,9 +2220,8 @@ case gpb_query_purchase_async:
             }
         }
     }
-    break;</code></pre>
+    break;</code></p>
 <p>We store the purchase tokens and product IDs of those products we consume or acknowledge in global arrays. This is done so that we can track the purchases correctly when the consumed or acknowledged response comes back (see the functions <a href="billingclient.html#gpbilling_acknowledgepurchase">GPBilling_AcknowledgePurchase</a> and <a href="billingclient.html#gpbilling_consumeproduct">GPBilling_ConsumeProduct</a> for more details).</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -2542,6 +2524,7 @@ case gpb_query_purchase_async:
 </tbody>
 </table>
 <p><br></p>
+<hr />
               
             </div>
           </div><footer>
@@ -2553,7 +2536,7 @@ case gpb_query_purchase_async:
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-      <p>YoYoGames 2024</p>
+      <p>YoYoGames 2026</p>
   </div>
 
   Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
