@@ -219,14 +219,35 @@ public class GMExtWire
         }
 
         public DataStream put(ITypedStruct s) {
-            need(1 + 4); // at least tag + codecId
-            GMExtWire.writeI8(buf, ValueType.TypedStruct.tag);
-            // 2) write codec id (32-bit, matches C++)
             int codecId = resolveCodecId(s.getClass());
-            GMExtWire.writeI32(buf, codecId);
 
-            s.encode(buf);
+            // s.encode() writes its fields via the non-growing static GMExtWire
+            // write helpers, so it can't share this stream's own growable `buf`
+            // directly (a struct larger than whatever capacity happens to be
+            // left would throw BufferUnderflowException instead of growing).
+            // Encode into a scratch buffer that grows-and-retries until the
+            // struct fits, then splice the finished bytes in, same as put(DataStream).
+            ByteBuffer payload = encodeWithRetry(s);
+
+            need(1 + 4 + payload.remaining());
+            GMExtWire.writeI8(buf, ValueType.TypedStruct.tag);
+            GMExtWire.writeI32(buf, codecId);
+            buf.put(payload);
             return this;
+        }
+
+        private static ByteBuffer encodeWithRetry(ITypedStruct s) {
+            int cap = DEFAULT_CAP;
+            while (true) {
+                ByteBuffer scratch = alloc(cap);
+                try {
+                    s.encode(scratch);
+                    scratch.flip();
+                    return scratch;
+                } catch (BufferUnderflowException e) {
+                    cap *= 2;
+                }
+            }
         }
 
         public DataStream put(Optional<?> opt) {
@@ -412,7 +433,12 @@ public class GMExtWire
             ++count;
             // Only payload: no per-element tag. For gm_struct we rely on encode().
             if (value instanceof ITypedStruct s) {
-                s.encode(buf);
+                // See DataStream.put(ITypedStruct): encode() writes via the
+                // non-growing static write helpers, so it can't share this
+                // stream's own growable `buf` directly.
+                ByteBuffer payload = DataStream.encodeWithRetry(s);
+                need(payload.remaining());
+                buf.put(payload);
             } else {
                 // scalar/string � write raw, no GMValue tag
                 if (value instanceof Integer i) GMExtWire.writeI32(buf, i);
