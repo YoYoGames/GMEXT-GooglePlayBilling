@@ -99,7 +99,7 @@ class GMGooglePlayBillingKotlin : GMGooglePlayBillingInterface {
                 invokeCallback(
                     purchasesUpdatedCallback,
                     billingResultToRecord(billingResult),
-                    typedArray(purchasesToRecords(purchases ?: emptyList()))
+                    purchasesToRecords(purchases ?: emptyList())
                 )
             })
             .enablePendingPurchases(pendingPurchasesBuilder.build())
@@ -451,7 +451,7 @@ class GMGooglePlayBillingKotlin : GMGooglePlayBillingInterface {
         callback: GMFunction
     ) {
         val client = readyClientOrError(callback) {
-            invokeCallback(callback, it, typedArray(emptyList<GooglePlayBillingPurchase>()))
+            invokeCallback(callback, it, emptyList<GooglePlayBillingPurchase>())
         } ?: return
 
         val googleProductType = try {
@@ -460,7 +460,7 @@ class GMGooglePlayBillingKotlin : GMGooglePlayBillingInterface {
             invokeCallback(
                 callback,
                 errorResultRecord(e.message ?: "Invalid product type."),
-                typedArray(emptyList<GooglePlayBillingPurchase>())
+                emptyList<GooglePlayBillingPurchase>()
             )
             return
         }
@@ -476,7 +476,7 @@ class GMGooglePlayBillingKotlin : GMGooglePlayBillingInterface {
                 invokeCallback(
                     callback,
                     billingResultToRecord(billingResult),
-                    typedArray(purchasesToRecords(purchases))
+                    purchasesToRecords(purchases)
                 )
             }
         )
@@ -749,14 +749,6 @@ class GMGooglePlayBillingKotlin : GMGooglePlayBillingInterface {
         } catch (e: Exception) {
             Log.e(TAG, "Error invoking GML callback", e)
         }
-    }
-
-    private inline fun <reified T : GMExtWire.ITypedStruct> typedArray(
-        items: List<T>
-    ): GMExtWire.TypedArrayStream<T> {
-        val stream = GMExtWire.TypedArrayStream(T::class.java)
-        for (item in items) stream.add(item)
-        return stream
     }
 
     private fun emptyQueryResult(): GooglePlayBillingProductDetailsQueryResult {
