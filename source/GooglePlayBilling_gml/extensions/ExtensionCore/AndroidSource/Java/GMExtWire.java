@@ -447,10 +447,15 @@ public class GMExtWire
                 need(payload.remaining());
                 buf.put(payload);
             } else {
-                // scalar/string � write raw, no GMValue tag
-                if (value instanceof Integer i) GMExtWire.writeI32(buf, i);
-                else if (value instanceof Long l) GMExtWire.writeI64(buf, l);
-                else if (value instanceof String s) GMExtWire.writeString(buf, s);
+                // scalar/string — write raw, no GMValue tag. Same non-growing
+                // static-writer risk as the struct branch above: reserve via
+                // this stream's own growing need() before each write.
+                if (value instanceof Integer i) { need(4); GMExtWire.writeI32(buf, i); }
+                else if (value instanceof Long l) { need(8); GMExtWire.writeI64(buf, l); }
+                else if (value instanceof String s) {
+                    need(4 + s.getBytes(StandardCharsets.UTF_8).length + 1);
+                    GMExtWire.writeString(buf, s);
+                }
                 else throw new IllegalArgumentException("Unsupported elem: " + value.getClass());
             }
             return this;
