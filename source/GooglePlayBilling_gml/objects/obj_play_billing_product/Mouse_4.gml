@@ -5,7 +5,7 @@
 
 show_debug_message($"Product: {data}")
 
-if (data.product_type == "inapp")//GooglePlayBillingProductType.InApp)
+if (data.product_type == GooglePlayBillingProductType.InApp)
 {	
 	var options = new GooglePlayBillingFlowOptions();
 	//[Optional] Obfuscated account and profile IDs
@@ -16,7 +16,7 @@ if (data.product_type == "inapp")//GooglePlayBillingProductType.InApp)
     var result = play_billing_launch_billing_flow([_product_details], options);
     show_debug_message($"[PlayBilling] INAPP launch result: {result}");
 }
-else if (data.product_type == "subs")
+else if (data.product_type == GooglePlayBillingProductType.Subscription)
 {
     if (!variable_struct_exists(data, "subscription_offer_details")
     || !is_array(data.subscription_offer_details)
