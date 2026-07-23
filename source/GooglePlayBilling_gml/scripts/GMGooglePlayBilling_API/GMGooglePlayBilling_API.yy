@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GMGooglePlayBilling_API",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GMGooglePlayBilling_API",
+  "parent":{
+    "name":"GMGooglePlayBilling",
+    "path":"folders/GMGooglePlayBilling.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

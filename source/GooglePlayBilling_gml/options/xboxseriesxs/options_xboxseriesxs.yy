@@ -7,7 +7,7 @@
   "option_xboxseriesxs_advancedmemorymodel_sx":false,
   "option_xboxseriesxs_content_id":"",
   "option_xboxseriesxs_description":"Your Description",
-  "option_xboxseriesxs_display_name":"Created with GameMaker",
+  "option_xboxseriesxs_display_name":"Created with GameMaker Studio 2",
   "option_xboxseriesxs_ekbid":"",
   "option_xboxseriesxs_foreground_text":0,
   "option_xboxseriesxs_game_chat_slots":4,
