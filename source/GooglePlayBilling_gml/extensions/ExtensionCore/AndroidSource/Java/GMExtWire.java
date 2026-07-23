@@ -320,6 +320,8 @@ public class GMExtWire
                 put((ITypedStruct) v);
             else if (v instanceof DataStream)
                 ((DataStream) v).serializeTo(this);
+            else if (v instanceof java.util.List)
+                put((java.util.List<?>) v);
             else
                 throw new IllegalArgumentException("Unsupported: " + v.getClass());
         }
@@ -359,6 +361,11 @@ public class GMExtWire
 
         @Override
         protected void serializeTo(DataStream dst) {
+            // dst.buf is the growable stream being assembled for a callback/args
+            // array; writeI8/writeI16 route through the non-growing static
+            // need(ByteBuffer,int) and would throw instead of growing once dst
+            // runs out of headroom, so reserve via dst's own growing need() first.
+            dst.need(1 + 2);
             GMExtWire.writeI8(dst.buf, tag);
             GMExtWire.writeI16(dst.buf, count);
             super.serializeTo(dst); // write buffer content
@@ -469,6 +476,12 @@ public class GMExtWire
 
         @Override
         protected void serializeTo(DataStream dst) {
+            // dst.buf is the growable stream being assembled for a callback/args
+            // array; these writeXxx calls route through the non-growing static
+            // need(ByteBuffer,int) and would throw instead of growing, so reserve
+            // the whole header (tag + count + elemTag [+ codecId]) via dst's own
+            // growing need() up front, same fix as CollectionStream.serializeTo().
+            dst.need(1 + 2 + 1 + (codecId != null ? 4 : 0));
             GMExtWire.writeI8(dst.buf, ValueType.TypedArray.tag);
             GMExtWire.writeI16(dst.buf, count);
             GMExtWire.writeI8(dst.buf, elemTag);
