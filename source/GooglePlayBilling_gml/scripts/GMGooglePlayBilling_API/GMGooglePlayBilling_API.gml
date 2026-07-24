@@ -1127,9 +1127,9 @@ function __GooglePlayBillingInAppMessageOptions_encode(_inst, _buffer, _offset, 
     {
         // field: categories, type: enum GooglePlayBillingInAppMessageCategory[]
         if (!is_array(self.categories)) show_error($"{_where} :: self.categories expected array", true);
-        var _length = array_length(self.categories);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.categories);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
 
             if (!is_numeric(self.categories[_i])) show_error($"{_where} :: self.categories[_i] expected number", true);
@@ -1154,9 +1154,9 @@ function __GooglePlayBillingInAppMessageOptions_decode(_buffer, _offset)
     with (_inst)
     {
         // field: categories, type: enum GooglePlayBillingInAppMessageCategory[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.categories = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.categories = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             self.categories[_i] = buffer_read(_buffer, buffer_s32);
         }
@@ -1826,9 +1826,9 @@ function __GooglePlayBillingPendingPurchaseUpdate_encode(_inst, _buffer, _offset
 
         // field: products, type: String[]
         if (!is_array(self.products)) show_error($"{_where} :: self.products expected array", true);
-        var _length = array_length(self.products);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.products);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (!is_string(self.products[_i])) show_error($"{_where} :: self.products[_i] expected string", true);
             buffer_write(_buffer, buffer_u32, string_byte_length(self.products[_i]));
@@ -1857,9 +1857,9 @@ function __GooglePlayBillingPendingPurchaseUpdate_decode(_buffer, _offset)
         self.purchase_token = buffer_read(_buffer, buffer_string);
 
         // field: products, type: String[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.products = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.products = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             buffer_read(_buffer, buffer_u32);
             self.products[_i] = buffer_read(_buffer, buffer_string);
@@ -2442,9 +2442,9 @@ function __GooglePlayBillingSubscriptionOfferDetails_encode(_inst, _buffer, _off
 
         // field: offer_tags, type: String[]
         if (!is_array(self.offer_tags)) show_error($"{_where} :: self.offer_tags expected array", true);
-        var _length = array_length(self.offer_tags);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.offer_tags);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (!is_string(self.offer_tags[_i])) show_error($"{_where} :: self.offer_tags[_i] expected string", true);
             buffer_write(_buffer, buffer_u32, string_byte_length(self.offer_tags[_i]));
@@ -2458,9 +2458,9 @@ function __GooglePlayBillingSubscriptionOfferDetails_encode(_inst, _buffer, _off
 
         // field: pricing_phases, type: struct GooglePlayBillingPricingPhase[]
         if (!is_array(self.pricing_phases)) show_error($"{_where} :: self.pricing_phases expected array", true);
-        var _length = array_length(self.pricing_phases);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.pricing_phases);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (self.pricing_phases[_i].__uid != 1162554642) show_error($"{_where} :: self.pricing_phases[_i] expected GooglePlayBillingPricingPhase", true);
             __GooglePlayBillingPricingPhase_encode(self.pricing_phases[_i], _buffer, buffer_tell(_buffer), _where);
@@ -2511,9 +2511,9 @@ function __GooglePlayBillingSubscriptionOfferDetails_decode(_buffer, _offset)
         }
 
         // field: offer_tags, type: String[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.offer_tags = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.offer_tags = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             buffer_read(_buffer, buffer_u32);
             self.offer_tags[_i] = buffer_read(_buffer, buffer_string);
@@ -2524,9 +2524,9 @@ function __GooglePlayBillingSubscriptionOfferDetails_decode(_buffer, _offset)
         self.offer_token = buffer_read(_buffer, buffer_string);
 
         // field: pricing_phases, type: struct GooglePlayBillingPricingPhase[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.pricing_phases = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.pricing_phases = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             self.pricing_phases[_i] = __GooglePlayBillingPricingPhase_decode(_buffer, buffer_tell(_buffer));
         }
@@ -2588,9 +2588,9 @@ function __GooglePlayBillingPurchase_encode(_inst, _buffer, _offset, _where = _G
 
         // field: products, type: String[]
         if (!is_array(self.products)) show_error($"{_where} :: self.products expected array", true);
-        var _length = array_length(self.products);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.products);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (!is_string(self.products[_i])) show_error($"{_where} :: self.products[_i] expected string", true);
             buffer_write(_buffer, buffer_u32, string_byte_length(self.products[_i]));
@@ -2692,9 +2692,9 @@ function __GooglePlayBillingPurchase_decode(_buffer, _offset)
         self.purchase_token = buffer_read(_buffer, buffer_string);
 
         // field: products, type: String[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.products = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.products = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             buffer_read(_buffer, buffer_u32);
             self.products[_i] = buffer_read(_buffer, buffer_string);
@@ -2868,9 +2868,9 @@ function __GooglePlayBillingOneTimePurchaseOfferDetails_encode(_inst, _buffer, _
 
         // field: offer_tags, type: String[]
         if (!is_array(self.offer_tags)) show_error($"{_where} :: self.offer_tags expected array", true);
-        var _length = array_length(self.offer_tags);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.offer_tags);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (!is_string(self.offer_tags[_i])) show_error($"{_where} :: self.offer_tags[_i] expected string", true);
             buffer_write(_buffer, buffer_u32, string_byte_length(self.offer_tags[_i]));
@@ -3013,9 +3013,9 @@ function __GooglePlayBillingOneTimePurchaseOfferDetails_decode(_buffer, _offset)
         }
 
         // field: offer_tags, type: String[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.offer_tags = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.offer_tags = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             buffer_read(_buffer, buffer_u32);
             self.offer_tags[_i] = buffer_read(_buffer, buffer_string);
@@ -3137,9 +3137,9 @@ function __GooglePlayBillingProductDetails_encode(_inst, _buffer, _offset, _wher
 
         // field: one_time_purchase_offer_details, type: struct GooglePlayBillingOneTimePurchaseOfferDetails[]
         if (!is_array(self.one_time_purchase_offer_details)) show_error($"{_where} :: self.one_time_purchase_offer_details expected array", true);
-        var _length = array_length(self.one_time_purchase_offer_details);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.one_time_purchase_offer_details);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (self.one_time_purchase_offer_details[_i].__uid != 2826199879) show_error($"{_where} :: self.one_time_purchase_offer_details[_i] expected GooglePlayBillingOneTimePurchaseOfferDetails", true);
             __GooglePlayBillingOneTimePurchaseOfferDetails_encode(self.one_time_purchase_offer_details[_i], _buffer, buffer_tell(_buffer), _where);
@@ -3147,9 +3147,9 @@ function __GooglePlayBillingProductDetails_encode(_inst, _buffer, _offset, _wher
 
         // field: subscription_offer_details, type: struct GooglePlayBillingSubscriptionOfferDetails[]
         if (!is_array(self.subscription_offer_details)) show_error($"{_where} :: self.subscription_offer_details expected array", true);
-        var _length = array_length(self.subscription_offer_details);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.subscription_offer_details);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (self.subscription_offer_details[_i].__uid != 1754328638) show_error($"{_where} :: self.subscription_offer_details[_i] expected GooglePlayBillingSubscriptionOfferDetails", true);
             __GooglePlayBillingSubscriptionOfferDetails_encode(self.subscription_offer_details[_i], _buffer, buffer_tell(_buffer), _where);
@@ -3192,17 +3192,17 @@ function __GooglePlayBillingProductDetails_decode(_buffer, _offset)
         self.product_type = buffer_read(_buffer, buffer_s32);
 
         // field: one_time_purchase_offer_details, type: struct GooglePlayBillingOneTimePurchaseOfferDetails[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.one_time_purchase_offer_details = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.one_time_purchase_offer_details = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             self.one_time_purchase_offer_details[_i] = __GooglePlayBillingOneTimePurchaseOfferDetails_decode(_buffer, buffer_tell(_buffer));
         }
 
         // field: subscription_offer_details, type: struct GooglePlayBillingSubscriptionOfferDetails[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.subscription_offer_details = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.subscription_offer_details = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             self.subscription_offer_details[_i] = __GooglePlayBillingSubscriptionOfferDetails_decode(_buffer, buffer_tell(_buffer));
         }
@@ -3227,9 +3227,9 @@ function __GooglePlayBillingProductDetailsQueryResult_encode(_inst, _buffer, _of
     {
         // field: products, type: struct GooglePlayBillingProductDetails[]
         if (!is_array(self.products)) show_error($"{_where} :: self.products expected array", true);
-        var _length = array_length(self.products);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.products);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (self.products[_i].__uid != 2612326192) show_error($"{_where} :: self.products[_i] expected GooglePlayBillingProductDetails", true);
             __GooglePlayBillingProductDetails_encode(self.products[_i], _buffer, buffer_tell(_buffer), _where);
@@ -3237,9 +3237,9 @@ function __GooglePlayBillingProductDetailsQueryResult_encode(_inst, _buffer, _of
 
         // field: unfetched_products, type: struct GooglePlayBillingUnfetchedProduct[]
         if (!is_array(self.unfetched_products)) show_error($"{_where} :: self.unfetched_products expected array", true);
-        var _length = array_length(self.unfetched_products);
-        buffer_write(_buffer, buffer_u32, _length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = array_length(self.unfetched_products);
+        buffer_write(_buffer, buffer_u32, __length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             if (self.unfetched_products[_i].__uid != 521953500) show_error($"{_where} :: self.unfetched_products[_i] expected GooglePlayBillingUnfetchedProduct", true);
             __GooglePlayBillingUnfetchedProduct_encode(self.unfetched_products[_i], _buffer, buffer_tell(_buffer), _where);
@@ -3263,17 +3263,17 @@ function __GooglePlayBillingProductDetailsQueryResult_decode(_buffer, _offset)
     with (_inst)
     {
         // field: products, type: struct GooglePlayBillingProductDetails[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.products = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.products = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             self.products[_i] = __GooglePlayBillingProductDetails_decode(_buffer, buffer_tell(_buffer));
         }
 
         // field: unfetched_products, type: struct GooglePlayBillingUnfetchedProduct[]
-        var _length = buffer_read(_buffer, buffer_u32);
-        self.unfetched_products = array_create(_length);
-        for (var _i = 0; _i < _length; ++_i)
+        var __length__ = buffer_read(_buffer, buffer_u32);
+        self.unfetched_products = array_create(__length__);
+        for (var _i = 0; _i < __length__; ++_i)
         {
             self.unfetched_products[_i] = __GooglePlayBillingUnfetchedProduct_decode(_buffer, buffer_tell(_buffer));
         }
@@ -3293,10 +3293,10 @@ function __GooglePlayBillingProductDetailsQueryResult_decode(_buffer, _offset)
  */
 function play_billing_init(_options, _callback)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -3314,12 +3314,12 @@ function play_billing_init(_options, _callback)
 
     // param: _callback, type: Function
     if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_handle);
 
-    var _return_value = __play_billing_init(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __play_billing_init(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -3328,26 +3328,26 @@ function play_billing_init(_options, _callback)
  */
 function play_billing_start_connection(_callback_start, _callback_disconnect)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _callback_start, type: Function
     if (!is_callable(_callback_start)) show_error($"{_GMFUNCTION_} :: _callback_start expected callable type", true);
-    var _callback_start_handle = __ext_core_function_register(_callback_start, __dispatcher);
+    var _callback_start_handle = __ext_core_function_register(_callback_start, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_start_handle);
 
     // param: _callback_disconnect, type: Function
     if (!is_callable(_callback_disconnect)) show_error($"{_GMFUNCTION_} :: _callback_disconnect expected callable type", true);
-    var _callback_disconnect_handle = __ext_core_function_register(_callback_disconnect, __dispatcher);
+    var _callback_disconnect_handle = __ext_core_function_register(_callback_disconnect, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_disconnect_handle);
 
-    var _return_value = __play_billing_start_connection(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __play_billing_start_connection(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 // Skipping function play_billing_end_connection (no wrapper is required)
@@ -3358,16 +3358,16 @@ function play_billing_start_connection(_callback_start, _callback_disconnect)
  */
 function play_billing_get_connection_state()
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __play_billing_get_connection_state(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __play_billing_get_connection_state(buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = buffer_read(__ret_buffer, buffer_s32);
-    return _result;
+    var __result__ = undefined;
+    __result__ = buffer_read(__ret_buffer, buffer_s32);
+    return __result__;
 }
 
 // Skipping function play_billing_is_ready (no wrapper is required)
@@ -3378,21 +3378,21 @@ function play_billing_get_connection_state()
  */
 function play_billing_get_config_async(_callback)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _callback, type: Function
     if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_handle);
 
-    var _return_value = __play_billing_get_config_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __play_billing_get_config_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -3400,21 +3400,21 @@ function play_billing_get_config_async(_callback)
  */
 function play_billing_is_alternative_billing_only_available_async(_callback)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _callback, type: Function
     if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_handle);
 
-    var _return_value = __play_billing_is_alternative_billing_only_available_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __play_billing_is_alternative_billing_only_available_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -3423,10 +3423,10 @@ function play_billing_is_alternative_billing_only_available_async(_callback)
  */
 function play_billing_is_billing_program_available_async(_program, _callback)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -3437,12 +3437,12 @@ function play_billing_is_billing_program_available_async(_program, _callback)
 
     // param: _callback, type: Function
     if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_handle);
 
-    var _return_value = __play_billing_is_billing_program_available_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __play_billing_is_billing_program_available_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -3451,8 +3451,8 @@ function play_billing_is_billing_program_available_async(_program, _callback)
  */
 function play_billing_is_feature_supported(_feature)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -3463,11 +3463,11 @@ function play_billing_is_feature_supported(_feature)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __play_billing_is_feature_supported(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __play_billing_is_feature_supported(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = __GooglePlayBillingResult_decode(__ret_buffer, buffer_tell(__ret_buffer));
-    return _result;
+    var __result__ = undefined;
+    __result__ = __GooglePlayBillingResult_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    return __result__;
 }
 
 /**
@@ -3476,18 +3476,18 @@ function play_billing_is_feature_supported(_feature)
  */
 function play_billing_query_product_details_async(_products, _callback)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _products, type: struct GooglePlayBillingProductInput[]
     if (!is_array(_products)) show_error($"{_GMFUNCTION_} :: _products expected array", true);
-    var _length = array_length(_products);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_products);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (_products[_i].__uid != 2620246) show_error($"{_GMFUNCTION_} :: _products[_i] expected GooglePlayBillingProductInput", true);
         __GooglePlayBillingProductInput_encode(_products[_i], __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
@@ -3495,12 +3495,12 @@ function play_billing_query_product_details_async(_products, _callback)
 
     // param: _callback, type: Function
     if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_handle);
 
-    var _return_value = __play_billing_query_product_details_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __play_billing_query_product_details_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 // Skipping function play_billing_clear_products (no wrapper is required)
@@ -3513,16 +3513,16 @@ function play_billing_query_product_details_async(_products, _callback)
  */
 function play_billing_launch_billing_flow(_items, _options)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _items, type: struct GooglePlayBillingProductDetailsParams[]
     if (!is_array(_items)) show_error($"{_GMFUNCTION_} :: _items expected array", true);
-    var _length = array_length(_items);
-    buffer_write(__args_buffer, buffer_u32, _length);
-    for (var _i = 0; _i < _length; ++_i)
+    var __length__ = array_length(_items);
+    buffer_write(__args_buffer, buffer_u32, __length__);
+    for (var _i = 0; _i < __length__; ++_i)
     {
         if (_items[_i].__uid != 1292963414) show_error($"{_GMFUNCTION_} :: _items[_i] expected GooglePlayBillingProductDetailsParams", true);
         __GooglePlayBillingProductDetailsParams_encode(_items[_i], __args_buffer, buffer_tell(__args_buffer), _GMFUNCTION_);
@@ -3542,11 +3542,11 @@ function play_billing_launch_billing_flow(_items, _options)
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __play_billing_launch_billing_flow(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __play_billing_launch_billing_flow(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = __GooglePlayBillingResult_decode(__ret_buffer, buffer_tell(__ret_buffer));
-    return _result;
+    var __result__ = undefined;
+    __result__ = __GooglePlayBillingResult_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    return __result__;
 }
 
 /**
@@ -3556,10 +3556,10 @@ function play_billing_launch_billing_flow(_items, _options)
  */
 function play_billing_query_purchases_async(_product_type, _include_suspended_subscriptions, _callback)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -3574,12 +3574,12 @@ function play_billing_query_purchases_async(_product_type, _include_suspended_su
 
     // param: _callback, type: Function
     if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_handle);
 
-    var _return_value = __play_billing_query_purchases_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __play_billing_query_purchases_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -3588,10 +3588,10 @@ function play_billing_query_purchases_async(_product_type, _include_suspended_su
  */
 function play_billing_acknowledge_purchase(_purchase_token, _callback)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -3602,12 +3602,12 @@ function play_billing_acknowledge_purchase(_purchase_token, _callback)
 
     // param: _callback, type: Function
     if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_handle);
 
-    var _return_value = __play_billing_acknowledge_purchase(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __play_billing_acknowledge_purchase(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -3616,10 +3616,10 @@ function play_billing_acknowledge_purchase(_purchase_token, _callback)
  */
 function play_billing_consume_async(_purchase_token, _callback)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -3630,12 +3630,12 @@ function play_billing_consume_async(_purchase_token, _callback)
 
     // param: _callback, type: Function
     if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_handle);
 
-    var _return_value = __play_billing_consume_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __play_billing_consume_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -3643,21 +3643,21 @@ function play_billing_consume_async(_purchase_token, _callback)
  */
 function play_billing_create_alternative_billing_only_reporting_details_async(_callback)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _callback, type: Function
     if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_handle);
 
-    var _return_value = __play_billing_create_alternative_billing_only_reporting_details_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __play_billing_create_alternative_billing_only_reporting_details_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -3666,10 +3666,10 @@ function play_billing_create_alternative_billing_only_reporting_details_async(_c
  */
 function play_billing_create_billing_program_reporting_details_async(_program, _callback)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -3680,12 +3680,12 @@ function play_billing_create_billing_program_reporting_details_async(_program, _
 
     // param: _callback, type: Function
     if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_handle);
 
-    var _return_value = __play_billing_create_billing_program_reporting_details_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __play_billing_create_billing_program_reporting_details_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -3695,10 +3695,10 @@ function play_billing_create_billing_program_reporting_details_async(_program, _
  */
 function play_billing_show_in_app_messages(_options, _callback)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -3716,16 +3716,16 @@ function play_billing_show_in_app_messages(_options, _callback)
 
     // param: _callback, type: Function
     if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_handle);
 
     var __ret_buffer = __ext_core_get_ret_buffer();
 
-    var _return_value = __play_billing_show_in_app_messages(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
+    var __return_value__ = __play_billing_show_in_app_messages(buffer_get_address(__args_buffer), buffer_tell(__args_buffer), buffer_get_address(__ret_buffer), buffer_get_size(__ret_buffer));
 
-    var _result = undefined;
-    _result = __GooglePlayBillingResult_decode(__ret_buffer, buffer_tell(__ret_buffer));
-    return _result;
+    var __result__ = undefined;
+    __result__ = __GooglePlayBillingResult_decode(__ret_buffer, buffer_tell(__ret_buffer));
+    return __result__;
 }
 
 /**
@@ -3733,21 +3733,21 @@ function play_billing_show_in_app_messages(_options, _callback)
  */
 function play_billing_get_billing_choice_info_async(_callback)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _callback, type: Function
     if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_handle);
 
-    var _return_value = __play_billing_get_billing_choice_info_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __play_billing_get_billing_choice_info_async(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -3756,10 +3756,10 @@ function play_billing_get_billing_choice_info_async(_callback)
  */
 function play_billing_show_billing_program_information_dialog(_program, _callback)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -3770,12 +3770,12 @@ function play_billing_show_billing_program_information_dialog(_program, _callbac
 
     // param: _callback, type: Function
     if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_handle);
 
-    var _return_value = __play_billing_show_billing_program_information_dialog(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __play_billing_show_billing_program_information_dialog(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -3783,21 +3783,21 @@ function play_billing_show_billing_program_information_dialog(_program, _callbac
  */
 function play_billing_show_alternative_billing_only_information_dialog(_callback)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
     // param: _callback, type: Function
     if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_handle);
 
-    var _return_value = __play_billing_show_alternative_billing_only_information_dialog(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __play_billing_show_alternative_billing_only_information_dialog(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /**
@@ -3806,10 +3806,10 @@ function play_billing_show_alternative_billing_only_information_dialog(_callback
  */
 function play_billing_launch_external_link(_options, _callback)
 {
-    var __available = __GMGooglePlayBilling_is_available();
-    if (!__available) return;
+    var __available__ = __GMGooglePlayBilling_is_available();
+    if (!__available__) return;
 
-    var __dispatcher = __GMGooglePlayBilling_get_dispatcher();
+    var __dispatcher__ = __GMGooglePlayBilling_get_dispatcher();
 
     var __args_buffer = __ext_core_get_args_buffer();
 
@@ -3819,18 +3819,18 @@ function play_billing_launch_external_link(_options, _callback)
 
     // param: _callback, type: Function
     if (!is_callable(_callback)) show_error($"{_GMFUNCTION_} :: _callback expected callable type", true);
-    var _callback_handle = __ext_core_function_register(_callback, __dispatcher);
+    var _callback_handle = __ext_core_function_register(_callback, __dispatcher__);
     buffer_write(__args_buffer, buffer_u64, _callback_handle);
 
-    var _return_value = __play_billing_launch_external_link(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
+    var __return_value__ = __play_billing_launch_external_link(buffer_get_address(__args_buffer), buffer_tell(__args_buffer));
 
-    return _return_value;
+    return __return_value__;
 }
 
 /// @ignore
 function __GMGooglePlayBilling_get_decoders()
 {
-    static __decoders = [
+    static __decoders__ = [
         __GooglePlayBillingInitOptions_decode,
         __GooglePlayBillingProductInput_decode,
         __GooglePlayBillingSubscriptionUpdateParams_decode,
@@ -3862,17 +3862,17 @@ function __GMGooglePlayBilling_get_decoders()
         __GooglePlayBillingProductDetails_decode,
         __GooglePlayBillingProductDetailsQueryResult_decode
     ];
-    return __decoders;
+    return __decoders__;
 }
 /// @ignore
 function __GMGooglePlayBilling_get_dispatcher()
 {
-    static __dispatcher = new __GMNativeFunctionDispatcher(__GMGooglePlayBilling_invocation_handler, __GMGooglePlayBilling_get_decoders());
-    return __dispatcher;
+    static __dispatcher__ = new __GMNativeFunctionDispatcher(__GMGooglePlayBilling_invocation_handler, __GMGooglePlayBilling_get_decoders());
+    return __dispatcher__;
 }
 /// @ignore
 function __GMGooglePlayBilling_is_available()
 {
-    static __available = extension_exists("GMGooglePlayBilling");
-    return __available;
+    static __available__ = extension_exists("GMGooglePlayBilling");
+    return __available__;
 }
