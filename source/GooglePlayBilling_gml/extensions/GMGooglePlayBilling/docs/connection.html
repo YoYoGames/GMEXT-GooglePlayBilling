@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Connection - GMEXT-GooglePlayBilling</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Connection";
+        var mkdocs_page_input_path = "connection.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-GooglePlayBilling
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Modules</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Connection</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="products.html">Products</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="purchases.html">Purchases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="billing_programs.html">Billing Programs</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-GooglePlayBilling</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Modules</li>
+      <li class="breadcrumb-item active">Connection</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-GooglePlayBilling/edit/master/docs/connection.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="connection"><strong>Connection</strong></h1>
+<p>This module provides functions for initializing the extension, connecting to the Play Store, and checking availability of billing config/features/programs before using the rest of the API.</p>
+<h2 id="functions">Functions</h2>
+<p>The following functions are provided to initialize and connect to the Play Store:</p>
+<ul>
+<li><a href="connection.html#play_billing_init">play_billing_init</a></li>
+<li><a href="connection.html#play_billing_start_connection">play_billing_start_connection</a></li>
+<li><a href="connection.html#play_billing_end_connection">play_billing_end_connection</a></li>
+<li><a href="connection.html#play_billing_get_connection_state">play_billing_get_connection_state</a></li>
+<li><a href="connection.html#play_billing_is_ready">play_billing_is_ready</a></li>
+<li><a href="connection.html#play_billing_get_config_async">play_billing_get_config_async</a></li>
+<li><a href="connection.html#play_billing_is_alternative_billing_only_available_async">play_billing_is_alternative_billing_only_available_async</a></li>
+<li><a href="connection.html#play_billing_is_billing_program_available_async">play_billing_is_billing_program_available_async</a></li>
+<li><a href="connection.html#play_billing_is_feature_supported">play_billing_is_feature_supported</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>The following structs are used by the connection functions:</p>
+<ul>
+<li><a href="connection.html#googleplaybillinginitoptions">GooglePlayBillingInitOptions</a></li>
+<li><a href="connection.html#googleplaybillingresult">GooglePlayBillingResult</a></li>
+<li><a href="connection.html#googleplaybillingconfig">GooglePlayBillingConfig</a></li>
+<li><a href="connection.html#googleplaybillingprogramavailabilitydetails">GooglePlayBillingProgramAvailabilityDetails</a></li>
+<li><a href="connection.html#googleplaybillingchoiceavailabilitydetails">GooglePlayBillingChoiceAvailabilityDetails</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>The following constants are used by the connection functions:</p>
+<ul>
+<li><a href="connection.html#googleplaybillingresponsecode">GooglePlayBillingResponseCode</a></li>
+<li><a href="connection.html#googleplaybillingpurchasesupdatedsubresponsecode">GooglePlayBillingPurchasesUpdatedSubResponseCode</a></li>
+<li><a href="connection.html#googleplaybillingconnectionstate">GooglePlayBillingConnectionState</a></li>
+<li><a href="connection.html#googleplaybillingfeaturetype">GooglePlayBillingFeatureType</a></li>
+<li><a href="connection.html#googleplaybillingchoicescreentype">GooglePlayBillingChoiceScreenType</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="play_billing_init">play_billing_init</h1>
+<p>This function initializes the extension, creating the native <code>BillingClient</code> and registering the
+purchases-updated listener. It must be called before any other <code>play_billing_*</code> function.</p>
+<p>The <code>callback</code> supplied here is stored and reused for the lifetime of the client: every time a purchase
+updates (a new purchase, a subscription renewal/upgrade, etc.) - including purchases started by
+<a href="products.html#play_billing_launch_billing_flow">play_billing_launch_billing_flow</a> - Google delivers the result through this same callback.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>callback</code> fires repeatedly for as long as the client exists, not just once after <code>play_billing_init</code> returns. If the current Android activity is unavailable when <code>play_billing_init</code> is called, <code>callback</code> fires immediately with only the <code>billing_result</code> argument (no <code>purchases</code> argument).</p>
+</div>
+<p>Calling this function again tears down and replaces any existing <code>BillingClient</code> (and its cached
+product details), so it should only be called once per app session, typically at startup.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>play_billing_init(options=undefined, callback)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>options</td>
+<td><a href="connection.html#googleplaybillinginitoptions">GooglePlayBillingInitOptions</a></td>
+<td>Options controlling which optional billing capabilities are enabled</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>The function to call whenever purchases update</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>This callback fires once for every purchases-updated event, for the lifetime of the client.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>billing_result</td>
+<td><a href="connection.html#googleplaybillingresult">GooglePlayBillingResult</a></td>
+<td>The result of the purchases-updated event</td>
+</tr>
+<tr>
+<td>purchases</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="purchases.html#googleplaybillingpurchase">GooglePlayBillingPurchase</a></td>
+<td>The purchases that were updated; always a real (possibly empty) array</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>var _options = {
+    enable_auto_service_reconnection: true
+};
+
+play_billing_init(_options, function(_billing_result, _purchases) {
+    if (_billing_result.code != GooglePlayBillingResponseCode.Ok) exit;
+
+    for (var i = 0; i &lt; array_length(_purchases); i++) {
+        var _purchase = _purchases[i];
+        show_debug_message($&quot;Purchase updated: {_purchase.purchase_token}&quot;);
+    }
+});
+
+play_billing_start_connection(function(_billing_result) {
+    show_debug_message($&quot;Connected with code: {_billing_result.code}&quot;);
+}, function() {
+    show_debug_message(&quot;Billing service disconnected.&quot;);
+});
+</code></pre></div>
+This code initializes the extension and connects to the Play Store, listening for purchase updates.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="play_billing_start_connection">play_billing_start_connection</h1>
+<p>This function establishes the connection between the <code>BillingClient</code> created by
+<a href="connection.html#play_billing_init">play_billing_init</a> and the Google Play Store. It must succeed (<code>billing_result.code</code> equal to
+<code>GooglePlayBillingResponseCode.Ok</code>) before calling any other <code>play_billing_*</code> function that requires a
+ready client.</p>
+<p>A successful connection does not guarantee the Play Store remains reachable - if the connection drops
+later, <code>callback_disconnect</code> fires and the client must call this function again to reconnect.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>play_billing_start_connection(callback_start, callback_disconnect)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback_start</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>The function to call once the connection attempt finishes</td>
+</tr>
+<tr>
+<td>callback_disconnect</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>The function to call if the billing service disconnects after a successful connection</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a> — start</p>
+</blockquote>
+<p>This callback fires once, when the initial connection attempt finishes.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>billing_result</td>
+<td><a href="connection.html#googleplaybillingresult">GooglePlayBillingResult</a></td>
+<td>The result of the connection attempt</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a> — disconnect</p>
+</blockquote>
+<p>This callback fires with no arguments whenever the billing service disconnects after having connected successfully. Call <a href="connection.html#play_billing_start_connection">play_billing_start_connection</a> again to reconnect.</p>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>play_billing_start_connection(function(_billing_result) {
+    if (_billing_result.code == GooglePlayBillingResponseCode.Ok) {
+        show_debug_message(&quot;Connected to the Play Store.&quot;);
+    }
+}, function() {
+    show_debug_message(&quot;Disconnected - will retry.&quot;);
+    play_billing_start_connection(callback_start, callback_disconnect);
+});
+</code></pre></div>
+This code connects to the Play Store and reconnects automatically if the service disconnects.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="play_billing_end_connection">play_billing_end_connection</h1>
+<p>This function closes the connection to the Play Store and releases the native <code>BillingClient</code>
+created by <a href="connection.html#play_billing_init">play_billing_init</a>, clearing any cached product details.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Call this function when your game shuts down, or before calling <a href="connection.html#play_billing_init">play_billing_init</a> again to start a fresh session.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>play_billing_end_connection()
+</code></pre></div>
+</blockquote>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>play_billing_end_connection();
+</code></pre></div>
+This code closes the connection to the Play Store.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="play_billing_get_connection_state">play_billing_get_connection_state</h1>
+<p>This function returns the current connection state of the <code>BillingClient</code>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>play_billing_get_connection_state()
+</code></pre></div>
+</blockquote>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="connection.html#googleplaybillingconnectionstate">GooglePlayBillingConnectionState</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>if (play_billing_get_connection_state() == GooglePlayBillingConnectionState.Connected) {
+    // Safe to query products/purchases
+}
+</code></pre></div>
+This code checks whether the client is currently connected before using the API.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="play_billing_is_ready">play_billing_is_ready</h1>
+<p>This function returns whether the <code>BillingClient</code> is ready to accept further requests (equivalent
+to <code>play_billing_get_connection_state() == GooglePlayBillingConnectionState.Connected</code>, but cheaper to check).</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>play_billing_is_ready()
+</code></pre></div>
+</blockquote>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>if (!play_billing_is_ready()) exit;
+play_billing_query_purchases_async(GooglePlayBillingProductType.InApp, false, callback);
+</code></pre></div>
+This code exits early if the client is not ready before querying purchases.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="play_billing_get_config_async">play_billing_get_config_async</h1>
+<p>This function requests Play billing configuration data - currently the user's Play Store country
+as an ISO 3166-1 alpha-2 code, useful for showing localized pricing before a product query completes.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>play_billing_get_config_async(callback)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>The function to call once the request finishes</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>This callback fires once, when the request finishes.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>billing_result</td>
+<td><a href="connection.html#googleplaybillingresult">GooglePlayBillingResult</a></td>
+<td>The result of the request</td>
+</tr>
+<tr>
+<td>config</td>
+<td><a href="connection.html#googleplaybillingconfig">GooglePlayBillingConfig</a></td>
+<td>The billing config; absent if Google didn't deliver one, including on failure</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>play_billing_get_config_async(function(_billing_result, _config) {
+    if (_billing_result.code == GooglePlayBillingResponseCode.Ok &amp;&amp; !is_undefined(_config)) {
+        show_debug_message($&quot;Store country: {_config.country_code}&quot;);
+    }
+});
+</code></pre></div>
+This code requests the billing config and shows the user's store country.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="play_billing_is_alternative_billing_only_available_async">play_billing_is_alternative_billing_only_available_async</h1>
+<p>This function checks whether the alternative-billing-only program (letting the user pay through a
+developer-managed payment system with no Google Play billing option at all) is available for the current
+user and app.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>GooglePlayBillingInitOptions.enable_alternative_billing_only</code> option must have been enabled in <a href="connection.html#play_billing_init">play_billing_init</a> for this program to be usable.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>play_billing_is_alternative_billing_only_available_async(callback)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>The function to call once the check finishes</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>This callback fires once, when the availability check finishes.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>billing_result</td>
+<td><a href="connection.html#googleplaybillingresult">GooglePlayBillingResult</a></td>
+<td>The result of the availability check</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>play_billing_is_alternative_billing_only_available_async(function(_billing_result) {
+    if (_billing_result.code == GooglePlayBillingResponseCode.Ok) {
+        show_debug_message(&quot;Alternative billing only is available.&quot;);
+    }
+});
+</code></pre></div>
+This code checks whether the alternative-billing-only program is available.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="play_billing_is_billing_program_available_async">play_billing_is_billing_program_available_async</h1>
+<p>This function checks whether the given billing program (see <a href="billing_programs.html#googleplaybillingprogram">GooglePlayBillingProgram</a>)
+is available for the current user and app.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The corresponding <code>GooglePlayBillingInitOptions.enable_*</code> option must have been enabled in <a href="connection.html#play_billing_init">play_billing_init</a> for the program to be usable.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>play_billing_is_billing_program_available_async(program, callback)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>program</td>
+<td><a href="billing_programs.html#googleplaybillingprogram">GooglePlayBillingProgram</a></td>
+<td>The billing program to check</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>The function to call once the check finishes</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>This callback fires once, when the availability check finishes.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>billing_result</td>
+<td><a href="connection.html#googleplaybillingresult">GooglePlayBillingResult</a></td>
+<td>The result of the availability check</td>
+</tr>
+<tr>
+<td>availability_details</td>
+<td><a href="connection.html#googleplaybillingprogramavailabilitydetails">GooglePlayBillingProgramAvailabilityDetails</a></td>
+<td>Details about the program's availability; absent only when the request never reached Google (e.g. the client is not ready)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>play_billing_is_billing_program_available_async(GooglePlayBillingProgram.BillingChoice, function(_billing_result, _availability_details) {
+    if (_billing_result.code == GooglePlayBillingResponseCode.Ok &amp;&amp; !is_undefined(_availability_details)) {
+        show_debug_message($&quot;Billing Choice available: {_availability_details.billing_program}&quot;);
+    }
+});
+</code></pre></div>
+This code checks whether the Billing Choice program is available.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="play_billing_is_feature_supported">play_billing_is_feature_supported</h1>
+<p>This function synchronously checks whether the given feature (see <a href="connection.html#googleplaybillingfeaturetype">GooglePlayBillingFeatureType</a>) is supported by the Play Store on the current device.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>play_billing_is_feature_supported(feature)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>feature</td>
+<td><a href="connection.html#googleplaybillingfeaturetype">GooglePlayBillingFeatureType</a></td>
+<td>The feature to check</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="connection.html#googleplaybillingresult">GooglePlayBillingResult</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>var _result = play_billing_is_feature_supported(GooglePlayBillingFeatureType.InAppMessaging);
+if (_result.code == GooglePlayBillingResponseCode.Ok) {
+    show_debug_message(&quot;In-app messaging is supported.&quot;);
+}
+</code></pre></div>
+This code checks whether in-app messaging is supported on the current device.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingresponsecode">GooglePlayBillingResponseCode</h1>
+<p>This enumeration contains the response codes returned by the Play Billing Library, delivered as <a href="connection.html#googleplaybillingresult">GooglePlayBillingResult</a>'s <code>code</code> member.</p>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="connection.html#googleplaybillingresult">GooglePlayBillingResult</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ServiceTimeout</code></td>
+<td>The request reached the maximum timeout before Google Play responded. Deprecated by Google; modern clients receive <code>ServiceUnavailable</code> instead.</td>
+</tr>
+<tr>
+<td><code>FeatureNotSupported</code></td>
+<td>The requested feature is not supported by the Play Store on the current device.</td>
+</tr>
+<tr>
+<td><code>ServiceDisconnected</code></td>
+<td>The app is not currently connected to the Play Store service.</td>
+</tr>
+<tr>
+<td><code>Ok</code></td>
+<td>Success.</td>
+</tr>
+<tr>
+<td><code>UserCanceled</code></td>
+<td>The user pressed back or canceled a dialog.</td>
+</tr>
+<tr>
+<td><code>ServiceUnavailable</code></td>
+<td>The network connection is down.</td>
+</tr>
+<tr>
+<td><code>BillingUnavailable</code></td>
+<td>This billing API version is not supported for the type requested.</td>
+</tr>
+<tr>
+<td><code>ItemUnavailable</code></td>
+<td>The requested product is not available for purchase.</td>
+</tr>
+<tr>
+<td><code>DeveloperError</code></td>
+<td>Invalid arguments were provided to the API, or the app is not correctly configured for billing in the Play Console.</td>
+</tr>
+<tr>
+<td><code>Error</code></td>
+<td>A fatal error occurred during the API action.</td>
+</tr>
+<tr>
+<td><code>ItemAlreadyOwned</code></td>
+<td>The purchase failed because the item is already owned.</td>
+</tr>
+<tr>
+<td><code>ItemNotOwned</code></td>
+<td>The consume/acknowledge failed because the item is not owned.</td>
+</tr>
+<tr>
+<td><code>NetworkError</code></td>
+<td>A network error occurred during the operation.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingpurchasesupdatedsubresponsecode">GooglePlayBillingPurchasesUpdatedSubResponseCode</h1>
+<p>This enumeration contains additional detail delivered alongside <a href="connection.html#googleplaybillingresponsecode">GooglePlayBillingResponseCode</a> when a purchase update (see <a href="connection.html#play_billing_init">play_billing_init</a>) doesn't succeed.</p>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="connection.html#googleplaybillingresult">GooglePlayBillingResult</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>None</code></td>
+<td>No additional detail is available.</td>
+</tr>
+<tr>
+<td><code>PaymentDeclinedDueToInsufficientFunds</code></td>
+<td>The purchase failed because the user's payment method has insufficient funds.</td>
+</tr>
+<tr>
+<td><code>UserIneligible</code></td>
+<td>The user is not eligible for the requested product or offer.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingconnectionstate">GooglePlayBillingConnectionState</h1>
+<p>This enumeration contains the connection states returned by <a href="connection.html#play_billing_get_connection_state">play_billing_get_connection_state</a>.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="connection.html#play_billing_get_connection_state">play_billing_get_connection_state</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Disconnected</code></td>
+<td>The client is not connected to the Play Store service.</td>
+</tr>
+<tr>
+<td><code>Connecting</code></td>
+<td>The client is currently connecting to the Play Store service.</td>
+</tr>
+<tr>
+<td><code>Connected</code></td>
+<td>The client is connected to the Play Store service and ready for requests.</td>
+</tr>
+<tr>
+<td><code>Closed</code></td>
+<td>The client has been closed via <a href="connection.html#play_billing_end_connection">play_billing_end_connection</a> and must not be used again.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingfeaturetype">GooglePlayBillingFeatureType</h1>
+<p>This enumeration contains the features that can be queried with <a href="connection.html#play_billing_is_feature_supported">play_billing_is_feature_supported</a>.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="connection.html#play_billing_is_feature_supported">play_billing_is_feature_supported</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AlternativeBillingOnly</code></td>
+<td>Alternative billing with no Google Play billing option.</td>
+</tr>
+<tr>
+<td><code>BillingConfig</code></td>
+<td>Play billing configuration data (see <a href="connection.html#play_billing_get_config_async">play_billing_get_config_async</a>).</td>
+</tr>
+<tr>
+<td><code>ExternalOffer</code></td>
+<td>The external offer billing program.</td>
+</tr>
+<tr>
+<td><code>IncludeSuspendedSubscriptions</code></td>
+<td>Purchase/query support for suspended subscriptions.</td>
+</tr>
+<tr>
+<td><code>InAppMessaging</code></td>
+<td>In-app messaging (see <a href="billing_programs.html#play_billing_show_in_app_messages">play_billing_show_in_app_messages</a>).</td>
+</tr>
+<tr>
+<td><code>PriceChangeConfirmation</code></td>
+<td>Launching a price-change confirmation flow.</td>
+</tr>
+<tr>
+<td><code>ProductDetails</code></td>
+<td>Product details queries (see <a href="products.html#play_billing_query_product_details_async">play_billing_query_product_details_async</a>).</td>
+</tr>
+<tr>
+<td><code>Subscriptions</code></td>
+<td>Subscription products.</td>
+</tr>
+<tr>
+<td><code>SubscriptionsUpdate</code></td>
+<td>Subscription replacement (upgrade/downgrade).</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingchoicescreentype">GooglePlayBillingChoiceScreenType</h1>
+<p>This enumeration describes who renders the Billing Choice screen, as delivered in <a href="connection.html#googleplaybillingchoiceavailabilitydetails">GooglePlayBillingChoiceAvailabilityDetails</a>.</p>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="connection.html#googleplaybillingchoiceavailabilitydetails">GooglePlayBillingChoiceAvailabilityDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Unspecified</code></td>
+<td>No choice screen type was specified.</td>
+</tr>
+<tr>
+<td><code>DeveloperRendered</code></td>
+<td>The app itself renders the billing choice screen.</td>
+</tr>
+<tr>
+<td><code>GoogleRendered</code></td>
+<td>The Play Store renders the billing choice screen.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillinginitoptions">GooglePlayBillingInitOptions</h1>
+<p>This struct configures optional capabilities enabled when creating the <code>BillingClient</code> in
+<a href="connection.html#play_billing_init">play_billing_init</a>. Every member defaults to <code>false</code> when omitted, including when the whole
+struct itself is omitted.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connection.html#play_billing_init">play_billing_init</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enable_auto_service_reconnection</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether the client automatically attempts to reconnect after an unexpected disconnection</td>
+</tr>
+<tr>
+<td>enable_prepaid_plans</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether pending transactions are enabled for prepaid subscription plans</td>
+</tr>
+<tr>
+<td>enable_alternative_billing_only</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether the alternative-billing-only program is enabled (see <a href="connection.html#play_billing_is_alternative_billing_only_available_async">play_billing_is_alternative_billing_only_available_async</a>)</td>
+</tr>
+<tr>
+<td>enable_external_content_link</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether the external content link billing program is enabled (see <a href="billing_programs.html#googleplaybillingprogram">GooglePlayBillingProgram</a>)</td>
+</tr>
+<tr>
+<td>enable_external_offer</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether the external offer billing program is enabled</td>
+</tr>
+<tr>
+<td>enable_external_payments</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether the external payments billing program is enabled</td>
+</tr>
+<tr>
+<td>enable_billing_choice</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether the Billing Choice program is enabled</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingresult">GooglePlayBillingResult</h1>
+<p>This struct is the outcome of virtually every <code>play_billing_*</code> operation - both the immediate
+return value of the synchronous functions and the first argument delivered to every asynchronous
+callback.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="billing_programs.html#play_billing_create_alternative_billing_only_reporting_details_async">play_billing_create_alternative_billing_only_reporting_details_async</a></li>
+<li><a href="billing_programs.html#play_billing_create_billing_program_reporting_details_async">play_billing_create_billing_program_reporting_details_async</a></li>
+<li><a href="billing_programs.html#play_billing_show_billing_program_information_dialog">play_billing_show_billing_program_information_dialog</a></li>
+<li><a href="billing_programs.html#play_billing_show_alternative_billing_only_information_dialog">play_billing_show_alternative_billing_only_information_dialog</a></li>
+<li><a href="billing_programs.html#play_billing_launch_external_link">play_billing_launch_external_link</a></li>
+<li><a href="billing_programs.html#play_billing_show_in_app_messages">play_billing_show_in_app_messages</a></li>
+<li><a href="billing_programs.html#play_billing_get_billing_choice_info_async">play_billing_get_billing_choice_info_async</a></li>
+<li><a href="connection.html#play_billing_init">play_billing_init</a></li>
+<li><a href="connection.html#play_billing_start_connection">play_billing_start_connection</a></li>
+<li><a href="connection.html#play_billing_get_config_async">play_billing_get_config_async</a></li>
+<li><a href="connection.html#play_billing_is_alternative_billing_only_available_async">play_billing_is_alternative_billing_only_available_async</a></li>
+<li><a href="connection.html#play_billing_is_billing_program_available_async">play_billing_is_billing_program_available_async</a></li>
+<li><a href="connection.html#play_billing_is_feature_supported">play_billing_is_feature_supported</a></li>
+<li><a href="products.html#play_billing_query_product_details_async">play_billing_query_product_details_async</a></li>
+<li><a href="products.html#play_billing_launch_billing_flow">play_billing_launch_billing_flow</a></li>
+<li><a href="purchases.html#play_billing_query_purchases_async">play_billing_query_purchases_async</a></li>
+<li><a href="purchases.html#play_billing_acknowledge_purchase">play_billing_acknowledge_purchase</a></li>
+<li><a href="purchases.html#play_billing_consume_async">play_billing_consume_async</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td><a href="connection.html#googleplaybillingresponsecode">GooglePlayBillingResponseCode</a></td>
+<td>The response code for the operation</td>
+</tr>
+<tr>
+<td>message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A human-readable debug message; only meaningful when troubleshooting a non-<code>Ok</code> <code>code</code></td>
+</tr>
+<tr>
+<td>sub_response_code</td>
+<td><a href="connection.html#googleplaybillingpurchasesupdatedsubresponsecode">GooglePlayBillingPurchasesUpdatedSubResponseCode</a></td>
+<td>Additional detail; only meaningful when this result comes from the purchases-updated callback registered in <a href="connection.html#play_billing_init">play_billing_init</a>, otherwise generally <code>None</code></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingconfig">GooglePlayBillingConfig</h1>
+<p>This struct is delivered by <a href="connection.html#play_billing_get_config_async">play_billing_get_config_async</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connection.html#play_billing_get_config_async">play_billing_get_config_async</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>country_code</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's Play Store country, as an ISO 3166-1 alpha-2 code</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingchoiceavailabilitydetails">GooglePlayBillingChoiceAvailabilityDetails</h1>
+<p>This struct is nested inside <a href="connection.html#googleplaybillingprogramavailabilitydetails">GooglePlayBillingProgramAvailabilityDetails</a> when checking the Billing Choice program.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="connection.html#googleplaybillingprogramavailabilitydetails">GooglePlayBillingProgramAvailabilityDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>choice_screen_type</td>
+<td><a href="connection.html#googleplaybillingchoicescreentype">GooglePlayBillingChoiceScreenType</a></td>
+<td>Who renders the billing choice screen</td>
+</tr>
+<tr>
+<td>external_link_available</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether an external-link option is available on the choice screen</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingprogramavailabilitydetails">GooglePlayBillingProgramAvailabilityDetails</h1>
+<p>This struct is delivered by <a href="connection.html#play_billing_is_billing_program_available_async">play_billing_is_billing_program_available_async</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="connection.html#play_billing_is_billing_program_available_async">play_billing_is_billing_program_available_async</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>billing_program</td>
+<td><a href="billing_programs.html#googleplaybillingprogram">GooglePlayBillingProgram</a></td>
+<td>The billing program the availability details describe</td>
+</tr>
+<tr>
+<td>billing_choice_details</td>
+<td><a href="connection.html#googleplaybillingchoiceavailabilitydetails">GooglePlayBillingChoiceAvailabilityDetails</a></td>
+<td>Present only when <code>billing_program</code> is <code>GooglePlayBillingProgram.BillingChoice</code></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="products.html" class="btn btn-neutral float-right" title="Products">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2026</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-GooglePlayBilling" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="getting_started.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="products.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
