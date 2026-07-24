@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Home - GMEXT-GooglePlayBilling</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "home.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-GooglePlayBilling
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Modules</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="connection.html">Connection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="products.html">Products</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="purchases.html">Purchases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="billing_programs.html">Billing Programs</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-GooglePlayBilling</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-GooglePlayBilling/edit/master/docs/home.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="google-play-billing"><strong>Google Play Billing</strong></h1>
+<h2 id="extensions-features">Extension's Features</h2>
+<ul>
+<li>Connect to the Google Play Store and query billing configuration/feature availability</li>
+<li>Query one-time products and subscriptions, including pricing, offers and pricing phases</li>
+<li>Launch the Play Store purchase UI for one-time products, bundles and subscriptions (including upgrades/downgrades)</li>
+<li>Query, acknowledge and consume the user's purchases</li>
+<li>Support alternative billing, external offers/payments and the Billing Choice program</li>
+<li>Show Play Store in-app messages (e.g. failed subscription renewal payments)</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>This extension wraps Google's <a href="https://developer.android.com/google/play/billing">Play Billing Library</a> (version 9.1.0), so it is only supported on <strong>Android</strong>. Before using any other function you must initialize the extension with <a href="connection.html#play_billing_init">play_billing_init</a> and connect to the Play Store with <a href="connection.html#play_billing_start_connection">play_billing_start_connection</a>.</p>
+<p>We recommend reviewing Google's own <a href="https://developer.android.com/google/play/billing/billing_overview">Billing Overview</a> documentation before using this extension, as it introduces the concepts (products, purchases, acknowledgement, consumption) that the functions here map onto closely.</p>
+<blockquote>
+<p>Purchase results are NOT returned directly by <a href="products.html#play_billing_launch_billing_flow">play_billing_launch_billing_flow</a>. Every purchase - however it was started - is delivered through the single callback registered in <a href="connection.html#play_billing_init">play_billing_init</a>, which fires for the lifetime of the client.</p>
+</blockquote>
+<h2 id="guides">Guides</h2>
+<p>Guides for the Google Play Billing extension.</p>
+<ul>
+<li><a href="getting_started.html">Getting Started</a></li>
+</ul>
+<h2 id="modules">Modules</h2>
+<p>The following are the available modules for the Google Play Billing extension:</p>
+<ul>
+<li><a href="connection.html">Connection</a></li>
+<li><a href="products.html">Products</a></li>
+<li><a href="purchases.html">Purchases</a></li>
+<li><a href="billing_programs.html">Billing Programs</a></li>
+</ul>
+<p><br></p>
+<hr />
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2026</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-GooglePlayBilling" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Products - GMEXT-GooglePlayBilling</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Products";
+        var mkdocs_page_input_path = "products.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-GooglePlayBilling
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Modules</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="connection.html">Connection</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Products</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="purchases.html">Purchases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="billing_programs.html">Billing Programs</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-GooglePlayBilling</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Modules</li>
+      <li class="breadcrumb-item active">Products</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-GooglePlayBilling/edit/master/docs/products.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="products"><strong>Products</strong></h1>
+<p>This module provides functions for querying product/subscription details and launching the Play Store purchase UI.</p>
+<h2 id="functions">Functions</h2>
+<p>The following functions are provided to query products and launch the billing flow:</p>
+<ul>
+<li><a href="products.html#play_billing_query_product_details_async">play_billing_query_product_details_async</a></li>
+<li><a href="products.html#play_billing_clear_products">play_billing_clear_products</a></li>
+<li><a href="products.html#play_billing_launch_billing_flow">play_billing_launch_billing_flow</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>The following structs are used by the product functions:</p>
+<ul>
+<li><a href="products.html#googleplaybillingproductinput">GooglePlayBillingProductInput</a></li>
+<li><a href="products.html#googleplaybillingproductdetails">GooglePlayBillingProductDetails</a></li>
+<li><a href="products.html#googleplaybillingunfetchedproduct">GooglePlayBillingUnfetchedProduct</a></li>
+<li><a href="products.html#googleplaybillingproductdetailsqueryresult">GooglePlayBillingProductDetailsQueryResult</a></li>
+<li><a href="products.html#googleplaybillingonetimepurchaseofferdetails">GooglePlayBillingOneTimePurchaseOfferDetails</a></li>
+<li><a href="products.html#googleplaybillingrentaldetails">GooglePlayBillingRentalDetails</a></li>
+<li><a href="products.html#googleplaybillingpreorderdetails">GooglePlayBillingPreorderDetails</a></li>
+<li><a href="products.html#googleplaybillingdiscountamount">GooglePlayBillingDiscountAmount</a></li>
+<li><a href="products.html#googleplaybillingdiscountdisplayinfo">GooglePlayBillingDiscountDisplayInfo</a></li>
+<li><a href="products.html#googleplaybillinglimitedquantityinfo">GooglePlayBillingLimitedQuantityInfo</a></li>
+<li><a href="products.html#googleplaybillingvalidtimewindow">GooglePlayBillingValidTimeWindow</a></li>
+<li><a href="products.html#googleplaybillingsubscriptionofferdetails">GooglePlayBillingSubscriptionOfferDetails</a></li>
+<li><a href="products.html#googleplaybillingpricingphase">GooglePlayBillingPricingPhase</a></li>
+<li><a href="products.html#googleplaybillinginstallmentplandetails">GooglePlayBillingInstallmentPlanDetails</a></li>
+<li><a href="products.html#googleplaybillingsubscriptionupdateparams">GooglePlayBillingSubscriptionUpdateParams</a></li>
+<li><a href="products.html#googleplaybillingproductdetailsparams">GooglePlayBillingProductDetailsParams</a></li>
+<li><a href="products.html#googleplaybillingflowoptions">GooglePlayBillingFlowOptions</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>The following constants are used by the product functions:</p>
+<ul>
+<li><a href="products.html#googleplaybillingproducttype">GooglePlayBillingProductType</a></li>
+<li><a href="products.html#googleplaybillingsubscriptionreplacementmode">GooglePlayBillingSubscriptionReplacementMode</a></li>
+<li><a href="products.html#googleplaybillingrecurrencemode">GooglePlayBillingRecurrenceMode</a></li>
+<li><a href="products.html#googleplaybillingunfetchedproductstatus">GooglePlayBillingUnfetchedProductStatus</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="play_billing_query_product_details_async">play_billing_query_product_details_async</h1>
+<p>This function queries the Play Store for the details of one or more products, caching the native
+<code>ProductDetails</code> for each product found so it can later be used by
+<a href="products.html#play_billing_launch_billing_flow">play_billing_launch_billing_flow</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Successful results are merged into the existing cache rather than replacing it, so you can query in-app products and subscriptions separately (or in multiple batches) without losing earlier results.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>play_billing_query_product_details_async(products, callback)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>products</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="products.html#googleplaybillingproductinput">GooglePlayBillingProductInput</a></td>
+<td>The products to query</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>The function to call once the query finishes</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+</blockquote>
+<p>This callback fires once, when the query finishes.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>billing_result</td>
+<td><a href="connection.html#googleplaybillingresult">GooglePlayBillingResult</a></td>
+<td>The result of the query</td>
+</tr>
+<tr>
+<td>query_result</td>
+<td><a href="products.html#googleplaybillingproductdetailsqueryresult">GooglePlayBillingProductDetailsQueryResult</a></td>
+<td>The products that were found and any that could not be fetched; always present, with empty arrays on failure</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>var _products = [
+    { product_id: &quot;single_time_purchase&quot;, product_type: GooglePlayBillingProductType.InApp },
+    { product_id: &quot;premium_subscription&quot;, product_type: GooglePlayBillingProductType.Subscription }
+];
+
+play_billing_query_product_details_async(_products, function(_billing_result, _query_result) {
+    if (_billing_result.code != GooglePlayBillingResponseCode.Ok) exit;
+
+    for (var i = 0; i &lt; array_length(_query_result.products); i++) {
+        var _product = _query_result.products[i];
+        show_debug_message($&quot;{_product.title}: {_product.product_id}&quot;);
+    }
+});
+</code></pre></div>
+This code queries a one-time product and a subscription, then logs the title of every product found.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="play_billing_clear_products">play_billing_clear_products</h1>
+<p>This function clears the native <code>ProductDetails</code> cache populated by
+<a href="products.html#play_billing_query_product_details_async">play_billing_query_product_details_async</a>. Products must be queried again before they can be
+used with <a href="products.html#play_billing_launch_billing_flow">play_billing_launch_billing_flow</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>play_billing_clear_products()
+</code></pre></div>
+</blockquote>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>play_billing_clear_products();
+</code></pre></div>
+This code clears the cached product details.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="play_billing_launch_billing_flow">play_billing_launch_billing_flow</h1>
+<p>This function launches the Play Store purchase UI for one or more products previously cached by
+<a href="products.html#play_billing_query_product_details_async">play_billing_query_product_details_async</a>. It supports a single purchase, a bundle of
+multiple one-time products, or a subscription with add-ons, and can replace (upgrade/downgrade) an
+existing subscription in the same flow.</p>
+<p>This function only returns the <em>immediate</em> result of launching the flow. The actual purchase result
+(success, cancellation, etc.) is delivered later through the callback registered in
+<a href="connection.html#play_billing_init">play_billing_init</a>, exactly like any other purchase update.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each product in <code>items</code> must already be present in the cache populated by <a href="products.html#play_billing_query_product_details_async">play_billing_query_product_details_async</a>; otherwise this function fails with <code>GooglePlayBillingResponseCode.DeveloperError</code> before reaching Google.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<div class="highlight"><pre><span></span><code>play_billing_launch_billing_flow(items, options=undefined)
+</code></pre></div>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="products.html#googleplaybillingproductdetailsparams">GooglePlayBillingProductDetailsParams</a></td>
+<td>The products to purchase in this flow</td>
+</tr>
+<tr>
+<td>options</td>
+<td><a href="products.html#googleplaybillingflowoptions">GooglePlayBillingFlowOptions</a></td>
+<td>Options controlling the billing flow</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="connection.html#googleplaybillingresult">GooglePlayBillingResult</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>var _items = [
+    { product_id: &quot;single_time_purchase&quot; }
+];
+
+var _result = play_billing_launch_billing_flow(_items);
+if (_result.code != GooglePlayBillingResponseCode.Ok) {
+    show_debug_message($&quot;Failed to launch billing flow: {_result.code}&quot;);
+}
+// The purchase outcome itself arrives later through play_billing_init&#39;s callback.
+</code></pre></div>
+This code launches the purchase flow for a single one-time product.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingproducttype">GooglePlayBillingProductType</h1>
+<p>This enumeration contains the product types used throughout the extension.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="purchases.html#play_billing_query_purchases_async">play_billing_query_purchases_async</a></li>
+</ul>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingproductinput">GooglePlayBillingProductInput</a></li>
+<li><a href="products.html#googleplaybillingunfetchedproduct">GooglePlayBillingUnfetchedProduct</a></li>
+<li><a href="products.html#googleplaybillingproductdetails">GooglePlayBillingProductDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>InApp</code></td>
+<td>A one-time product (managed product).</td>
+</tr>
+<tr>
+<td><code>Subscription</code></td>
+<td>A subscription product.</td>
+</tr>
+<tr>
+<td><code>Unknown</code></td>
+<td>The product type could not be determined.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingsubscriptionreplacementmode">GooglePlayBillingSubscriptionReplacementMode</h1>
+<p>This enumeration contains the ways an existing subscription can be replaced by <a href="products.html#googleplaybillingsubscriptionupdateparams">GooglePlayBillingSubscriptionUpdateParams</a>.</p>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingsubscriptionupdateparams">GooglePlayBillingSubscriptionUpdateParams</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UnknownReplacementMode</code></td>
+<td>No replacement mode specified; the billing flow fails if a replacement is required.</td>
+</tr>
+<tr>
+<td><code>WithTimeProration</code></td>
+<td>The new plan takes effect immediately; remaining time from the old plan is credited towards the new plan's billing period.</td>
+</tr>
+<tr>
+<td><code>ChargeProratedPrice</code></td>
+<td>The new plan takes effect immediately and the user is charged the prorated price difference immediately.</td>
+</tr>
+<tr>
+<td><code>WithoutProration</code></td>
+<td>The new plan takes effect immediately without any proration.</td>
+</tr>
+<tr>
+<td><code>ChargeFullPrice</code></td>
+<td>The new plan takes effect immediately and the user is charged the new plan's full price immediately, without proration.</td>
+</tr>
+<tr>
+<td><code>Deferred</code></td>
+<td>The new plan takes effect when the old plan's current billing period expires.</td>
+</tr>
+<tr>
+<td><code>KeepExisting</code></td>
+<td>The existing plan is kept as-is; no replacement occurs.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingrecurrencemode">GooglePlayBillingRecurrenceMode</h1>
+<p>This enumeration describes whether and how a <a href="products.html#googleplaybillingpricingphase">GooglePlayBillingPricingPhase</a> repeats.</p>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingpricingphase">GooglePlayBillingPricingPhase</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Unknown</code></td>
+<td>The recurrence mode could not be determined.</td>
+</tr>
+<tr>
+<td><code>InfiniteRecurring</code></td>
+<td>The phase repeats until the subscription is canceled.</td>
+</tr>
+<tr>
+<td><code>FiniteRecurring</code></td>
+<td>The phase repeats for a fixed number of billing periods (see <code>billing_cycle_count</code>).</td>
+</tr>
+<tr>
+<td><code>NonRecurring</code></td>
+<td>The phase does not repeat.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingunfetchedproductstatus">GooglePlayBillingUnfetchedProductStatus</h1>
+<p>This enumeration explains why a requested product could not be fetched, delivered as <a href="products.html#googleplaybillingunfetchedproduct">GooglePlayBillingUnfetchedProduct</a>'s <code>status_code</code>.</p>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingunfetchedproduct">GooglePlayBillingUnfetchedProduct</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Unknown</code></td>
+<td>The product could not be fetched for an unspecified reason.</td>
+</tr>
+<tr>
+<td><code>InvalidProductIdFormat</code></td>
+<td>The supplied product ID does not match the required format.</td>
+</tr>
+<tr>
+<td><code>ProductNotFound</code></td>
+<td>No product with the supplied ID exists.</td>
+</tr>
+<tr>
+<td><code>NoEligibleOffer</code></td>
+<td>No offer for the product is currently available to the user.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingproductinput">GooglePlayBillingProductInput</h1>
+<p>This struct describes a single product to query with <a href="products.html#play_billing_query_product_details_async">play_billing_query_product_details_async</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="products.html#play_billing_query_product_details_async">play_billing_query_product_details_async</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>product_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product ID (SKU) as configured in the Play Console</td>
+</tr>
+<tr>
+<td>product_type</td>
+<td><a href="products.html#googleplaybillingproducttype">GooglePlayBillingProductType</a></td>
+<td>Whether the product is a one-time product or a subscription</td>
+</tr>
+<tr>
+<td>dynamic_product_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The dynamic product token to use when querying a dynamically-priced product</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingsubscriptionupdateparams">GooglePlayBillingSubscriptionUpdateParams</h1>
+<p>This struct is nested inside <a href="products.html#googleplaybillingproductdetailsparams">GooglePlayBillingProductDetailsParams</a> to replace (upgrade or downgrade) an existing subscription as part of <a href="products.html#play_billing_launch_billing_flow">play_billing_launch_billing_flow</a>.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingproductdetailsparams">GooglePlayBillingProductDetailsParams</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>old_purchase_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The purchase token of the subscription being replaced</td>
+</tr>
+<tr>
+<td>old_product_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product ID of the subscription being replaced</td>
+</tr>
+<tr>
+<td>replacement_mode</td>
+<td><a href="products.html#googleplaybillingsubscriptionreplacementmode">GooglePlayBillingSubscriptionReplacementMode</a></td>
+<td>How the replacement should be prorated/timed</td>
+</tr>
+<tr>
+<td>original_external_transaction_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Only supply this when the subscription being replaced was originally purchased through alternative billing</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingflowoptions">GooglePlayBillingFlowOptions</h1>
+<p>This struct configures options for <a href="products.html#play_billing_launch_billing_flow">play_billing_launch_billing_flow</a>. Every member is optional; Google applies only the options actually present.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="products.html#play_billing_launch_billing_flow">play_billing_launch_billing_flow</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>is_offer_personalized</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether the price shown to the user was personalized using automated decision-making, as required by some regional regulations</td>
+</tr>
+<tr>
+<td>obfuscated_account_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An obfuscated identifier for the user's in-game account, echoed back on the resulting <a href="purchases.html#googleplaybillingpurchase">GooglePlayBillingPurchase</a>; must not contain PII and must not exceed 64 characters</td>
+</tr>
+<tr>
+<td>obfuscated_profile_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An obfuscated identifier for the user's in-game profile, echoed back on the resulting <a href="purchases.html#googleplaybillingpurchase">GooglePlayBillingPurchase</a>; must not contain PII and must not exceed 64 characters</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingrentaldetails">GooglePlayBillingRentalDetails</h1>
+<p>This struct is nested inside <a href="products.html#googleplaybillingonetimepurchaseofferdetails">GooglePlayBillingOneTimePurchaseOfferDetails</a> when the offer is a rental.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingonetimepurchaseofferdetails">GooglePlayBillingOneTimePurchaseOfferDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rental_period</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The rental viewing period, in ISO 8601 duration format (e.g. <code>"P7D"</code> for seven days)</td>
+</tr>
+<tr>
+<td>rental_expiration_period</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The period after which the rental expires once playback starts, in ISO 8601 duration format</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingpreorderdetails">GooglePlayBillingPreorderDetails</h1>
+<p>This struct is nested inside <a href="products.html#googleplaybillingonetimepurchaseofferdetails">GooglePlayBillingOneTimePurchaseOfferDetails</a> when the offer is a preorder.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingonetimepurchaseofferdetails">GooglePlayBillingOneTimePurchaseOfferDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>preorder_release_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The scheduled release time, as milliseconds since epoch</td>
+</tr>
+<tr>
+<td>preorder_presale_end_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The time the presale period ends, as milliseconds since epoch</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingdiscountamount">GooglePlayBillingDiscountAmount</h1>
+<p>This struct is nested inside <a href="products.html#googleplaybillingdiscountdisplayinfo">GooglePlayBillingDiscountDisplayInfo</a>.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingdiscountdisplayinfo">GooglePlayBillingDiscountDisplayInfo</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>formatted_discount_amount</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The discount amount, formatted for display including the currency symbol</td>
+</tr>
+<tr>
+<td>discount_amount_micros</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The discount amount in micros, where 1,000,000 micros equals one unit of the currency</td>
+</tr>
+<tr>
+<td>discount_amount_currency_code</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The discount's currency, as an ISO 4217 code</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillinglimitedquantityinfo">GooglePlayBillingLimitedQuantityInfo</h1>
+<p>This struct is nested inside <a href="products.html#googleplaybillingonetimepurchaseofferdetails">GooglePlayBillingOneTimePurchaseOfferDetails</a> when the offer has a limited purchase quantity.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingonetimepurchaseofferdetails">GooglePlayBillingOneTimePurchaseOfferDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>maximum_quantity</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The maximum quantity that can ever be purchased for this offer</td>
+</tr>
+<tr>
+<td>remaining_quantity</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The quantity still available for purchase</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingvalidtimewindow">GooglePlayBillingValidTimeWindow</h1>
+<p>This struct is nested inside <a href="products.html#googleplaybillingonetimepurchaseofferdetails">GooglePlayBillingOneTimePurchaseOfferDetails</a> when the offer is only valid during a specific time window.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingonetimepurchaseofferdetails">GooglePlayBillingOneTimePurchaseOfferDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The time the offer becomes valid, as milliseconds since epoch</td>
+</tr>
+<tr>
+<td>end_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The time the offer stops being valid, as milliseconds since epoch</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingpricingphase">GooglePlayBillingPricingPhase</h1>
+<p>This struct describes a single pricing phase of a subscription offer, as found inside <a href="products.html#googleplaybillingsubscriptionofferdetails">GooglePlayBillingSubscriptionOfferDetails</a>'s <code>pricing_phases</code>.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingsubscriptionofferdetails">GooglePlayBillingSubscriptionOfferDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>formatted_price</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The phase's price, formatted for display including the currency symbol</td>
+</tr>
+<tr>
+<td>price_amount_micros</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The phase's price in micros, where 1,000,000 micros equals one unit of the currency (<code>0</code> for a free trial phase)</td>
+</tr>
+<tr>
+<td>price_currency_code</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The phase's currency, as an ISO 4217 code</td>
+</tr>
+<tr>
+<td>billing_cycle_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of billing cycles this phase lasts, only meaningful when <code>recurrence_mode</code> is <code>GooglePlayBillingRecurrenceMode.FiniteRecurring</code></td>
+</tr>
+<tr>
+<td>billing_period</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The phase's billing period, in ISO 8601 duration format (e.g. <code>"P1M"</code> for monthly)</td>
+</tr>
+<tr>
+<td>recurrence_mode</td>
+<td><a href="products.html#googleplaybillingrecurrencemode">GooglePlayBillingRecurrenceMode</a></td>
+<td>Whether and how this phase repeats</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillinginstallmentplandetails">GooglePlayBillingInstallmentPlanDetails</h1>
+<p>This struct is nested inside <a href="products.html#googleplaybillingsubscriptionofferdetails">GooglePlayBillingSubscriptionOfferDetails</a> when the offer is billed as fixed installments.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingsubscriptionofferdetails">GooglePlayBillingSubscriptionOfferDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>commitment_payments_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of payments the user commits to for the initial commitment period</td>
+</tr>
+<tr>
+<td>subsequent_commitment_payments_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of payments for each subsequent commitment period after the first, once the plan auto-renews</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingunfetchedproduct">GooglePlayBillingUnfetchedProduct</h1>
+<p>This struct is delivered inside <a href="products.html#googleplaybillingproductdetailsqueryresult">GooglePlayBillingProductDetailsQueryResult</a> for every requested product that could not be fetched.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingproductdetailsqueryresult">GooglePlayBillingProductDetailsQueryResult</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>product_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product ID (SKU) that could not be fetched</td>
+</tr>
+<tr>
+<td>product_type</td>
+<td><a href="products.html#googleplaybillingproducttype">GooglePlayBillingProductType</a></td>
+<td>The product type that was requested</td>
+</tr>
+<tr>
+<td>status_code</td>
+<td><a href="products.html#googleplaybillingunfetchedproductstatus">GooglePlayBillingUnfetchedProductStatus</a></td>
+<td>Why the product could not be fetched</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingproductdetailsparams">GooglePlayBillingProductDetailsParams</h1>
+<p>This struct describes a single item to purchase in a call to <a href="products.html#play_billing_launch_billing_flow">play_billing_launch_billing_flow</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="products.html#play_billing_launch_billing_flow">play_billing_launch_billing_flow</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>product_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product ID (SKU) to purchase; must already be cached by <a href="products.html#play_billing_query_product_details_async">play_billing_query_product_details_async</a></td>
+</tr>
+<tr>
+<td>offer_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The offer token of the specific offer to purchase (see <a href="products.html#googleplaybillingonetimepurchaseofferdetails">GooglePlayBillingOneTimePurchaseOfferDetails</a>/<a href="products.html#googleplaybillingsubscriptionofferdetails">GooglePlayBillingSubscriptionOfferDetails</a>); when omitted, the product's default offer is used</td>
+</tr>
+<tr>
+<td>subscription_replacement</td>
+<td><a href="products.html#googleplaybillingsubscriptionupdateparams">GooglePlayBillingSubscriptionUpdateParams</a></td>
+<td>Only for subscription upgrades/downgrades; supply on at most one item per billing flow</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingdiscountdisplayinfo">GooglePlayBillingDiscountDisplayInfo</h1>
+<p>This struct is nested inside <a href="products.html#googleplaybillingonetimepurchaseofferdetails">GooglePlayBillingOneTimePurchaseOfferDetails</a> when the offer is discounted.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingonetimepurchaseofferdetails">GooglePlayBillingOneTimePurchaseOfferDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>percentage_discount</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The discount, as a whole-number percentage off the full price</td>
+</tr>
+<tr>
+<td>discount_amount</td>
+<td><a href="products.html#googleplaybillingdiscountamount">GooglePlayBillingDiscountAmount</a></td>
+<td>The discount, as a formatted currency amount</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingsubscriptionofferdetails">GooglePlayBillingSubscriptionOfferDetails</h1>
+<p>This struct describes a single subscription offer, as found inside <a href="products.html#googleplaybillingproductdetails">GooglePlayBillingProductDetails</a>'s <code>subscription_offer_details</code>.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingproductdetails">GooglePlayBillingProductDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base_plan_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The base plan ID this offer belongs to</td>
+</tr>
+<tr>
+<td>offer_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The offer ID, if this offer is a discounted offer on top of the base plan</td>
+</tr>
+<tr>
+<td>offer_tags</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Developer-defined tags associated with this offer</td>
+</tr>
+<tr>
+<td>offer_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The token to pass as <code>offer_token</code> on <a href="products.html#googleplaybillingproductdetailsparams">GooglePlayBillingProductDetailsParams</a> to purchase this specific offer</td>
+</tr>
+<tr>
+<td>pricing_phases</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="products.html#googleplaybillingpricingphase">GooglePlayBillingPricingPhase</a></td>
+<td>The sequence of pricing phases (e.g. a free trial followed by the recurring price) for this offer</td>
+</tr>
+<tr>
+<td>installment_plan_details</td>
+<td><a href="products.html#googleplaybillinginstallmentplandetails">GooglePlayBillingInstallmentPlanDetails</a></td>
+<td>Present only when this offer is billed as fixed installments</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingonetimepurchaseofferdetails">GooglePlayBillingOneTimePurchaseOfferDetails</h1>
+<p>This struct describes a single one-time purchase offer, as found inside <a href="products.html#googleplaybillingproductdetails">GooglePlayBillingProductDetails</a>'s <code>one_time_purchase_offer_details</code>.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingproductdetails">GooglePlayBillingProductDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>formatted_price</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The offer's price, formatted for display including the currency symbol (e.g. <code>"€3.99"</code>)</td>
+</tr>
+<tr>
+<td>price_amount_micros</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The offer's price in micros, where 1,000,000 micros equals one unit of the currency</td>
+</tr>
+<tr>
+<td>price_currency_code</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The offer's currency, as an ISO 4217 code (e.g. <code>"EUR"</code>)</td>
+</tr>
+<tr>
+<td>offer_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The offer ID, if this is a discounted offer rather than the base price</td>
+</tr>
+<tr>
+<td>offer_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The token to pass as <code>offer_token</code> on <a href="products.html#googleplaybillingproductdetailsparams">GooglePlayBillingProductDetailsParams</a> to purchase this specific offer</td>
+</tr>
+<tr>
+<td>offer_tags</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Developer-defined tags associated with this offer</td>
+</tr>
+<tr>
+<td>purchase_option_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The purchase option ID this offer belongs to</td>
+</tr>
+<tr>
+<td>full_price_micros</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The full (undiscounted) price in micros, present only on a discounted offer</td>
+</tr>
+<tr>
+<td>rental_details</td>
+<td><a href="products.html#googleplaybillingrentaldetails">GooglePlayBillingRentalDetails</a></td>
+<td>Present only when this offer is a rental</td>
+</tr>
+<tr>
+<td>preorder_details</td>
+<td><a href="products.html#googleplaybillingpreorderdetails">GooglePlayBillingPreorderDetails</a></td>
+<td>Present only when this offer is a preorder</td>
+</tr>
+<tr>
+<td>discount_display_info</td>
+<td><a href="products.html#googleplaybillingdiscountdisplayinfo">GooglePlayBillingDiscountDisplayInfo</a></td>
+<td>Present only on a discounted offer</td>
+</tr>
+<tr>
+<td>limited_quantity_info</td>
+<td><a href="products.html#googleplaybillinglimitedquantityinfo">GooglePlayBillingLimitedQuantityInfo</a></td>
+<td>Present only when this offer has a limited purchase quantity</td>
+</tr>
+<tr>
+<td>valid_time_window</td>
+<td><a href="products.html#googleplaybillingvalidtimewindow">GooglePlayBillingValidTimeWindow</a></td>
+<td>Present only when this offer is only valid during a specific time window</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingproductdetails">GooglePlayBillingProductDetails</h1>
+<p>This struct is delivered inside <a href="products.html#googleplaybillingproductdetailsqueryresult">GooglePlayBillingProductDetailsQueryResult</a> for every product found by <a href="products.html#play_billing_query_product_details_async">play_billing_query_product_details_async</a>.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="products.html#googleplaybillingproductdetailsqueryresult">GooglePlayBillingProductDetailsQueryResult</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>product_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product ID (SKU) as configured in the Play Console</td>
+</tr>
+<tr>
+<td>name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product's display name</td>
+</tr>
+<tr>
+<td>title</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product's title, including the app name, as shown by the Play Store</td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product's description</td>
+</tr>
+<tr>
+<td>product_type</td>
+<td><a href="products.html#googleplaybillingproducttype">GooglePlayBillingProductType</a></td>
+<td>Whether the product is a one-time product or a subscription</td>
+</tr>
+<tr>
+<td>one_time_purchase_offer_details</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="products.html#googleplaybillingonetimepurchaseofferdetails">GooglePlayBillingOneTimePurchaseOfferDetails</a></td>
+<td>The one-time purchase offers for this product; empty for subscriptions</td>
+</tr>
+<tr>
+<td>subscription_offer_details</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="products.html#googleplaybillingsubscriptionofferdetails">GooglePlayBillingSubscriptionOfferDetails</a></td>
+<td>The subscription offers for this product; empty for one-time products</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="googleplaybillingproductdetailsqueryresult">GooglePlayBillingProductDetailsQueryResult</h1>
+<p>This struct is delivered by <a href="products.html#play_billing_query_product_details_async">play_billing_query_product_details_async</a>.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="products.html#play_billing_query_product_details_async">play_billing_query_product_details_async</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>products</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="products.html#googleplaybillingproductdetails">GooglePlayBillingProductDetails</a></td>
+<td>The products that were found</td>
+</tr>
+<tr>
+<td>unfetched_products</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="products.html#googleplaybillingunfetchedproduct">GooglePlayBillingUnfetchedProduct</a></td>
+<td>The requested products that could not be fetched, and why</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="connection.html" class="btn btn-neutral float-left" title="Connection"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="purchases.html" class="btn btn-neutral float-right" title="Purchases">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2026</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-GooglePlayBilling" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="connection.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="purchases.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

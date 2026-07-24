@@ -1,0 +1,703 @@
+[gml_api]
+module GMGooglePlayBilling;
+
+// =============================================================================
+// Enums — Google Play Billing 9.1.0
+// =============================================================================
+
+/// Product category used by product and purchase queries.
+/// Kotlin maps these values to BillingClient.ProductType constants.
+[global, bind = typed_gml]
+enum GooglePlayBillingProductType : int32
+{
+    InApp = 0,
+    Subscription = 1,
+    Unknown = 2,
+}
+
+/// Feature queried by play_billing_is_feature_supported.
+/// Kotlin maps these values to BillingClient.FeatureType constants.
+[global, bind = typed_gml]
+enum GooglePlayBillingFeatureType : int32
+{
+    AlternativeBillingOnly = 0,
+    BillingConfig = 1,
+    ExternalOffer = 2,
+    IncludeSuspendedSubscriptions = 3,
+    InAppMessaging = 4,
+    PriceChangeConfirmation = 5,
+    ProductDetails = 6,
+    Subscriptions = 7,
+    SubscriptionsUpdate = 8,
+}
+
+/// Billing programs supported by BillingClient.Builder.enableBillingProgram.
+[global, bind = typed_gml]
+enum GooglePlayBillingProgram : int32
+{
+    Unspecified = 0,
+    ExternalContentLink = 1,
+    ExternalOffer = 3,
+    ExternalPayments = 4,
+    BillingChoice = 5,
+}
+
+[global, bind = typed_gml]
+enum GooglePlayBillingResponseCode : int32
+{
+    /// Deprecated by Google; ServiceUnavailable is returned instead in modern clients.
+    ServiceTimeout = -3,
+    FeatureNotSupported = -2,
+    ServiceDisconnected = -1,
+    Ok = 0,
+    UserCanceled = 1,
+    ServiceUnavailable = 2,
+    BillingUnavailable = 3,
+    ItemUnavailable = 4,
+    DeveloperError = 5,
+    Error = 6,
+    ItemAlreadyOwned = 7,
+    ItemNotOwned = 8,
+    NetworkError = 12,
+}
+
+[global, bind = typed_gml]
+enum GooglePlayBillingPurchasesUpdatedSubResponseCode : int32
+{
+    None = 0,
+    PaymentDeclinedDueToInsufficientFunds = 1,
+    UserIneligible = 2,
+}
+
+[global, bind = typed_gml]
+enum GooglePlayBillingPurchaseState : int32
+{
+    UnspecifiedState = 0,
+    Purchased = 1,
+    Pending = 2,
+}
+
+/// BillingFlowParams.ProductDetailsParams.SubscriptionProductReplacementParams.ReplacementMode.
+[global, bind = typed_gml]
+enum GooglePlayBillingSubscriptionReplacementMode : int32
+{
+    UnknownReplacementMode = 0,
+    WithTimeProration = 1,
+    ChargeProratedPrice = 2,
+    WithoutProration = 3,
+    ChargeFullPrice = 4,
+    Deferred = 5,
+    KeepExisting = 6,
+}
+
+[global, bind = typed_gml]
+enum GooglePlayBillingConnectionState : int32
+{
+    Disconnected = 0,
+    Connecting = 1,
+    Connected = 2,
+    Closed = 3,
+}
+
+[global, bind = typed_gml]
+enum GooglePlayBillingRecurrenceMode : int32
+{
+    Unknown = 0,
+    InfiniteRecurring = 1,
+    FiniteRecurring = 2,
+    NonRecurring = 3,
+}
+
+[global, bind = typed_gml]
+enum GooglePlayBillingUnfetchedProductStatus : int32
+{
+    Unknown = 0,
+    InvalidProductIdFormat = 2,
+    ProductNotFound = 3,
+    NoEligibleOffer = 4,
+}
+
+[global, bind = typed_gml]
+enum GooglePlayBillingInAppMessageResponseCode : int32
+{
+    NoActionNeeded = 0,
+    SubscriptionStatusUpdated = 1,
+}
+
+[global, bind = typed_gml]
+enum GooglePlayBillingChoiceScreenType : int32
+{
+    Unspecified = 0,
+    DeveloperRendered = 1,
+    GoogleRendered = 2,
+}
+
+[global, bind = typed_gml]
+enum GooglePlayBillingInAppMessageCategory : int32
+{
+    Unknown = 0,
+    SubscriptionUpdate = 1,
+    PriceChange = 2,
+}
+
+// =============================================================================
+// Input records
+// =============================================================================
+
+/// Options used when creating BillingClient.
+/// One-time purchases (pending purchases) are always enabled for Billing 9.1+ support.
+/// enable_prepaid_plans enables pending transactions for prepaid subscriptions.
+/// Billing-program flags must only be enabled when the application is eligible
+/// and configured for the corresponding Google Play billing program.
+/// Explicit Boolean fields are used instead of an enum array because generated
+/// GMIDL enum-array accessors are Java enum objects, while BillingClient.Builder
+/// expects integer BillingProgram constants.
+[global]
+class `[[GooglePlayBillingInitOptions]]` prototype Object
+{
+    /// Optional. Defaults to false when omitted.
+    [field, type_hint = `bool?`]
+    property enable_auto_service_reconnection : gmval { get; set; }
+
+    /// Optional. Defaults to false when omitted.
+    [field, type_hint = `bool?`]
+    property enable_prepaid_plans : gmval { get; set; }
+
+    /// Optional. Defaults to false when omitted.
+    [field, type_hint = `bool?`]
+    property enable_alternative_billing_only : gmval { get; set; }
+
+    /// Optional. Defaults to false when omitted.
+    [field, type_hint = `bool?`]
+    property enable_external_content_link : gmval { get; set; }
+
+    /// Optional. Defaults to false when omitted.
+    [field, type_hint = `bool?`]
+    property enable_external_offer : gmval { get; set; }
+
+    /// Optional. Defaults to false when omitted.
+    [field, type_hint = `bool?`]
+    property enable_external_payments : gmval { get; set; }
+
+    /// Optional. Defaults to false when omitted.
+    [field, type_hint = `bool?`]
+    property enable_billing_choice : gmval { get; set; }
+}
+
+/// Product entry passed to play_billing_query_product_details_async.
+[global]
+class `[[GooglePlayBillingProductInput]]` prototype Object
+{
+    [field] property product_id : string { get; set; }
+    [field, type_hint = `GooglePlayBillingProductType`]
+    property product_type : int32 { get; set; }
+    /// Optional. Dynamic product token for querying dynamic products (Billing 9.1+).
+    [field, type_hint = `string?`]
+    property dynamic_product_token : gmval { get; set; }
+}
+
+/// Parameters for replacing an existing subscription product.
+[global]
+class `[[GooglePlayBillingSubscriptionUpdateParams]]` prototype Object
+{
+    /// Required when subscription_update_params is supplied.
+    [field] property old_purchase_token : string { get; set; }
+
+    /// Required when subscription_update_params is supplied.
+    [field] property old_product_id : string { get; set; }
+
+    /// Required when subscription_update_params is supplied.
+    [field, type_hint = `GooglePlayBillingSubscriptionReplacementMode`]
+    property replacement_mode : int32 { get; set; }
+
+    /// Optional. Supply only when the originating subscription transaction
+    /// was processed through alternative billing.
+    [field, type_hint = `string?`]
+    property original_external_transaction_id : gmval { get; set; }
+}
+
+/// Item in a multi-product billing flow (bundles, subscriptions with add-ons).
+[global]
+class `[[GooglePlayBillingProductDetailsParams]]` prototype Object
+{
+    /// Required. Product ID to purchase.
+    [field] property product_id : string { get; set; }
+
+    /// Optional. Offer token for the product. When omitted, uses default offer.
+    [field, type_hint = `string?`]
+    property offer_token : gmval { get; set; }
+
+    /// Optional. Subscription replacement parameters. Only for subscription upgrades/downgrades.
+    [field, type_hint = `GooglePlayBillingSubscriptionUpdateParams?`]
+    property subscription_replacement : gmval { get; set; }
+}
+
+/// Options for play_billing_launch_billing_flow.
+/// Every property is optional. Kotlin applies only properties that are present.
+[global]
+class `[[GooglePlayBillingFlowOptions]]` prototype Object
+{
+    /// Optional. When omitted, BillingFlowParams keeps the SDK default.
+    [field, type_hint = `bool?`]
+    property is_offer_personalized : gmval { get; set; }
+
+    /// Optional. Must not contain PII and must not exceed 64 characters.
+    [field, type_hint = `string?`]
+    property obfuscated_account_id : gmval { get; set; }
+
+    /// Optional. Must not contain PII and must not exceed 64 characters.
+    [field, type_hint = `string?`]
+    property obfuscated_profile_id : gmval { get; set; }
+}
+
+/// Options for play_billing_show_in_app_messages.
+[global]
+class `[[GooglePlayBillingInAppMessageOptions]]` prototype Object
+{
+    /// Optional. Message category codes to show. When omitted, shows all categories.
+    /// Category codes: 0=Unknown, 1=SubscriptionUpdate, 2=PriceChange
+    /// If empty array is supplied, no messages are shown.
+    [field, type_hint = `GooglePlayBillingInAppMessageCategory[]`]
+    property categories : gmval { get; set; }
+}
+
+// =============================================================================
+// Result and product records
+// =============================================================================
+
+[global]
+class `[[GooglePlayBillingResult]]` prototype Object
+{
+    [field, type_hint = `GooglePlayBillingResponseCode`]
+    property code : int32 { get; set; }
+    [field, type_hint = `string?`]
+    property message : gmval { get; set; }
+    [field, type_hint = `GooglePlayBillingPurchasesUpdatedSubResponseCode`]
+    property sub_response_code : int32 { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingConfig]]` prototype Object
+{
+    [field] property country_code : string { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingRentalDetails]]` prototype Object
+{
+    [field] property rental_period : string { get; set; }
+    [field, type_hint = `string?`]
+    property rental_expiration_period : gmval { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingPreorderDetails]]` prototype Object
+{
+    [field] property preorder_release_time : real { get; set; }
+    [field] property preorder_presale_end_time : real { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingDiscountAmount]]` prototype Object
+{
+    [field] property formatted_discount_amount : string { get; set; }
+    [field] property discount_amount_micros : real { get; set; }
+    [field] property discount_amount_currency_code : string { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingDiscountDisplayInfo]]` prototype Object
+{
+    [field, type_hint = `int32?`]
+    property percentage_discount : gmval { get; set; }
+    [field, type_hint = `GooglePlayBillingDiscountAmount?`]
+    property discount_amount : gmval { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingLimitedQuantityInfo]]` prototype Object
+{
+    [field] property maximum_quantity : int32 { get; set; }
+    [field] property remaining_quantity : int32 { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingValidTimeWindow]]` prototype Object
+{
+    [field, type_hint = `real?`]
+    property start_time : gmval { get; set; }
+    [field, type_hint = `real?`]
+    property end_time : gmval { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingOneTimePurchaseOfferDetails]]` prototype Object
+{
+    [field] property formatted_price : string { get; set; }
+    [field] property price_amount_micros : real { get; set; }
+    [field] property price_currency_code : string { get; set; }
+    [field, type_hint = `string?`]
+    property offer_id : gmval { get; set; }
+    [field, type_hint = `string?`]
+    property offer_token : gmval { get; set; }
+    [field, type_hint = `string[]`]
+    property offer_tags : gmval { get; set; }
+    [field, type_hint = `string?`]
+    property purchase_option_id : gmval { get; set; }
+    [field, type_hint = `real?`]
+    property full_price_micros : gmval { get; set; }
+    [field, type_hint = `GooglePlayBillingRentalDetails?`]
+    property rental_details : gmval { get; set; }
+    [field, type_hint = `GooglePlayBillingPreorderDetails?`]
+    property preorder_details : gmval { get; set; }
+    [field, type_hint = `GooglePlayBillingDiscountDisplayInfo?`]
+    property discount_display_info : gmval { get; set; }
+    [field, type_hint = `GooglePlayBillingLimitedQuantityInfo?`]
+    property limited_quantity_info : gmval { get; set; }
+    [field, type_hint = `GooglePlayBillingValidTimeWindow?`]
+    property valid_time_window : gmval { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingPricingPhase]]` prototype Object
+{
+    [field] property formatted_price : string { get; set; }
+    [field] property price_amount_micros : real { get; set; }
+    [field] property price_currency_code : string { get; set; }
+    [field] property billing_cycle_count : int32 { get; set; }
+    [field] property billing_period : string { get; set; }
+    [field, type_hint = `GooglePlayBillingRecurrenceMode`]
+    property recurrence_mode : int32 { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingInstallmentPlanDetails]]` prototype Object
+{
+    [field] property commitment_payments_count : int32 { get; set; }
+    [field] property subsequent_commitment_payments_count : int32 { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingSubscriptionOfferDetails]]` prototype Object
+{
+    [field] property base_plan_id : string { get; set; }
+    [field, type_hint = `string?`]
+    property offer_id : gmval { get; set; }
+    [field, type_hint = `string[]`]
+    property offer_tags : gmval { get; set; }
+    [field] property offer_token : string { get; set; }
+    [field, type_hint = `GooglePlayBillingPricingPhase[]`]
+    property pricing_phases : gmval { get; set; }
+    [field, type_hint = `GooglePlayBillingInstallmentPlanDetails?`]
+    property installment_plan_details : gmval { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingProductDetails]]` prototype Object
+{
+    [field] property product_id : string { get; set; }
+    [field] property name : string { get; set; }
+    [field] property title : string { get; set; }
+    [field] property description : string { get; set; }
+    [field, type_hint = `GooglePlayBillingProductType`]
+    property product_type : int32 { get; set; }
+    [field, type_hint = `GooglePlayBillingOneTimePurchaseOfferDetails[]`]
+    property one_time_purchase_offer_details : gmval { get; set; }
+    [field, type_hint = `GooglePlayBillingSubscriptionOfferDetails[]`]
+    property subscription_offer_details : gmval { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingAccountIdentifiers]]` prototype Object
+{
+    [field, type_hint = `string?`]
+    property obfuscated_account_id : gmval { get; set; }
+    [field, type_hint = `string?`]
+    property obfuscated_profile_id : gmval { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingPendingPurchaseUpdate]]` prototype Object
+{
+    [field] property purchase_token : string { get; set; }
+    [field, type_hint = `string[]`]
+    property products : gmval { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingPurchase]]` prototype Object
+{
+    [field, type_hint = `string?`]
+    property order_id : gmval { get; set; }
+    [field] property package_name : string { get; set; }
+    [field] property purchase_time : real { get; set; }
+    [field] property purchase_token : string { get; set; }
+    [field, type_hint = `string[]`]
+    property products : gmval { get; set; }
+    [field] property signature : string { get; set; }
+    [field] property is_acknowledged : bool { get; set; }
+    [field] property is_auto_renewing : bool { get; set; }
+    [field, type_hint = `GooglePlayBillingPurchaseState`]
+    property purchase_state : int32 { get; set; }
+    [field] property quantity : int32 { get; set; }
+    [field] property original_json : string { get; set; }
+    [field] property is_suspended : bool { get; set; }
+    [field, type_hint = `GooglePlayBillingAccountIdentifiers?`]
+    property account_identifiers : gmval { get; set; }
+    [field, type_hint = `GooglePlayBillingPendingPurchaseUpdate?`]
+    property pending_purchase_update : gmval { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingUnfetchedProduct]]` prototype Object
+{
+    [field] property product_id : string { get; set; }
+    [field, type_hint = `GooglePlayBillingProductType`]
+    property product_type : int32 { get; set; }
+    [field, type_hint = `GooglePlayBillingUnfetchedProductStatus`]
+    property status_code : int32 { get; set; }
+}
+
+// =============================================================================
+// Callback-specific payload records
+// =============================================================================
+
+/// Delivered as the second callback argument of play_billing_query_product_details_async,
+/// alongside the GooglePlayBillingResult - mirrors QueryProductDetailsResult's own two fields.
+[global]
+class `[[GooglePlayBillingProductDetailsQueryResult]]` prototype Object
+{
+    [field, type_hint = `GooglePlayBillingProductDetails[]`]
+    property products : gmval { get; set; }
+    [field, type_hint = `GooglePlayBillingUnfetchedProduct[]`]
+    property unfetched_products : gmval { get; set; }
+}
+
+/// Delivered as the second (optional) callback argument of both
+/// play_billing_create_alternative_billing_only_reporting_details_async and
+/// play_billing_create_billing_program_reporting_details_async.
+[global]
+class `[[GooglePlayBillingReportingDetails]]` prototype Object
+{
+    /// Absent on the alternative-billing-only reporting path (that program has no
+    /// BillingProgram ordinal of its own - see enable_alternative_billing_only).
+    [field, type_hint = `GooglePlayBillingProgram?`]
+    property billing_program : gmval { get; set; }
+    [field] property external_transaction_token : string { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingChoiceAvailabilityDetails]]` prototype Object
+{
+    [field, type_hint = `GooglePlayBillingChoiceScreenType`]
+    property choice_screen_type : int32 { get; set; }
+    [field] property external_link_available : bool { get; set; }
+}
+
+/// Delivered as the second (optional) callback argument of
+/// play_billing_is_billing_program_available_async.
+[global]
+class `[[GooglePlayBillingProgramAvailabilityDetails]]` prototype Object
+{
+    [field, type_hint = `GooglePlayBillingProgram`]
+    property billing_program : int32 { get; set; }
+    [field, type_hint = `GooglePlayBillingChoiceAvailabilityDetails?`]
+    property billing_choice_details : gmval { get; set; }
+}
+
+/// Delivered as the sole callback argument of play_billing_show_in_app_messages -
+/// its own code system (InAppMessageResult.responseCode), unrelated to GooglePlayBillingResponseCode.
+[global]
+class `[[GooglePlayBillingInAppMessageResult]]` prototype Object
+{
+    [field, type_hint = `GooglePlayBillingInAppMessageResponseCode`]
+    property response_code : int32 { get; set; }
+    [field, type_hint = `string?`]
+    property purchase_token : gmval { get; set; }
+}
+
+/// Delivered as the second (optional) callback argument of
+/// play_billing_get_billing_choice_info_async.
+[global]
+class `[[GooglePlayBillingChoiceInfo]]` prototype Object
+{
+    [field, type_hint = `string?`]
+    property billing_choice_image_url : gmval { get; set; }
+    [field, type_hint = `string?`]
+    property loyalty_info : gmval { get; set; }
+}
+
+[global]
+class `[[GooglePlayBillingExternalLinkLaunchOptions]]` prototype Object
+{
+    [field, type_hint = `GooglePlayBillingProgram`]
+    property billing_program : int32 { get; set; }
+}
+
+// =============================================================================
+// Init / connection
+// =============================================================================
+
+/// callback(billing_result: GooglePlayBillingResult, purchases: GooglePlayBillingPurchase[])
+/// fires whenever purchases update. purchases is always a real (possibly empty) array.
+[global, bind = typed_gml]
+function play_billing_init(
+    [type_hint = `GooglePlayBillingInitOptions?`] options: gmval,
+    callback: func
+): unit;
+
+/// callback_start(billing_result: GooglePlayBillingResult).
+/// callback_disconnect() - no arguments, mirrors onBillingServiceDisconnected() exactly.
+[global, bind = typed_gml]
+function play_billing_start_connection(callback_start: func, callback_disconnect: func): unit;
+
+[global, bind = typed_gml]
+function play_billing_end_connection(): unit;
+
+[global, bind = typed_gml, type_hint = `GooglePlayBillingConnectionState`]
+function play_billing_get_connection_state(): int32;
+
+[global, bind = typed_gml]
+function play_billing_is_ready(): bool;
+
+// =============================================================================
+// Config / availability / feature support
+// =============================================================================
+
+/// callback(billing_result: GooglePlayBillingResult, config: GooglePlayBillingConfig?) -
+/// config is absent (undefined) whenever Google didn't deliver one, including on failure.
+[global, bind = typed_gml]
+function play_billing_get_config_async(callback: func): unit;
+
+/// callback(billing_result: GooglePlayBillingResult).
+[global, bind = typed_gml]
+function play_billing_is_alternative_billing_only_available_async(callback: func): unit;
+
+/// callback(billing_result: GooglePlayBillingResult, availability_details: GooglePlayBillingProgramAvailabilityDetails?) -
+/// availability_details is absent (undefined) only when the request never reached Google
+/// (e.g. BillingClient not ready); never fabricated.
+[global, bind = typed_gml]
+function play_billing_is_billing_program_available_async(
+    [type_hint = `GooglePlayBillingProgram`] program: int32,
+    callback: func
+): unit;
+
+[global, bind = typed_gml, type_hint = `GooglePlayBillingResult`]
+function play_billing_is_feature_supported(
+    [type_hint = `GooglePlayBillingFeatureType`] feature: int32
+): gmval;
+
+// =============================================================================
+// Products
+// =============================================================================
+
+/// callback(billing_result: GooglePlayBillingResult, query_result: GooglePlayBillingProductDetailsQueryResult) -
+/// query_result is always present (its products/unfetched_products arrays are simply empty on failure),
+/// mirroring queryProductDetailsAsync's own (BillingResult, QueryProductDetailsResult) listener shape.
+[global, bind = typed_gml]
+function play_billing_query_product_details_async(
+    [type_hint = `GooglePlayBillingProductInput[]`] products: gmval,
+    callback: func
+): unit;
+
+/// Clears the native ProductDetails cache used by play_billing_launch_billing_flow.
+[global, bind = typed_gml]
+function play_billing_clear_products(): unit;
+
+// =============================================================================
+// Billing flow
+// =============================================================================
+
+/// Launches one or more products using ProductDetails cached by the query function.
+/// Supports single purchases, bundles (multiple one-time products), and subscriptions with add-ons.
+/// Each item can specify its own offer token and subscription replacement parameters.
+/// Always returns the complete GooglePlayBillingResult instead of a Boolean.
+[global, bind = typed_gml, type_hint = `GooglePlayBillingResult`]
+function play_billing_launch_billing_flow(
+    [type_hint = `GooglePlayBillingProductDetailsParams[]`] items: gmval,
+    [type_hint = `GooglePlayBillingFlowOptions?`] options: gmval
+): gmval;
+
+// =============================================================================
+// Purchases
+// =============================================================================
+
+/// callback(billing_result: GooglePlayBillingResult, purchases: GooglePlayBillingPurchase[]).
+[global, bind = typed_gml]
+function play_billing_query_purchases_async(
+    [type_hint = `GooglePlayBillingProductType`] product_type: int32,
+    include_suspended_subscriptions: bool,
+    callback: func
+): unit;
+
+/// callback(billing_result: GooglePlayBillingResult).
+[global, bind = typed_gml]
+function play_billing_acknowledge_purchase(purchase_token: string, callback: func): unit;
+
+/// callback(billing_result: GooglePlayBillingResult, purchase_token: string) -
+/// purchase_token is always the same token passed to this function, echoed back,
+/// mirroring ConsumeResponseListener's own (BillingResult, String) signature exactly.
+[global, bind = typed_gml]
+function play_billing_consume_async(purchase_token: string, callback: func): unit;
+
+// =============================================================================
+// Alternative billing / billing programs
+// =============================================================================
+
+/// callback(billing_result: GooglePlayBillingResult, reporting_details: GooglePlayBillingReportingDetails?) -
+/// reporting_details is absent (undefined) on failure.
+[global, bind = typed_gml]
+function play_billing_create_alternative_billing_only_reporting_details_async(callback: func): unit;
+
+/// Replaces the deprecated createExternalOfferReportingDetailsAsync API.
+/// callback(billing_result: GooglePlayBillingResult, reporting_details: GooglePlayBillingReportingDetails?) -
+/// reporting_details is absent (undefined) on failure.
+[global, bind = typed_gml]
+function play_billing_create_billing_program_reporting_details_async(
+    [type_hint = `GooglePlayBillingProgram`] program: int32,
+    callback: func
+): unit;
+
+// =============================================================================
+// In-app messages
+// =============================================================================
+
+/// Returns the immediate BillingResult from showInAppMessages.
+/// When omitted, all message categories are shown (default behavior).
+/// callback(in_app_message_result: GooglePlayBillingInAppMessageResult) when the flow finishes -
+/// its own single-argument wrapper, matching InAppMessageResponseListener's own single-param signature.
+[global, bind = typed_gml, type_hint = `GooglePlayBillingResult`]
+function play_billing_show_in_app_messages(
+    [type_hint = `GooglePlayBillingInAppMessageOptions?`] options: gmval,
+    callback: func
+): gmval;
+
+// =============================================================================
+// Billing Choice (Billing 9.1+)
+// =============================================================================
+
+/// callback(billing_result: GooglePlayBillingResult, choice_info: GooglePlayBillingChoiceInfo?) -
+/// choice_info is absent (undefined) on failure.
+[global, bind = typed_gml]
+function play_billing_get_billing_choice_info_async(callback: func): unit;
+
+/// Launches the Play Billing system UI to show the information dialog for a billing program.
+/// callback(billing_result: GooglePlayBillingResult) when the dialog dismisses.
+[global, bind = typed_gml]
+function play_billing_show_billing_program_information_dialog(
+    [type_hint = `GooglePlayBillingProgram`] program: int32,
+    callback: func
+): unit;
+
+/// Launches the Play Billing system UI to show the alternative billing information dialog.
+/// callback(billing_result: GooglePlayBillingResult) when the dialog dismisses.
+[global, bind = typed_gml]
+function play_billing_show_alternative_billing_only_information_dialog(callback: func): unit;
+
+/// Launches the external link associated with a billing program.
+/// callback(billing_result: GooglePlayBillingResult) when the flow completes or is dismissed.
+[global, bind = typed_gml]
+function play_billing_launch_external_link(
+    [type_hint = `GooglePlayBillingExternalLinkLaunchOptions`] options: gmval,
+    callback: func
+): unit;

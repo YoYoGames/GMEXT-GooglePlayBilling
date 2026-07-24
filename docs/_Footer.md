@@ -1,1 +1,0 @@
-YoYoGames ${time.year}
