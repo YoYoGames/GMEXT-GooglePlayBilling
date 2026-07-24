@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GMGooglePlayBilling_API",
   "parent":{
-    "name":"GMGooglePlayBilling",
-    "path":"folders/GMGooglePlayBilling.yy",
+    "name":"GooglePlayBilling",
+    "path":"folders/GooglePlayBilling.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
