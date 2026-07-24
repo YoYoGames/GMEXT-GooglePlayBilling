@@ -2,6 +2,7 @@
 
 - This extension is to be used with GM 2022.9 and future releases.
 - Works with **Android**.
+- **Version 2.0.0 is a breaking change**: the extension has been fully rewritten onto Google Play Billing 9.1.0 with a new API (`play_billing_*` functions replacing the old `GPBilling_*` functions). Projects upgrading from an earlier (1.x) version will need to adjust their code. Check the documentation for the current API.
 
 ## CHANGES SINCE ${releaseOldVersion}
 
@@ -9,15 +10,16 @@ https://github.com/YoYoGames/GMEXT-GooglePlayBilling/compare/${releaseOldVersion
 
 ## DESCRIPTION
 
-This extension allows developers to add and control IAPs inside their application/game.
+This extension wraps Google's Play Billing Library (version 9.1.0), allowing developers to add and control in-app purchases and subscriptions inside their application/game.
 
-## FEATURES 
+## FEATURES
 
-- Connecting to the Google Store
-- Querying products/subscription/purchase information
-- Purchasing products/subscriptions
-- Acknowledging/consuming purchases
-- Verifying purchases using signature (not recommended) and own server (recommended)
+- Connecting to the Google Play Store, and querying billing configuration/feature availability
+- Querying product/subscription details, including pricing, offers and pricing phases
+- Launching the purchase flow for one-time products, bundles and subscriptions (including upgrades/downgrades)
+- Querying, acknowledging and consuming purchases
+- Alternative billing, external offers/payments, and the Billing Choice program
+- Showing Play Store in-app messages (e.g. failed subscription renewal payments)
 
 ## DOCUMENTATION
 
