@@ -13,7 +13,7 @@ public record GooglePlayBillingOneTimePurchaseOfferDetails(String formatted_pric
 {
     public static final int CODEC_ID = 27;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingOneTimePurchaseOfferDetailsCodec.write(b, this);
     }

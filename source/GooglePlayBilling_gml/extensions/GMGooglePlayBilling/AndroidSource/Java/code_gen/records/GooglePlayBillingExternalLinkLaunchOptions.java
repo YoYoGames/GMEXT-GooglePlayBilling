@@ -12,7 +12,7 @@ public record GooglePlayBillingExternalLinkLaunchOptions(GooglePlayBillingProgra
 {
     public static final int CODEC_ID = 21;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingExternalLinkLaunchOptionsCodec.write(b, this);
     }

@@ -26,7 +26,7 @@ public final class GooglePlayBillingRentalDetailsCodec {
         return new GooglePlayBillingRentalDetails(rental_period, rental_expiration_period);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingRentalDetails obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingRentalDetails obj)
     {
         GMExtWire.writeString(b, obj.rental_period());
 

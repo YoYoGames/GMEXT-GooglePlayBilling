@@ -31,7 +31,7 @@ public final class GooglePlayBillingAccountIdentifiersCodec {
         return new GooglePlayBillingAccountIdentifiers(obfuscated_account_id, obfuscated_profile_id);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingAccountIdentifiers obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingAccountIdentifiers obj)
     {
         GMExtWire.writeBool(b, obj.obfuscated_account_id() != null && obj.obfuscated_account_id().isPresent());
         if (obj.obfuscated_account_id() != null && obj.obfuscated_account_id().isPresent())

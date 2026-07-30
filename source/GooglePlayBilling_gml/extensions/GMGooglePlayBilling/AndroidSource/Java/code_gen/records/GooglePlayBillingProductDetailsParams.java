@@ -12,7 +12,7 @@ public record GooglePlayBillingProductDetailsParams(String product_id, java.util
 {
     public static final int CODEC_ID = 22;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingProductDetailsParamsCodec.write(b, this);
     }

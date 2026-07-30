@@ -11,7 +11,7 @@ public record GooglePlayBillingPreorderDetails(double preorder_release_time, dou
 {
     public static final int CODEC_ID = 8;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingPreorderDetailsCodec.write(b, this);
     }

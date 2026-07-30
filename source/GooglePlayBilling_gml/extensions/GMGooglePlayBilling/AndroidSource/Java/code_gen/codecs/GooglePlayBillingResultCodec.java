@@ -29,7 +29,7 @@ public final class GooglePlayBillingResultCodec {
         return new GooglePlayBillingResult(code, message, sub_response_code);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingResult obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingResult obj)
     {
         GMExtWire.writeI32(b, obj.code().value());
 

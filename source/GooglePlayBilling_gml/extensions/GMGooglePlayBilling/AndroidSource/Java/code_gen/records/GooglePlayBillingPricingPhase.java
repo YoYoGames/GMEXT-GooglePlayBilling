@@ -12,7 +12,7 @@ public record GooglePlayBillingPricingPhase(String formatted_price, double price
 {
     public static final int CODEC_ID = 12;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingPricingPhaseCodec.write(b, this);
     }

@@ -18,7 +18,7 @@ public final class GooglePlayBillingConfigCodec {
         return new GooglePlayBillingConfig(country_code);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingConfig obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingConfig obj)
     {
         GMExtWire.writeString(b, obj.country_code());
 

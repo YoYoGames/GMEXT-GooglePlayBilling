@@ -20,7 +20,7 @@ public final class GooglePlayBillingPreorderDetailsCodec {
         return new GooglePlayBillingPreorderDetails(preorder_release_time, preorder_presale_end_time);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingPreorderDetails obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingPreorderDetails obj)
     {
         GMExtWire.writeF64(b, obj.preorder_release_time());
 

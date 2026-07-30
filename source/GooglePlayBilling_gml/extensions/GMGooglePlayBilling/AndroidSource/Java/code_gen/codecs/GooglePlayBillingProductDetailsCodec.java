@@ -32,7 +32,7 @@ public final class GooglePlayBillingProductDetailsCodec {
         return new GooglePlayBillingProductDetails(product_id, name, title, description, product_type, one_time_purchase_offer_details, subscription_offer_details);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingProductDetails obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingProductDetails obj)
     {
         GMExtWire.writeString(b, obj.product_id());
 

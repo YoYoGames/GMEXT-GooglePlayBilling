@@ -12,7 +12,7 @@ public record GooglePlayBillingValidTimeWindow(java.util.Optional<Double> start_
 {
     public static final int CODEC_ID = 11;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingValidTimeWindowCodec.write(b, this);
     }

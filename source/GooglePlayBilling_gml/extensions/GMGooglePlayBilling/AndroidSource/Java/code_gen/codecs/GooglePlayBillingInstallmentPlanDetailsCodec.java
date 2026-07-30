@@ -20,7 +20,7 @@ public final class GooglePlayBillingInstallmentPlanDetailsCodec {
         return new GooglePlayBillingInstallmentPlanDetails(commitment_payments_count, subsequent_commitment_payments_count);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingInstallmentPlanDetails obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingInstallmentPlanDetails obj)
     {
         GMExtWire.writeI32(b, obj.commitment_payments_count());
 

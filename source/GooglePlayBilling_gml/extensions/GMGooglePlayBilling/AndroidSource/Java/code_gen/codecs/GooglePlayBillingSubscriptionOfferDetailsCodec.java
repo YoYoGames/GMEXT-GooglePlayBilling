@@ -40,7 +40,7 @@ public final class GooglePlayBillingSubscriptionOfferDetailsCodec {
         return new GooglePlayBillingSubscriptionOfferDetails(base_plan_id, offer_id, offer_tags, offer_token, pricing_phases, installment_plan_details);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingSubscriptionOfferDetails obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingSubscriptionOfferDetails obj)
     {
         GMExtWire.writeString(b, obj.base_plan_id());
 

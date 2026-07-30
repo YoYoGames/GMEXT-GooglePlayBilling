@@ -22,7 +22,7 @@ public final class GooglePlayBillingDiscountAmountCodec {
         return new GooglePlayBillingDiscountAmount(formatted_discount_amount, discount_amount_micros, discount_amount_currency_code);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingDiscountAmount obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingDiscountAmount obj)
     {
         GMExtWire.writeString(b, obj.formatted_discount_amount());
 

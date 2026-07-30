@@ -12,7 +12,7 @@ public record GooglePlayBillingPendingPurchaseUpdate(String purchase_token, java
 {
     public static final int CODEC_ID = 15;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingPendingPurchaseUpdateCodec.write(b, this);
     }

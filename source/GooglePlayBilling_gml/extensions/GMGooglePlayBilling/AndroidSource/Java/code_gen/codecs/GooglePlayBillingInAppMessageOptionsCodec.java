@@ -20,7 +20,7 @@ public final class GooglePlayBillingInAppMessageOptionsCodec {
         return new GooglePlayBillingInAppMessageOptions(categories);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingInAppMessageOptions obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingInAppMessageOptions obj)
     {
         GMExtWire.writeList(b, obj.categories(), (bb, x) -> GMExtWire.writeI32(bb, x.value()));
 

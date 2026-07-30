@@ -19,7 +19,7 @@ public final class GooglePlayBillingExternalLinkLaunchOptionsCodec {
         return new GooglePlayBillingExternalLinkLaunchOptions(billing_program);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingExternalLinkLaunchOptions obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingExternalLinkLaunchOptions obj)
     {
         GMExtWire.writeI32(b, obj.billing_program().value());
 

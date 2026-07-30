@@ -12,7 +12,7 @@ public record GooglePlayBillingInitOptions(java.util.Optional<Boolean> enable_au
 {
     public static final int CODEC_ID = 0;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingInitOptionsCodec.write(b, this);
     }

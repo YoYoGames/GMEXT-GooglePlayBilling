@@ -66,7 +66,7 @@ public final class GooglePlayBillingInitOptionsCodec {
         return new GooglePlayBillingInitOptions(enable_auto_service_reconnection, enable_prepaid_plans, enable_alternative_billing_only, enable_external_content_link, enable_external_offer, enable_external_payments, enable_billing_choice);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingInitOptions obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingInitOptions obj)
     {
         GMExtWire.writeBool(b, obj.enable_auto_service_reconnection() != null && obj.enable_auto_service_reconnection().isPresent());
         if (obj.enable_auto_service_reconnection() != null && obj.enable_auto_service_reconnection().isPresent())

@@ -12,7 +12,7 @@ public record GooglePlayBillingUnfetchedProduct(String product_id, GooglePlayBil
 {
     public static final int CODEC_ID = 16;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingUnfetchedProductCodec.write(b, this);
     }

@@ -29,7 +29,7 @@ public final class GooglePlayBillingProductInputCodec {
         return new GooglePlayBillingProductInput(product_id, product_type, dynamic_product_token);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingProductInput obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingProductInput obj)
     {
         GMExtWire.writeString(b, obj.product_id());
 

@@ -14,7 +14,7 @@ public record GooglePlayBillingPurchase(java.util.Optional<String> order_id, Str
 {
     public static final int CODEC_ID = 25;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingPurchaseCodec.write(b, this);
     }

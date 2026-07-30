@@ -21,7 +21,7 @@ public final class GooglePlayBillingProductDetailsQueryResultCodec {
         return new GooglePlayBillingProductDetailsQueryResult(products, unfetched_products);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingProductDetailsQueryResult obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingProductDetailsQueryResult obj)
     {
         GMExtWire.writeList(b, obj.products(), (bb, x) -> GooglePlayBillingProductDetailsCodec.write(bb, x));
 

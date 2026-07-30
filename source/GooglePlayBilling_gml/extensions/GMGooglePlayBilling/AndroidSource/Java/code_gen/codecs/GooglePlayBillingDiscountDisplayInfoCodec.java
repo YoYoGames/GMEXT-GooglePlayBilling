@@ -31,7 +31,7 @@ public final class GooglePlayBillingDiscountDisplayInfoCodec {
         return new GooglePlayBillingDiscountDisplayInfo(percentage_discount, discount_amount);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingDiscountDisplayInfo obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingDiscountDisplayInfo obj)
     {
         GMExtWire.writeBool(b, obj.percentage_discount() != null && obj.percentage_discount().isPresent());
         if (obj.percentage_discount() != null && obj.percentage_discount().isPresent())

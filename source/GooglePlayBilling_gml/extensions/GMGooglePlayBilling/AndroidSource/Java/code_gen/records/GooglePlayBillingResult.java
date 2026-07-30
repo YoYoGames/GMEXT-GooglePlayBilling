@@ -13,7 +13,7 @@ public record GooglePlayBillingResult(GooglePlayBillingResponseCode code, java.u
 {
     public static final int CODEC_ID = 5;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingResultCodec.write(b, this);
     }

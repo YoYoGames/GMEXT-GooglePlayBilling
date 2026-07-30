@@ -31,7 +31,7 @@ public final class GooglePlayBillingSubscriptionUpdateParamsCodec {
         return new GooglePlayBillingSubscriptionUpdateParams(old_purchase_token, old_product_id, replacement_mode, original_external_transaction_id);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingSubscriptionUpdateParams obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingSubscriptionUpdateParams obj)
     {
         GMExtWire.writeString(b, obj.old_purchase_token());
 

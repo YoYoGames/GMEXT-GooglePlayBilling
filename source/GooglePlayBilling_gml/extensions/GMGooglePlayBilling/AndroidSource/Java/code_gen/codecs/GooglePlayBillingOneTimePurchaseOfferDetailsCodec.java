@@ -89,7 +89,7 @@ public final class GooglePlayBillingOneTimePurchaseOfferDetailsCodec {
         return new GooglePlayBillingOneTimePurchaseOfferDetails(formatted_price, price_amount_micros, price_currency_code, offer_id, offer_token, offer_tags, purchase_option_id, full_price_micros, rental_details, preorder_details, discount_display_info, limited_quantity_info, valid_time_window);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingOneTimePurchaseOfferDetails obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingOneTimePurchaseOfferDetails obj)
     {
         GMExtWire.writeString(b, obj.formatted_price());
 

@@ -27,7 +27,7 @@ public final class GooglePlayBillingReportingDetailsCodec {
         return new GooglePlayBillingReportingDetails(billing_program, external_transaction_token);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingReportingDetails obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingReportingDetails obj)
     {
         GMExtWire.writeBool(b, obj.billing_program() != null && obj.billing_program().isPresent());
         if (obj.billing_program() != null && obj.billing_program().isPresent())

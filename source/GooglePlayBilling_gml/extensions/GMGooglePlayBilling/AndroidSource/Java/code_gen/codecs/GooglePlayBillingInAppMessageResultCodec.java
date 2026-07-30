@@ -27,7 +27,7 @@ public final class GooglePlayBillingInAppMessageResultCodec {
         return new GooglePlayBillingInAppMessageResult(response_code, purchase_token);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingInAppMessageResult obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingInAppMessageResult obj)
     {
         GMExtWire.writeI32(b, obj.response_code().value());
 

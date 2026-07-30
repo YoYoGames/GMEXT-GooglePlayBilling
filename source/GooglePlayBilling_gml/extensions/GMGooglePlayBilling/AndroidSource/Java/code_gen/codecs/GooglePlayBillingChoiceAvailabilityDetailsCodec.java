@@ -21,7 +21,7 @@ public final class GooglePlayBillingChoiceAvailabilityDetailsCodec {
         return new GooglePlayBillingChoiceAvailabilityDetails(choice_screen_type, external_link_available);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingChoiceAvailabilityDetails obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingChoiceAvailabilityDetails obj)
     {
         GMExtWire.writeI32(b, obj.choice_screen_type().value());
 

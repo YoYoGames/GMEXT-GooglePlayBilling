@@ -12,7 +12,7 @@ public record GooglePlayBillingDiscountDisplayInfo(java.util.Optional<Integer> p
 {
     public static final int CODEC_ID = 23;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingDiscountDisplayInfoCodec.write(b, this);
     }

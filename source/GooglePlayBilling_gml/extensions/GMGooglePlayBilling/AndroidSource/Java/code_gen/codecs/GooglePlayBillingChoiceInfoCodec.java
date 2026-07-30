@@ -31,7 +31,7 @@ public final class GooglePlayBillingChoiceInfoCodec {
         return new GooglePlayBillingChoiceInfo(billing_choice_image_url, loyalty_info);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingChoiceInfo obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingChoiceInfo obj)
     {
         GMExtWire.writeBool(b, obj.billing_choice_image_url() != null && obj.billing_choice_image_url().isPresent());
         if (obj.billing_choice_image_url() != null && obj.billing_choice_image_url().isPresent())

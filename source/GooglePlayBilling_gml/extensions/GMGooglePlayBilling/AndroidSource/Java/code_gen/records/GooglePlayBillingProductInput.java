@@ -13,7 +13,7 @@ public record GooglePlayBillingProductInput(String product_id, GooglePlayBilling
 {
     public static final int CODEC_ID = 1;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingProductInputCodec.write(b, this);
     }

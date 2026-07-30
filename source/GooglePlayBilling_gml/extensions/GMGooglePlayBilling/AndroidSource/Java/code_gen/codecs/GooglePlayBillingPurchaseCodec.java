@@ -62,7 +62,7 @@ public final class GooglePlayBillingPurchaseCodec {
         return new GooglePlayBillingPurchase(order_id, package_name, purchase_time, purchase_token, products, signature, is_acknowledged, is_auto_renewing, purchase_state, quantity, original_json, is_suspended, account_identifiers, pending_purchase_update);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingPurchase obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingPurchase obj)
     {
         GMExtWire.writeBool(b, obj.order_id() != null && obj.order_id().isPresent());
         if (obj.order_id() != null && obj.order_id().isPresent())

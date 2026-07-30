@@ -31,7 +31,7 @@ public final class GooglePlayBillingValidTimeWindowCodec {
         return new GooglePlayBillingValidTimeWindow(start_time, end_time);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingValidTimeWindow obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingValidTimeWindow obj)
     {
         GMExtWire.writeBool(b, obj.start_time() != null && obj.start_time().isPresent());
         if (obj.start_time() != null && obj.start_time().isPresent())

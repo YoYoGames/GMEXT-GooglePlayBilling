@@ -29,7 +29,7 @@ public final class GooglePlayBillingPricingPhaseCodec {
         return new GooglePlayBillingPricingPhase(formatted_price, price_amount_micros, price_currency_code, billing_cycle_count, billing_period, recurrence_mode);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingPricingPhase obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingPricingPhase obj)
     {
         GMExtWire.writeString(b, obj.formatted_price());
 

@@ -11,7 +11,7 @@ public record GooglePlayBillingInstallmentPlanDetails(int commitment_payments_co
 {
     public static final int CODEC_ID = 13;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingInstallmentPlanDetailsCodec.write(b, this);
     }

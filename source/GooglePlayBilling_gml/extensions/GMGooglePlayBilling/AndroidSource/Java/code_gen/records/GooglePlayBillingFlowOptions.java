@@ -12,7 +12,7 @@ public record GooglePlayBillingFlowOptions(java.util.Optional<Boolean> is_offer_
 {
     public static final int CODEC_ID = 3;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingFlowOptionsCodec.write(b, this);
     }

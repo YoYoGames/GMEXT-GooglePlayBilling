@@ -65,8 +65,9 @@ public abstract class GMGooglePlayBillingInternal extends RunnerSocial {
         GooglePlayBillingConnectionState __result = __kotlin_instance.play_billing_get_connection_state();
 
         GMExtWire.order(__ret_buffer);
+        GMExtWire.IByteWriter __ret_buffer_writer = new GMExtWire.GMBufferWriter(__ret_buffer);
         // return: __result, type: enum GooglePlayBillingConnectionState
-        GMExtWire.writeI32(__ret_buffer, __result.value());
+        GMExtWire.writeI32(__ret_buffer_writer, __result.value());
 
         return 0;
     }
@@ -123,8 +124,9 @@ public abstract class GMGooglePlayBillingInternal extends RunnerSocial {
         GooglePlayBillingResult __result = __kotlin_instance.play_billing_is_feature_supported(feature);
 
         GMExtWire.order(__ret_buffer);
+        GMExtWire.IByteWriter __ret_buffer_writer = new GMExtWire.GMBufferWriter(__ret_buffer);
         // return: __result, type: struct GooglePlayBillingResult
-        GooglePlayBillingResultCodec.write(__ret_buffer, __result);
+        GooglePlayBillingResultCodec.write(__ret_buffer_writer, __result);
 
         return 0;
     }
@@ -167,8 +169,9 @@ public abstract class GMGooglePlayBillingInternal extends RunnerSocial {
         GooglePlayBillingResult __result = __kotlin_instance.play_billing_launch_billing_flow(items, options);
 
         GMExtWire.order(__ret_buffer);
+        GMExtWire.IByteWriter __ret_buffer_writer = new GMExtWire.GMBufferWriter(__ret_buffer);
         // return: __result, type: struct GooglePlayBillingResult
-        GooglePlayBillingResultCodec.write(__ret_buffer, __result);
+        GooglePlayBillingResultCodec.write(__ret_buffer_writer, __result);
 
         return 0;
     }
@@ -261,8 +264,9 @@ public abstract class GMGooglePlayBillingInternal extends RunnerSocial {
         GooglePlayBillingResult __result = __kotlin_instance.play_billing_show_in_app_messages(options, callback);
 
         GMExtWire.order(__ret_buffer);
+        GMExtWire.IByteWriter __ret_buffer_writer = new GMExtWire.GMBufferWriter(__ret_buffer);
         // return: __result, type: struct GooglePlayBillingResult
-        GooglePlayBillingResultCodec.write(__ret_buffer, __result);
+        GooglePlayBillingResultCodec.write(__ret_buffer_writer, __result);
 
         return 0;
     }

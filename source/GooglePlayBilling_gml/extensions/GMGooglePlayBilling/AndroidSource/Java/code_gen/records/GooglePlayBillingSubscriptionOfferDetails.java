@@ -13,7 +13,7 @@ public record GooglePlayBillingSubscriptionOfferDetails(String base_plan_id, jav
 {
     public static final int CODEC_ID = 24;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingSubscriptionOfferDetailsCodec.write(b, this);
     }

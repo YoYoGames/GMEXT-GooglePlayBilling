@@ -12,7 +12,7 @@ public record GooglePlayBillingRentalDetails(String rental_period, java.util.Opt
 {
     public static final int CODEC_ID = 7;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingRentalDetailsCodec.write(b, this);
     }

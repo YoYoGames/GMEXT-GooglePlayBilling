@@ -21,7 +21,7 @@ public final class GooglePlayBillingPendingPurchaseUpdateCodec {
         return new GooglePlayBillingPendingPurchaseUpdate(purchase_token, products);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingPendingPurchaseUpdate obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingPendingPurchaseUpdate obj)
     {
         GMExtWire.writeString(b, obj.purchase_token());
 

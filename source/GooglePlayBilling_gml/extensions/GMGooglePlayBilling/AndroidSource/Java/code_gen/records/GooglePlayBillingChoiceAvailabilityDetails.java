@@ -12,7 +12,7 @@ public record GooglePlayBillingChoiceAvailabilityDetails(GooglePlayBillingChoice
 {
     public static final int CODEC_ID = 18;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingChoiceAvailabilityDetailsCodec.write(b, this);
     }

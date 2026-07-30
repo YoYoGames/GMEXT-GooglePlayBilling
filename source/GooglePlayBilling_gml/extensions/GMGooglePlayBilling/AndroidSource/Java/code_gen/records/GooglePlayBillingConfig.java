@@ -11,7 +11,7 @@ public record GooglePlayBillingConfig(String country_code) implements GMExtWire.
 {
     public static final int CODEC_ID = 6;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingConfigCodec.write(b, this);
     }

@@ -13,7 +13,7 @@ public record GooglePlayBillingSubscriptionUpdateParams(String old_purchase_toke
 {
     public static final int CODEC_ID = 2;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingSubscriptionUpdateParamsCodec.write(b, this);
     }

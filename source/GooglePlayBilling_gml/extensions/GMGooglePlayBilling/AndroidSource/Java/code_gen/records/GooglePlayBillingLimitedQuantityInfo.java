@@ -11,7 +11,7 @@ public record GooglePlayBillingLimitedQuantityInfo(int maximum_quantity, int rem
 {
     public static final int CODEC_ID = 10;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingLimitedQuantityInfoCodec.write(b, this);
     }

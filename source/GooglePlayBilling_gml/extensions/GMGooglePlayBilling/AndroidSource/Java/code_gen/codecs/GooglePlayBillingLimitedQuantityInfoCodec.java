@@ -20,7 +20,7 @@ public final class GooglePlayBillingLimitedQuantityInfoCodec {
         return new GooglePlayBillingLimitedQuantityInfo(maximum_quantity, remaining_quantity);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingLimitedQuantityInfo obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingLimitedQuantityInfo obj)
     {
         GMExtWire.writeI32(b, obj.maximum_quantity());
 

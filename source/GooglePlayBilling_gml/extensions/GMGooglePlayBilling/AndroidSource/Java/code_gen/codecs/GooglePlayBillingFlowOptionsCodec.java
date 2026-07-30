@@ -38,7 +38,7 @@ public final class GooglePlayBillingFlowOptionsCodec {
         return new GooglePlayBillingFlowOptions(is_offer_personalized, obfuscated_account_id, obfuscated_profile_id);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingFlowOptions obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingFlowOptions obj)
     {
         GMExtWire.writeBool(b, obj.is_offer_personalized() != null && obj.is_offer_personalized().isPresent());
         if (obj.is_offer_personalized() != null && obj.is_offer_personalized().isPresent())

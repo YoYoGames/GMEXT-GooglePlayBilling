@@ -12,7 +12,7 @@ public record GooglePlayBillingAccountIdentifiers(java.util.Optional<String> obf
 {
     public static final int CODEC_ID = 14;
     @Override
-    public void encode(ByteBuffer b)
+    public void encode(GMExtWire.IByteWriter b)
     {
         GooglePlayBillingAccountIdentifiersCodec.write(b, this);
     }

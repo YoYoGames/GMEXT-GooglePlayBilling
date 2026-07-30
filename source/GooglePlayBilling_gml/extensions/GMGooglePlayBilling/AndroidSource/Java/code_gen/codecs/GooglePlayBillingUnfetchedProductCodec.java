@@ -23,7 +23,7 @@ public final class GooglePlayBillingUnfetchedProductCodec {
         return new GooglePlayBillingUnfetchedProduct(product_id, product_type, status_code);
     }
 
-    public static void write(ByteBuffer b, GooglePlayBillingUnfetchedProduct obj)
+    public static void write(GMExtWire.IByteWriter b, GooglePlayBillingUnfetchedProduct obj)
     {
         GMExtWire.writeString(b, obj.product_id());
 
