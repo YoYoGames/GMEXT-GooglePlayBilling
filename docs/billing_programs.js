@@ -127,7 +127,7 @@
 /**
  * @function play_billing_show_in_app_messages
  * @desc This function shows any pending Play Store in-app messages to the user (e.g. a message about a
- * declined subscription renewal payment). Call this regularly, such as when your game resumes.
+ * declined subscription renewal payment). It is recommended to call this when the game starts and resumes.
  *
  * This function returns the *immediate* result of requesting the messages; the outcome of the message
  * flow itself (once the user has seen and dismissed any messages) is delivered separately through

@@ -16,12 +16,12 @@
  * product details), so it should only be called once per app session, typically at startup.
  *
  * @param {Struct.GooglePlayBillingInitOptions} [options] Options controlling which optional billing capabilities are enabled
- * @param {Function} callback The function to call whenever purchases update
+ * @param {Function} callback The function that is called whenever purchases update
  *
  * @event callback
  * @desc This callback fires once for every purchases-updated event, for the lifetime of the client.
  * @member {Struct.GooglePlayBillingResult} billing_result The result of the purchases-updated event
- * @member {Array[Struct.GooglePlayBillingPurchase]} purchases The purchases that were updated; always a real (possibly empty) array
+ * @member {Array[Struct.GooglePlayBillingPurchase]} purchases The purchases that were updated; always an array of reals. An empty array when request fails.
  * @event_end
  *
  * @example
@@ -59,8 +59,8 @@
  * A successful connection does not guarantee the Play Store remains reachable - if the connection drops
  * later, `callback_disconnect` fires and the client must call this function again to reconnect.
  *
- * @param {Function} callback_start The function to call once the connection attempt finishes
- * @param {Function} callback_disconnect The function to call if the billing service disconnects after a successful connection
+ * @param {Function} callback_start The function that is called once the connection attempt finishes
+ * @param {Function} callback_disconnect The function that is called if the billing service disconnects after a successful connection
  *
  * @event callback:start
  * @desc This callback fires once, when the initial connection attempt finishes.
@@ -135,7 +135,7 @@
 
 /**
  * @function play_billing_get_config_async
- * @desc This function requests Play billing configuration data - currently the user's Play Store country
+ * @desc This function requests Play billing configuration data - currently only the user's Play Store country
  * as an ISO 3166-1 alpha-2 code, useful for showing localized pricing before a product query completes.
  *
  * @param {Function} callback The function to call once the request finishes
