@@ -30,7 +30,7 @@ object's Create event), then connect to the Play Store with ${function.play_bill
 play_billing_init(undefined, function(_billing_result, _purchases) {
     // This callback fires for the lifetime of the client, every time a purchase updates.
     for (var i = 0; i < array_length(_purchases); i++) {
-        handle_purchase_update(_purchases[i]);
+        handle_purchase_update(_purchases[i]); // Defined later on this page
     }
 });
 
@@ -113,14 +113,14 @@ function handle_purchase_update(_purchase) {
         // Non-consumable: acknowledge it once granted.
         play_billing_acknowledge_purchase(_purchase.purchase_token, function(_billing_result) {
             if (_billing_result.code == GooglePlayBillingResponseCode.Ok) {
-                global.no_ads = true;
+                global.no_ads = true; // Make in-game change
             }
         });
     } else if (array_contains(_purchase.products, "100_gems")) {
         // Consumable: consuming also acknowledges it.
         play_billing_consume_async(_purchase.purchase_token, function(_billing_result, _purchase_token) {
             if (_billing_result.code == GooglePlayBillingResponseCode.Ok) {
-                global.gems += 100;
+                global.gems += 100; // Make in-game change
             }
         });
     }
