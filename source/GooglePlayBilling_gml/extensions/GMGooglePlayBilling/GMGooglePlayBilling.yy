@@ -16,7 +16,7 @@
   "copyToTargets":8,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"2.0.1",
+  "extensionVersion":"2.0.2",
   "files":[
     {"$GMExtensionFile":"v1","%Name":"","constants":[],"copyToTargets":8,"filename":"GMGooglePlayBilling.ext","final":"","functions":[
         {"$GMExtensionFunction":"","%Name":"__play_billing_init","argCount":2,"args":[1,2,],"documentation":"@param {Pointer} _arg_buffer\r\n@param {Real} _arg_buffer_length\r\n@returns {Real}","externalName":"__EXT_NATIVE__play_billing_init","help":"","hidden":true,"kind":4,"name":"__play_billing_init","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
