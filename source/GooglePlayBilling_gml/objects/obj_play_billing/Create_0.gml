@@ -44,7 +44,6 @@ billing_all_products = [];
 
 var _init_options = new GooglePlayBillingInitOptions();
 _init_options.enable_auto_service_reconnection = true
-_init_options.enable_pending_purchases = true
 
 //Prepaid
 //_init_options.enable_prepaid_plans = true;
