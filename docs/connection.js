@@ -26,9 +26,8 @@
  *
  * @example
  * ```gml
- * var _options = {
- *     enable_auto_service_reconnection: true
- * };
+ * var _options = new GooglePlayBillingInitOptions();
+ * _options.enable_auto_service_reconnection = true;
  *
  * play_billing_init(_options, function(_billing_result, _purchases) {
  *     if (_billing_result.code != GooglePlayBillingResponseCode.Ok) exit;
